@@ -15,7 +15,7 @@ class WeatherListDataSource: UITableViewDiffableDataSource<WeatherSection, CityW
     init(cellIdentifier: String, tableView: UITableView) {
         super.init(tableView: tableView) { tableView, indexPath, itemIdentifier in
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-            cell?.textLabel?.text = itemIdentifier.name
+            cell?.textLabel?.text = itemIdentifier.name ?? "" + "-\(itemIdentifier.forecast.temperature!)"
             return cell
         }
     }

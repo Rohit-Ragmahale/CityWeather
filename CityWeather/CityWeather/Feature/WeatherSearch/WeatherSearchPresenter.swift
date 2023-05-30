@@ -9,12 +9,12 @@ import Foundation
 
 protocol WeatherSearchPresenterInterface: AnyObject {
     func weatherListUpdated(list: [CityWeatherData])
-    func weatherRequestFailed()
+    func weatherRequestFailed(description: String)
 }
 
 final class WeatherSearchPresenter {
     weak var view: WeatherSearchViewInterfaces?
-    
+    var router: WeatherSearchRouting?
 }
 
 extension WeatherSearchPresenter: WeatherSearchPresenterInterface {
@@ -22,7 +22,7 @@ extension WeatherSearchPresenter: WeatherSearchPresenterInterface {
         view?.showWeatherList(list: list)
     }
     
-    func weatherRequestFailed() {
-        view?.showErrorAlert()
+    func weatherRequestFailed(description: String) {
+        view?.showErrorAlert(errorMessage: description)
     }
 }

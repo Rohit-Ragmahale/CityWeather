@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WeatherSearchRouting {
-    func showWeatherForcast()
+    func showWeatherForcast(cityCode: String)
 }
 
 class WeatherSearchRouter {
@@ -16,7 +16,7 @@ class WeatherSearchRouter {
 }
 
 extension WeatherSearchRouter: WeatherSearchRouting {
-    func showWeatherForcast() {
+    func showWeatherForcast(cityCode: String) {
         
     }
 }
