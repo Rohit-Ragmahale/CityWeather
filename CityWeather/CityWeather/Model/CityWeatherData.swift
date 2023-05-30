@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct CityWeatherData: Decodable {
-  
+struct CityWeatherData: Decodable, Hashable {
+    let name: String
 }

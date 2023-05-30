@@ -7,11 +7,22 @@
 
 import Foundation
 
-protocol WeatherSearchPresenterInterface {
-    func weatherListUpdated()
+protocol WeatherSearchPresenterInterface: AnyObject {
+    func weatherListUpdated(list: [CityWeatherData])
+    func weatherRequestFailed()
 }
 
 final class WeatherSearchPresenter {
-    var view: WeatherSearchPresenterInterface?
+    weak var view: WeatherSearchViewInterfaces?
     
+}
+
+extension WeatherSearchPresenter: WeatherSearchPresenterInterface {
+    func weatherListUpdated(list: [CityWeatherData]) {
+        view?.showWeatherList(list: list)
+    }
+    
+    func weatherRequestFailed() {
+        view?.showErrorAlert()
+    }
 }

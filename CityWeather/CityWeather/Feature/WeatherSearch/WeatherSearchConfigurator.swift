@@ -12,9 +12,16 @@ protocol Configurator {
 }
 
 struct WeatherSearchConfigurator: Configurator {
-    
     func configureViewController() -> UIViewController {
+
+        let viewController: WeatherSearchViewController = UIStoryboard.instantiate(identifier: .weatherSearch)
+        let interactor = WeatherSearchInteractor()
+        let presenter = WeatherSearchPresenter()
         
-        return UIViewController()
+        presenter.view = viewController
+        interactor.presenter = presenter
+        viewController.interactor = interactor
+    
+        return viewController
     }
 }
