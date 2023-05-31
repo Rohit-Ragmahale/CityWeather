@@ -21,9 +21,9 @@ struct WeatherSearchRouter {
 
 extension WeatherSearchRouter: WeatherSearchRouting {
     func showWeatherForcast(cityCode: String) {
-        let forecastVC = WeatherForecastConfigurator(service: WeatherForecastService(),
-                                                     cityCode: cityCode
-        ).configureViewController()
+        let configurator = WeatherForecastConfigurator(service: WeatherForecastService(httpsClient: HTTPClient.makeHTTPClient()),
+                                                       cityCode: cityCode)
+        let forecastVC = configurator.configureViewController()
         DispatchQueue.main.async {
             self.viewController?.present(forecastVC, animated: true)
         }

@@ -13,9 +13,13 @@ protocol WeatherServiceProvider {
     func fetchWeatherFor(city: String, completion: @escaping WeatherResponse)
 }
 
-struct WeatherService: WeatherServiceProvider, HTTPClient {
+struct WeatherService: WeatherServiceProvider {
+    let httpsClient: HTTPClientInterface
+    init(httpsClient: HTTPClientInterface) {
+        self.httpsClient = httpsClient
+    }
     func fetchWeatherFor(city: String, completion: @escaping WeatherResponse) {
-        load(networkRequest: NetworkRequest<CityWeatherData>.currentWeather(city: city)) { result in
+        httpsClient.load(networkRequest: NetworkRequest<CityWeatherData>.currentWeather(city: city)) { result in
             switch result {
             case .success(let result):
                 completion(result, nil)

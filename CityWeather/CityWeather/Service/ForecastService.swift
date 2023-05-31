@@ -13,9 +13,15 @@ protocol WeatherForecastServiceProvider {
     func fetchWeatherForecastFor(cityCode: String, completion: @escaping WeatherForecatsResponse)
 }
 
-struct WeatherForecastService: WeatherForecastServiceProvider, HTTPClient {
+struct WeatherForecastService: WeatherForecastServiceProvider {
+    private let httpsClient: HTTPClientInterface
+
+    init(httpsClient: HTTPClientInterface) {
+        self.httpsClient = httpsClient
+    }
+
     func fetchWeatherForecastFor(cityCode: String, completion: @escaping WeatherForecatsResponse) {
-        load(networkRequest: NetworkRequest<FutureForecasts>.forecastWeather(cityCode: cityCode)) { result in
+        httpsClient.load(networkRequest: NetworkRequest<FutureForecasts>.forecastWeather(cityCode: cityCode)) { result in
             switch result {
             case .success(let result):
                 completion(result.list, nil)

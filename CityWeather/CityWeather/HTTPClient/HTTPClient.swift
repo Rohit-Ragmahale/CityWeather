@@ -7,12 +7,15 @@
 
 import Foundation
 
-protocol HTTPClient {
+protocol HTTPClientInterface {
     func load<T>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void)   where T : Decodable
 }
 
-extension HTTPClient {
-    
+struct HTTPClient: HTTPClientInterface {
+    static func makeHTTPClient() -> HTTPClient {
+        HTTPClient()
+    }
+
     func load<T>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void)  where T : Decodable {
         
         guard let request = networkRequest.request else {
