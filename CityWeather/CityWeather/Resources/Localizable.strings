@@ -7,15 +7,15 @@
 */
 
 // Search Weather
-"searchWeather_title" = "City Weather";
-"searchWeather_searchTitle" = "Search";
-"searchWeather_enter_city" = "Enter name of the city";
+"searchWeatherTitle" = "City Weather";
+"searchWeatherSearchTitle" = "Search";
+"searchWeatherEnterCity" = "Enter name of the city";
 "error" = "Error";
 "ok" = "Ok";
 
-"temperature_details" = "Temperature: %@";
-"humidity_details" = "Humidity: %@";
+"temperatureDetails" = "Temperature: %@";
+"humidityDetails" = "Humidity: %@";
 
 // Error Messages
-"temp_data_not_avaialble" = "temperature data not avaiable";
-"humidity_data_not_avaialble" = "humidity data not avaiable";
+"tempDataNotAvaialble" = "temperature data not avaiable";
+"humidityDataNotAvaialble" = "humidity data not avaiable";
