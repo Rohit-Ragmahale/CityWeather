@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="169" id="urV-qd-AcQ" customClass="WeatherForecastCell" customModule="CityWeather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="494" height="169"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="urV-qd-AcQ" id="Eio-q4-xCu">
+                <rect key="frame" x="0.0" y="0.0" width="494" height="169"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9ZK-Q6-ziD">
+                        <rect key="frame" x="16" y="8" width="462" height="153"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipF-JC-XVf">
+                                <rect key="frame" x="0.0" y="0.0" width="462" height="38.333333333333336"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOU-QE-ZFa">
+                                <rect key="frame" x="0.0" y="38.333333333333329" width="462" height="38.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcF-JN-dqT">
+                                <rect key="frame" x="0.0" y="76.666666666666671" width="462" height="38"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRl-XV-f0Y">
+                                <rect key="frame" x="0.0" y="114.66666666666667" width="462" height="38.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9ZK-Q6-ziD" firstAttribute="leading" secondItem="Eio-q4-xCu" secondAttribute="leading" constant="16" id="0Ym-GF-gmi"/>
+                    <constraint firstItem="9ZK-Q6-ziD" firstAttribute="top" secondItem="Eio-q4-xCu" secondAttribute="top" constant="8" id="2w8-iD-KAe"/>
+                    <constraint firstAttribute="trailing" secondItem="9ZK-Q6-ziD" secondAttribute="trailing" constant="16" id="ICk-B2-uh6"/>
+                    <constraint firstAttribute="bottom" secondItem="9ZK-Q6-ziD" secondAttribute="bottom" constant="8" id="PI4-x1-zwQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="date" destination="ipF-JC-XVf" id="fTk-xW-fcB"/>
+                <outlet property="humidityDetails" destination="BRl-XV-f0Y" id="BTw-d1-5Dz"/>
+                <outlet property="temperatureDetails" destination="WcF-JN-dqT" id="Ocs-OI-SPW"/>
+                <outlet property="weatherDescription" destination="IOU-QE-ZFa" id="q76-so-nLr"/>
+            </connections>
+            <point key="canvasLocation" x="-325.19083969465646" y="39.7887323943662"/>
+        </tableViewCell>
+    </objects>
+</document>

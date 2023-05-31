@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WeatherSearchRouting {
-    func showWeatherForcast(cityCode: String)
+    func showWeatherForcast(city: String, cityCode: String)
 }
 
 struct WeatherSearchRouter {
@@ -20,12 +20,15 @@ struct WeatherSearchRouter {
 }
 
 extension WeatherSearchRouter: WeatherSearchRouting {
-    func showWeatherForcast(cityCode: String) {
+    func showWeatherForcast(city: String, cityCode: String) {
         let configurator = WeatherForecastConfigurator(service: WeatherForecastService(httpsClient: HTTPClient.makeHTTPClient()),
+                                                       city: city,
                                                        cityCode: cityCode)
         let forecastVC = configurator.configureViewController()
+        let navigationVC = UINavigationController(rootViewController: forecastVC)
+        navigationVC.modalPresentationStyle = .overCurrentContext
         DispatchQueue.main.async {
-            self.viewController?.present(forecastVC, animated: true)
+            self.viewController?.present(navigationVC, animated: true)
         }
     }
 }

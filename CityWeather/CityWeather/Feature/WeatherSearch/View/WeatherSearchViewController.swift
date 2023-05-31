@@ -18,7 +18,7 @@ class WeatherSearchViewController: UIViewController {
     @IBOutlet private weak var searchButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     private lazy var dataSource: WeatherListDataSource = {
-        return WeatherListDataSource(cellIdentifier: "cellIdentifier", tableView: tableView)
+        return WeatherListDataSource(cellIdentifier: String(describing: CityWeatherCell.self), tableView: tableView)
     }()
 
     var interactor: WeatherSearchInteractorInterface?
@@ -32,7 +32,7 @@ class WeatherSearchViewController: UIViewController {
     private func setupView() {
         title = "City Weather"
         searchTextField.placeholder = "Enter City"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        CityWeatherCell.registerWithTable(tableView: tableView)
         let button = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { action in
             self.toggleSearchView(shouldShowSearchView: true)
             self.searchTextField.becomeFirstResponder()
@@ -63,7 +63,8 @@ class WeatherSearchViewController: UIViewController {
 extension WeatherSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cityCode = "\(interactor?.cityCodeforCity(index: indexPath.row) ?? 0)"
-        router?.showWeatherForcast(cityCode: cityCode)
+        let city = interactor?.cityName(index: indexPath.row) ?? ""
+        router?.showWeatherForcast(city: city, cityCode: cityCode)
     }
 }
 

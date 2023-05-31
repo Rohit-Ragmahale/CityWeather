@@ -13,9 +13,11 @@ enum WeatherSection: Hashable, CaseIterable {
 
 class WeatherListDataSource: UITableViewDiffableDataSource<WeatherSection, CityWeatherData> {
     init(cellIdentifier: String, tableView: UITableView) {
-        super.init(tableView: tableView) { tableView, indexPath, itemIdentifier in
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-            cell?.textLabel?.text = itemIdentifier.name ?? "" + "-\(itemIdentifier.forecast.temperature!)"
+        super.init(tableView: tableView) { tableView, indexPath, weatherData in
+            guard let cell: CityWeatherCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? CityWeatherCell else {
+                return UITableViewCell()
+            }
+            cell.inflateWith(weather: weatherData)
             return cell
         }
     }

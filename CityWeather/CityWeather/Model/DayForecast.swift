@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DayForecast {
+struct DayForecast: Hashable {
     var date: Date?
     var temperature: Double?
     var humidity: Double?

@@ -10,6 +10,7 @@ import Foundation
 protocol WeatherSearchInteractorInterface {
     func searchWeatherForCity(city: String)
     func cityCodeforCity(index: Int) -> Int
+    func cityName(index: Int) -> String?
 }
 
 final class WeatherSearchInteractor {
@@ -23,6 +24,10 @@ extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
     func cityCodeforCity(index: Int) -> Int {
         cityList[index].id
     }
+
+    func cityName(index: Int) -> String? {
+        cityList[index].name
+    }
     
     func searchWeatherForCity(city: String) {
         service?.fetchWeatherFor(city: city) { cityWeatherData, responseError in
@@ -32,7 +37,7 @@ extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
                 }
             }
             if let cityWeatherData = cityWeatherData {
-                self.cityList.append(cityWeatherData)
+                self.cityList.insert(cityWeatherData, at: 0)
             }
             DispatchQueue.main.async {
                 self.presenter?.weatherListUpdated(list: self.cityList)

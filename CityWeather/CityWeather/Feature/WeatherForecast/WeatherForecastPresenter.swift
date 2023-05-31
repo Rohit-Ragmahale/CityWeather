@@ -13,8 +13,11 @@ protocol WeatherForecastPresenterInterface: AnyObject {
 }
 
 final class WeatherForecastPresenter {
-    weak var view: WeatherForecastViewInterfaces?
-    var router: WeatherForecastRouting?
+    private weak var view: WeatherForecastViewInterfaces?
+    
+    init(view: WeatherForecastViewInterfaces? = nil) {
+        self.view = view
+    }
 }
 
 extension WeatherForecastPresenter: WeatherForecastPresenterInterface {

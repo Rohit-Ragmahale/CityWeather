@@ -10,16 +10,22 @@ import UIKit
 struct WeatherForecastConfigurator: Configurator {
     private let service: WeatherForecastServiceProvider
     private let cityCode: String
+    private let city: String
     
-    init(service: WeatherForecastServiceProvider, cityCode: String) {
+    init(service: WeatherForecastServiceProvider, city: String, cityCode: String) {
         self.service = service
         self.cityCode = cityCode
+        self.city = city
     }
     
     func configureViewController() -> UIViewController {
         let viewController: WeatherForecastViewController = UIStoryboard.instantiate(identifier: .weatherForecast)
-        let interactor = WeatherForecastInteractor()
-        let presenter = WeatherForecastPresenter()
+        
+        // Presenter -> ViewController
+        let presenter = WeatherForecastPresenter(view: viewController)
+
+        // Interactor -> Presenter
+        let interactor = WeatherForecastInteractor(presenter: presenter, cityCode: cityCode, city: city, service: service)
         
         // Router -> ViewController
         let router = WeatherForecastRouter(viewController: viewController)
@@ -27,16 +33,6 @@ struct WeatherForecastConfigurator: Configurator {
         // ViewController -> Interactor
         viewController.interactor = interactor
         viewController.router = router
-        
-        // Interactor -> Presenter
-        interactor.presenter = presenter
-        interactor.service = service
-        interactor.cityCode = cityCode
-        
-        // Presenter -> Router
-        presenter.router = router
-        // Presenter -> ViewController
-        presenter.view = viewController
     
         return viewController
     }
