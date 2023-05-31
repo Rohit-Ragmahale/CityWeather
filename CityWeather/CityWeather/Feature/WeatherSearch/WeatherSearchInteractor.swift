@@ -30,17 +30,17 @@ extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
     }
     
     func searchWeatherForCity(city: String) {
-        service?.fetchWeatherFor(city: city) { cityWeatherData, responseError in
+        service?.fetchWeatherFor(city: city) { [weak self] cityWeatherData, responseError in
             if let responseError = responseError {
                 DispatchQueue.main.async {
-                    self.presenter?.weatherRequestFailed(description: responseError.errorDescription)
+                    self?.presenter?.weatherRequestFailed(description: responseError.errorDescription)
                 }
             }
             if let cityWeatherData = cityWeatherData {
-                self.cityList.insert(cityWeatherData, at: 0)
+                self?.cityList.insert(cityWeatherData, at: 0)
             }
             DispatchQueue.main.async {
-                self.presenter?.weatherListUpdated(list: self.cityList)
+                self?.presenter?.weatherListUpdated(list: self?.cityList ?? [])
             }
         }
     }

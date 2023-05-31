@@ -32,15 +32,15 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
     }
     
     func searchWeatherForecastForCity() {
-        service?.fetchWeatherForecastFor(cityCode: cityCode ?? "", completion: { futureForecasts, responseError in
+        service?.fetchWeatherForecastFor(cityCode: cityCode ?? "", completion: { [weak self] futureForecasts, responseError in
             if let responseError = responseError {
                 DispatchQueue.main.async {
-                    self.presenter?.weatherForecastRequestFailed(description: responseError.errorDescription)
+                    self?.presenter?.weatherForecastRequestFailed(description: responseError.errorDescription)
                 }
             }
             print("forecastList \(futureForecasts ?? [])")
             DispatchQueue.main.async {
-                self.presenter?.weatherForecatsListUpdated(list: futureForecasts ?? [])
+                self?.presenter?.weatherForecatsListUpdated(list: futureForecasts ?? [])
             }
         })
     }
