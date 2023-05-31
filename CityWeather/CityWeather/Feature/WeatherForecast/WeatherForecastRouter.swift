@@ -8,7 +8,6 @@
 import UIKit
 
 protocol WeatherForecastRouting {
-
 }
 
 struct WeatherForecastRouter {
@@ -20,5 +19,4 @@ struct WeatherForecastRouter {
 }
 
 extension WeatherForecastRouter: WeatherForecastRouting {
-
 }

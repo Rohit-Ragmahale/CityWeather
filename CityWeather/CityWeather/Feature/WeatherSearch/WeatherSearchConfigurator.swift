@@ -20,23 +20,18 @@ struct WeatherSearchConfigurator: Configurator {
 
     func configureViewController() -> UIViewController {
         let viewController: WeatherSearchViewController = UIStoryboard.instantiate(identifier: .weatherSearch)
-        let interactor = WeatherSearchInteractor()
-        let presenter = WeatherSearchPresenter()
-
         // Router -> ViewController
         let router = WeatherSearchRouter(viewController: viewController)
 
-        // ViewController -> Interactor
-        viewController.interactor = interactor
+        // Presenter -> Router
+        // Presenter -> ViewController
+        let presenter = WeatherSearchPresenter(view: viewController, router: router)
 
         // Interactor -> Presenter
-        interactor.presenter = presenter
-        interactor.service = service
+        let interactor = WeatherSearchInteractor(service: service, presenter: presenter)
 
-        // Presenter -> Router
-        presenter.router = router
-        // Presenter -> ViewController
-        presenter.view = viewController
+        // ViewController -> Interactor
+        viewController.interactor = interactor
 
         return viewController
     }

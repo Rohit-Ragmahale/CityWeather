@@ -14,13 +14,18 @@ protocol WeatherSearchPresenterInterface: AnyObject {
 }
 
 final class WeatherSearchPresenter {
-    weak var view: WeatherSearchViewInterfaces?
-    var router: WeatherSearchRouting?
+    private weak var view: WeatherSearchViewInterfaces?
+    private var router: WeatherSearchRouting
+
+    init(view: WeatherSearchViewInterfaces?, router: WeatherSearchRouting) {
+        self.view = view
+        self.router = router
+    }
 }
 
 extension WeatherSearchPresenter: WeatherSearchPresenterInterface {
     func showWeatherForecastForCity(city: String, cityId: String) {
-        router?.showWeatherForcast(city: city, cityId: cityId)
+        router.showWeatherForcast(city: city, cityId: cityId)
     }
     func weatherListUpdated(list: [CityWeatherData]) {
         view?.showWeatherList(list: list)

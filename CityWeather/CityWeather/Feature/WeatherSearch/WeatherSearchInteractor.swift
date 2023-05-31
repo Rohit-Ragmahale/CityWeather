@@ -14,9 +14,13 @@ protocol WeatherSearchInteractorInterface {
 
 final class WeatherSearchInteractor {
     private var cityList: [CityWeatherData] = []
+    private var service: WeatherServiceProvider?
+    private var presenter: WeatherSearchPresenterInterface?
 
-    var service: WeatherServiceProvider?
-    var presenter: WeatherSearchPresenterInterface?
+    init(service: WeatherServiceProvider? = nil, presenter: WeatherSearchPresenterInterface? = nil) {
+        self.service = service
+        self.presenter = presenter
+    }
 }
 
 extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
