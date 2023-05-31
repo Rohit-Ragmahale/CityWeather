@@ -13,10 +13,11 @@ enum Storyboard: String {
 
 enum StoryboardIdentifier:  String {
     case weatherSearch
+    case weatherForecast
 
     var storyboardName: String {
         switch self {
-        case .weatherSearch:
+        case .weatherSearch, .weatherForecast:
             return Storyboard.Main.rawValue
         }
     }

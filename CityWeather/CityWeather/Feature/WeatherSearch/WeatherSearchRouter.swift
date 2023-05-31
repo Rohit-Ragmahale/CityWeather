@@ -11,12 +11,21 @@ protocol WeatherSearchRouting {
     func showWeatherForcast(cityCode: String)
 }
 
-class WeatherSearchRouter {
-    weak var viewController: UIViewController?
+struct WeatherSearchRouter {
+    private weak var viewController: UIViewController?
+    
+    init(viewController: UIViewController? = nil) {
+        self.viewController = viewController
+    }
 }
 
 extension WeatherSearchRouter: WeatherSearchRouting {
     func showWeatherForcast(cityCode: String) {
-        
+        let forecastVC = WeatherForecastConfigurator(service: WeatherForecastService(),
+                                                     cityCode: cityCode
+        ).configureViewController()
+        DispatchQueue.main.async {
+            self.viewController?.present(forecastVC, animated: true)
+        }
     }
 }

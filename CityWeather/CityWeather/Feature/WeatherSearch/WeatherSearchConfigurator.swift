@@ -13,22 +13,18 @@ protocol Configurator {
 
 struct WeatherSearchConfigurator: Configurator {
     private let service: WeatherServiceProvider
-    private let inetractor: WeatherSearchInteractorInterface
-    private let presenter: WeatherSearchPresenterInterface
-    private let router: WeatherSearchRouting
 
-    init(service: WeatherServiceProvider, inetractor: WeatherSearchInteractorInterface, presenter: WeatherSearchPresenterInterface, router: WeatherSearchRouting) {
+    init(service: WeatherServiceProvider) {
         self.service = service
-        self.inetractor = inetractor
-        self.presenter = presenter
-        self.router = router
     }
-    
+
     func configureViewController() -> UIViewController {
         let viewController: WeatherSearchViewController = UIStoryboard.instantiate(identifier: .weatherSearch)
         let interactor = WeatherSearchInteractor()
         let presenter = WeatherSearchPresenter()
-        let router = WeatherSearchRouter()
+
+        // Router -> ViewController
+        let router = WeatherSearchRouter(viewController: viewController)
         
         // ViewController -> Interactor
         viewController.interactor = interactor
@@ -43,7 +39,7 @@ struct WeatherSearchConfigurator: Configurator {
         presenter.view = viewController
         
         // Router -> ViewController
-        router.viewController = viewController
+        viewController.router = router
     
         return viewController
     }

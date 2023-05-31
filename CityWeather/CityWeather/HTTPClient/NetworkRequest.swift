@@ -40,9 +40,9 @@ extension NetworkRequest {
     static func currentWeather(city: String) -> NetworkRequest<CityWeatherData> {
         let url = WeatherAPIConstants.baseURL + WeatherAPIConstants.weatherService
         let parameters: [String : CustomStringConvertible] = [
-            "appid": WeatherAPIConstants.apiId,
-            "q": city,
-            "units": WeatherAPIConstants.metric
+            WeatherAPIConstants.QueryParameters.appid: WeatherAPIConstants.apiId,
+            WeatherAPIConstants.QueryParameters.city: city,
+            WeatherAPIConstants.QueryParameters.units: WeatherAPIConstants.metric
         ]
         return NetworkRequest<CityWeatherData>(url: url, parameters: parameters)
     }
@@ -50,9 +50,9 @@ extension NetworkRequest {
     static func forecastWeather(cityCode: String) -> NetworkRequest<FutureForecasts> {
         let url = WeatherAPIConstants.baseURL + WeatherAPIConstants.forcastService
         let parameters: [String : CustomStringConvertible] = [
-            "appid": WeatherAPIConstants.apiId,
-            "id": cityCode,
-            "units": WeatherAPIConstants.metric
+            WeatherAPIConstants.QueryParameters.appid: WeatherAPIConstants.apiId,
+            WeatherAPIConstants.QueryParameters.cityId: cityCode,
+            WeatherAPIConstants.QueryParameters.units: WeatherAPIConstants.metric
         ]
         return NetworkRequest<FutureForecasts>(url: url, parameters: parameters)
     }

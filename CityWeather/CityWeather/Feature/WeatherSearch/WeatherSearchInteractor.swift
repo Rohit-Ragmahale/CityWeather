@@ -9,6 +9,7 @@ import Foundation
 
 protocol WeatherSearchInteractorInterface {
     func searchWeatherForCity(city: String)
+    func cityCodeforCity(index: Int) -> Int
 }
 
 final class WeatherSearchInteractor {
@@ -19,6 +20,10 @@ final class WeatherSearchInteractor {
 }
 
 extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
+    func cityCodeforCity(index: Int) -> Int {
+        cityList[index].id
+    }
+    
     func searchWeatherForCity(city: String) {
         service?.fetchWeatherFor(city: city) { cityWeatherData, responseError in
             if let responseError = responseError {
