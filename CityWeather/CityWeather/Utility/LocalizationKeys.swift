@@ -12,22 +12,20 @@ protocol Localized {
 }
 
 enum WeatherApp: String, Localized {
-    case searchWeather_title
-    case searchWeather_searchTitle
-    case searchWeather_enter_city
+    case searchWeatherTitle
+    case searchWeatherSearchTitle
+    case searchWeatherEnterCity
 
-    case temperature_details
-    case humidity_details
-    
+    case temperatureDetails
+    case humidityDetails
+
     case error
-    case ok
-    
-    case temp_data_not_avaialble
-    case humidity_data_not_avaialble
-    
+    case okTitle
+
+    case tempDataNotAvaialble
+    case humidityDataNotAvaialble
+
     var localized: String {
         self.rawValue.localized
     }
 }
-
-

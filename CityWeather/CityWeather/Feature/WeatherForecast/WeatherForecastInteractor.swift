@@ -17,8 +17,11 @@ final class WeatherForecastInteractor {
     private var service: WeatherForecastServiceProvider?
     private var cityId: String?
     private var city: String?
-    
-    init(presenter: WeatherForecastPresenterInterface? = nil, cityId: String? = nil, city: String? = nil, service: WeatherForecastServiceProvider? = nil) {
+
+    init(presenter: WeatherForecastPresenterInterface? = nil,
+         cityId: String? = nil,
+         city: String? = nil,
+         service: WeatherForecastServiceProvider? = nil) {
         self.presenter = presenter
         self.service = service
         self.cityId = cityId
@@ -30,9 +33,10 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
     func getCityName() -> String? {
         city
     }
-    
+
     func searchWeatherForecastForCity() {
-        service?.fetchWeatherForecastFor(cityId: cityId ?? "", completion: { [weak self] futureForecasts, responseError in
+        service?.fetchWeatherForecastFor(cityId: cityId ?? "",
+                                         completion: { [weak self] futureForecasts, responseError in
             DispatchQueue.main.async {
                 if let responseError = responseError {
                     self?.presenter?.weatherForecastRequestFailed(description: responseError.errorDescription)
@@ -43,4 +47,3 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
         })
     }
 }
-

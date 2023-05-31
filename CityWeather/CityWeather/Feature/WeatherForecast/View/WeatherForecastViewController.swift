@@ -15,12 +15,13 @@ protocol WeatherForecastViewInterfaces: AnyObject {
 class WeatherForecastViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     private lazy var dataSource: WeatherForecastDataSource = {
-        return WeatherForecastDataSource(cellIdentifier: String(describing: WeatherForecastCell.self), tableView: tableView)
+        return WeatherForecastDataSource(cellIdentifier: String(describing: WeatherForecastCell.self),
+                                         tableView: tableView)
     }()
 
     var interactor: WeatherForecastInteractorInterface?
     var router: WeatherForecastRouting?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -30,7 +31,7 @@ class WeatherForecastViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = Theme.ForecastPage.viewBGColor
         tableView.backgroundColor = Theme.ForecastPage.listBGColor
-        
+
         // navigationItem.backBarButtonItem?.tintColor = Theme.ForecastPage.buttonTintColor
         title = interactor?.getCityName()
         WeatherForecastCell.registerWithTable(tableView: tableView)
@@ -48,10 +49,12 @@ extension WeatherForecastViewController: WeatherForecastViewInterfaces {
             self.dataSource.apply(snapShot, animatingDifferences: true)
         }
     }
-    
+
     func showErrorAlert(errorMessage: String) {
-        let dialogMessage = UIAlertController(title: WeatherApp.error.localized, message: errorMessage, preferredStyle: .alert)
-        dialogMessage.addAction(UIAlertAction(title: WeatherApp.ok.localized, style: .cancel))
+        let dialogMessage = UIAlertController(title: WeatherApp.error.localized,
+                                              message: errorMessage,
+                                              preferredStyle: .alert)
+        dialogMessage.addAction(UIAlertAction(title: WeatherApp.okTitle.localized, style: .cancel))
         present(dialogMessage, animated: true, completion: nil)
     }
 }

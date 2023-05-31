@@ -22,30 +22,31 @@ class WeatherSearchViewController: UIViewController {
     }()
 
     var interactor: WeatherSearchInteractorInterface?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-    
+
     private func setupView() {
-        title = WeatherApp.searchWeather_title.localized
-        searchTextField.placeholder = WeatherApp.searchWeather_enter_city.localized
-        searchButton.setTitle(WeatherApp.searchWeather_searchTitle.localized, for: .normal)
+        title = WeatherApp.searchWeatherTitle.localized
+        searchTextField.placeholder = WeatherApp.searchWeatherEnterCity.localized
+        searchButton.setTitle(WeatherApp.searchWeatherSearchTitle.localized, for: .normal)
         view.backgroundColor = Theme.HomePage.viewBGColor
         tableView.backgroundColor = Theme.HomePage.listBGColor
         searchButton.tintColor = Theme.HomePage.buttonTintColor
         searchTextField.textColor = Theme.HomePage.searchTextColor
         CityWeatherCell.registerWithTable(tableView: tableView)
-        let button = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { action in
+        let action = UIAction(handler: { _ in
             self.toggleSearchView(shouldShowSearchView: true)
             self.searchTextField.becomeFirstResponder()
-        }))
+        })
+        let button = UIBarButtonItem(systemItem: .add, primaryAction: action)
         button.tintColor = Theme.HomePage.buttonTintColor
         navigationItem.rightBarButtonItem = button
-        
+
     }
- 
+
     private func toggleSearchView(shouldShowSearchView: Bool = false) {
         view.removeConstraint(tableViewTopViewConstraint)
         tableViewTopViewConstraint =  shouldShowSearchView ?
@@ -56,7 +57,7 @@ class WeatherSearchViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
+
     @IBAction func searchCityButtonTapped(_ sender: Any) {
         view.endEditing(true)
         if let text = searchTextField.text {
@@ -86,11 +87,13 @@ extension WeatherSearchViewController: WeatherSearchViewInterfaces {
     }
 
     func showErrorAlert(errorMessage: String) {
-        let dialogMessage = UIAlertController(title: WeatherApp.error.localized, message: errorMessage, preferredStyle: .alert)
-        dialogMessage.addAction(UIAlertAction(title: WeatherApp.ok.localized, style: .cancel, handler: { action in
+        let dialogMessage = UIAlertController(title: WeatherApp.error.localized,
+                                              message: errorMessage, preferredStyle: .alert)
+        let action: ((UIAlertAction) -> Void)? = { _ in
             self.toggleSearchView(shouldShowSearchView: true)
             self.searchTextField.becomeFirstResponder()
-        }))
+        }
+        dialogMessage.addAction(UIAlertAction(title: WeatherApp.okTitle.localized, style: .cancel, handler: action))
         present(dialogMessage, animated: true, completion: nil)
     }
 }

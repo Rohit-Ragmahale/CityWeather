@@ -13,8 +13,9 @@ enum WeatherForecastSection: Hashable, CaseIterable {
 
 class WeatherForecastDataSource: UITableViewDiffableDataSource<WeatherForecastSection, DayForecast> {
     init(cellIdentifier: String, tableView: UITableView) {
-        super.init(tableView: tableView) { tableView, indexPath, dayForecast in
-            guard let cell: WeatherForecastCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? WeatherForecastCell else {
+        super.init(tableView: tableView) { tableView, _, dayForecast in
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+            guard let cell: WeatherForecastCell = cell as? WeatherForecastCell else {
                 return UITableViewCell()
             }
             cell.inflateWith(forecast: dayForecast)

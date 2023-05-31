@@ -25,7 +25,7 @@ extension WeatherSearchPresenter: WeatherSearchPresenterInterface {
     func weatherListUpdated(list: [CityWeatherData]) {
         view?.showWeatherList(list: list)
     }
-    
+
     func weatherRequestFailed(description: String) {
         view?.showErrorAlert(errorMessage: description)
     }

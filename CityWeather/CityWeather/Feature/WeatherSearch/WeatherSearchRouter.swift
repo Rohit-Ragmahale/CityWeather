@@ -13,7 +13,7 @@ protocol WeatherSearchRouting {
 
 struct WeatherSearchRouter {
     private weak var viewController: UIViewController?
-    
+
     init(viewController: UIViewController? = nil) {
         self.viewController = viewController
     }
@@ -21,9 +21,8 @@ struct WeatherSearchRouter {
 
 extension WeatherSearchRouter: WeatherSearchRouting {
     func showWeatherForcast(city: String, cityId: String) {
-        let configurator = WeatherForecastConfigurator(service: WeatherForecastService(httpsClient: HTTPClient.makeHTTPClient()),
-                                                       city: city,
-                                                       cityId: cityId)
+        let service = WeatherForecastService(httpsClient: HTTPClient.makeHTTPClient())
+        let configurator = WeatherForecastConfigurator(service: service, city: city, cityId: cityId)
         let forecastVC = configurator.configureViewController()
         DispatchQueue.main.async {
             self.viewController?.navigationController?.pushViewController(forecastVC, animated: true)

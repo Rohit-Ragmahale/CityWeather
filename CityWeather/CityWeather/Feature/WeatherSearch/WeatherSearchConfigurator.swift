@@ -25,19 +25,19 @@ struct WeatherSearchConfigurator: Configurator {
 
         // Router -> ViewController
         let router = WeatherSearchRouter(viewController: viewController)
-        
+
         // ViewController -> Interactor
         viewController.interactor = interactor
-        
+
         // Interactor -> Presenter
         interactor.presenter = presenter
         interactor.service = service
-        
+
         // Presenter -> Router
         presenter.router = router
         // Presenter -> ViewController
         presenter.view = viewController
-    
+
         return viewController
     }
 }

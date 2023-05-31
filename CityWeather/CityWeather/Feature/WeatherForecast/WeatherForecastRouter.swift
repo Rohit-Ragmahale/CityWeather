@@ -13,7 +13,7 @@ protocol WeatherForecastRouting {
 
 struct WeatherForecastRouter {
     private weak var viewController: UIViewController?
-    
+
     init(viewController: UIViewController? = nil) {
         self.viewController = viewController
     }
@@ -22,4 +22,3 @@ struct WeatherForecastRouter {
 extension WeatherForecastRouter: WeatherForecastRouting {
 
 }
-

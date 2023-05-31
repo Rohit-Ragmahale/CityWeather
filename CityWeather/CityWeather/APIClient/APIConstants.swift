@@ -13,7 +13,7 @@ struct WeatherAPIConstants {
     static let forcastService = "/forecast"
     static let apiId = "7eaab9424f40d70b55d21a995bc1bd4c"
     static let metric = "metric"
-    
+
     struct QueryParameters {
         static let appid = "appid"
         static let units = "units"

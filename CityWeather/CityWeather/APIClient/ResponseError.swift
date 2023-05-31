@@ -14,7 +14,7 @@ enum ResponseError: Error {
     case unauthorized
     case unexpectedStatusCode
     case unknown
-    
+
     var errorDescription: String {
         switch self {
         case .decode:

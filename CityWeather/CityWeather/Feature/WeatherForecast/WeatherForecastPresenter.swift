@@ -14,7 +14,7 @@ protocol WeatherForecastPresenterInterface: AnyObject {
 
 final class WeatherForecastPresenter {
     private weak var view: WeatherForecastViewInterfaces?
-    
+
     init(view: WeatherForecastViewInterfaces? = nil) {
         self.view = view
     }
@@ -24,7 +24,7 @@ extension WeatherForecastPresenter: WeatherForecastPresenterInterface {
     func weatherForecatsListUpdated(list: [DayForecast]) {
         view?.showWeatherForecast(list: list)
     }
-    
+
     func weatherForecastRequestFailed(description: String) {
         view?.showErrorAlert(errorMessage: description)
     }
