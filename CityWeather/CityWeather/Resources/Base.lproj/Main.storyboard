@@ -11,7 +11,6 @@
         <!--Weather Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="weatherSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WeatherSearchViewController" customModule="CityWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -41,7 +40,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Pjh-x4-htx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="0TK-lI-iaO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F9a-yP-EHt" secondAttribute="bottom" id="2xH-Xs-wkW"/>
@@ -62,6 +61,7 @@
                         <outlet property="tableViewTopViewConstraint" destination="l7U-8K-wbm" id="cql-0o-tN9"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-611.45038167938924" y="1.4084507042253522"/>
         </scene>
@@ -99,9 +99,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

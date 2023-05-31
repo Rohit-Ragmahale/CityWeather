@@ -30,10 +30,6 @@ class WeatherForecastViewController: UIViewController {
     private func setupView() {
         title = interactor?.getCityName()
         WeatherForecastCell.registerWithTable(tableView: tableView)
-        let button = UIBarButtonItem(systemItem: .close, primaryAction: UIAction(handler: { action in
-            self.router?.dismissForecastDetails()
-        }))
-        self.navigationItem.rightBarButtonItem = button
     }
 }
 

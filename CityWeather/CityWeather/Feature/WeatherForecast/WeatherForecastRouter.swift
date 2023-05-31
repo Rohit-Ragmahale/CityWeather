@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WeatherForecastRouting {
-    func dismissForecastDetails()
+
 }
 
 struct WeatherForecastRouter {
@@ -20,8 +20,6 @@ struct WeatherForecastRouter {
 }
 
 extension WeatherForecastRouter: WeatherForecastRouting {
-    func dismissForecastDetails() {
-        viewController?.dismiss(animated: true)
-    }
+
 }
 

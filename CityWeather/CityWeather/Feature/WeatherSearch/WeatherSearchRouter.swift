@@ -25,10 +25,8 @@ extension WeatherSearchRouter: WeatherSearchRouting {
                                                        city: city,
                                                        cityCode: cityCode)
         let forecastVC = configurator.configureViewController()
-        let navigationVC = UINavigationController(rootViewController: forecastVC)
-        navigationVC.modalPresentationStyle = .overCurrentContext
         DispatchQueue.main.async {
-            self.viewController?.present(navigationVC, animated: true)
+            self.viewController?.navigationController?.pushViewController(forecastVC, animated: true)
         }
     }
 }
