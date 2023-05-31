@@ -161,7 +161,7 @@
 			children = (
 				438E31862A2626F5006867EC /* AppDelegate.swift */,
 				438E31882A2626F5006867EC /* SceneDelegate.swift */,
-				438E31E52A2683D2006867EC /* HTTPClient */,
+				438E31E52A2683D2006867EC /* APIClient */,
 				438E31D82A267B89006867EC /* Service */,
 				438E31BD2A26317E006867EC /* Model */,
 				438E31B62A262764006867EC /* Feature */,
@@ -251,7 +251,7 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		438E31E52A2683D2006867EC /* HTTPClient */ = {
+		438E31E52A2683D2006867EC /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
 				438E31E62A2684BD006867EC /* APIConstants.swift */,
@@ -259,7 +259,7 @@
 				438E31E12A268250006867EC /* ResponseError.swift */,
 				438E31E82A268667006867EC /* HTTPClient.swift */,
 			);
-			path = HTTPClient;
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 		438E31EC2A269C06006867EC /* WeatherForecast */ = {
@@ -298,9 +298,9 @@
 		438E32012A271DEC006867EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				438E318C2A2626F5006867EC /* Main.storyboard */,
 				438E31912A2626F6006867EC /* LaunchScreen.storyboard */,
 				438E318F2A2626F6006867EC /* Assets.xcassets */,
-				438E318C2A2626F5006867EC /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
