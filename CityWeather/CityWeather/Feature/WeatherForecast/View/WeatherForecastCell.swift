@@ -13,6 +13,11 @@ class WeatherForecastCell: UITableViewCell {
     @IBOutlet private weak var temperatureDetails: UILabel!
     @IBOutlet private weak var humidityDetails: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = Theme.ForecastPage.cityWeatherForecastBGColor
+    }
+    
     func inflateWith(forecast: DayForecast) {
         date.text = forecast.date?.getDateText() ?? ""
         weatherDescription.text = forecast.weatherDescription

@@ -31,12 +31,18 @@ class WeatherSearchViewController: UIViewController {
     private func setupView() {
         title = "City Weather"
         searchTextField.placeholder = "Enter City"
+        view.backgroundColor = Theme.HomePage.viewBGColor
+        tableView.backgroundColor = Theme.HomePage.listBGColor
+        searchButton.tintColor = Theme.HomePage.buttonTintColor
+        searchTextField.textColor = Theme.HomePage.searchTextColor
         CityWeatherCell.registerWithTable(tableView: tableView)
         let button = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { action in
             self.toggleSearchView(shouldShowSearchView: true)
             self.searchTextField.becomeFirstResponder()
         }))
-        self.navigationItem.rightBarButtonItem = button
+        button.tintColor = Theme.HomePage.buttonTintColor
+        navigationItem.rightBarButtonItem = button
+        
     }
  
     private func toggleSearchView(shouldShowSearchView: Bool = false) {

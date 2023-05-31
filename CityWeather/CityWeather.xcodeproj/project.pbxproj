@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43792FCA2A2788F700450EC4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43792FC92A2788F700450EC4 /* Theme.swift */; };
 		438E31872A2626F5006867EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E31862A2626F5006867EC /* AppDelegate.swift */; };
 		438E31892A2626F5006867EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E31882A2626F5006867EC /* SceneDelegate.swift */; };
 		438E318E2A2626F5006867EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438E318C2A2626F5006867EC /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43792FC92A2788F700450EC4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		438E31832A2626F5006867EC /* CityWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438E31862A2626F5006867EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		438E31882A2626F5006867EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				438E31D22A2664EA006867EC /* MarginUnits.swift */,
 				438E31D42A266B27006867EC /* StoryboardIdentifier.swift */,
+				43792FC92A2788F700450EC4 /* Theme.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				438E31C62A265889006867EC /* WeatherSearchConfigurator.swift in Sources */,
 				438E31BA2A263013006867EC /* WeatherSearchInteractor.swift in Sources */,
 				438E31F02A26AEC0006867EC /* WeatherForecastConfigurator.swift in Sources */,
+				43792FCA2A2788F700450EC4 /* Theme.swift in Sources */,
 				438E31C82A265B1C006867EC /* DayForecast.swift in Sources */,
 				438E31872A2626F5006867EC /* AppDelegate.swift in Sources */,
 				438E31EB2A269499006867EC /* ForecastService.swift in Sources */,

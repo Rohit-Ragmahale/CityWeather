@@ -13,6 +13,11 @@ class CityWeatherCell: UITableViewCell {
     @IBOutlet private weak var temperatureDetails: UILabel!
     @IBOutlet private weak var humidityDetails: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = Theme.HomePage.cityWeatherBGColor
+    }
+    
     func inflateWith(weather: CityWeatherData) {
         city.text = weather.name
         weatherDescription.text = weather.forecast.weatherDescription
