@@ -23,10 +23,8 @@ enum ResponseError: Error {
             return "Endpoint is not valid"
         case .noResponse:
             return "City weather data not found"
-        case .unexpectedStatusCode, .unknown:
+        case .unexpectedStatusCode, .unknown, .unauthorized:
             return "Unknown error\nPlease try again"
-        default:
-            return "City weather data not found"
         }
     }
 }

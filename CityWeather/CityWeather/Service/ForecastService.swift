@@ -21,7 +21,8 @@ struct WeatherForecastService: WeatherForecastServiceProvider {
     }
 
     func fetchWeatherForecastFor(cityId: String, completion: @escaping WeatherForecatsResponse) {
-        httpsClient.load(networkRequest: NetworkRequest<FutureForecasts>.forecastWeather(cityId: cityId)) { result in
+        let request = NetworkRequest<FutureForecasts>.forecastWeather(cityId: cityId)
+        httpsClient.load(networkRequest: request) { result in
             switch result {
             case .success(let result):
                 completion(result.list, nil)

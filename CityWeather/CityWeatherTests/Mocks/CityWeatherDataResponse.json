@@ -1,0 +1,41 @@
+{
+    "coord": {
+        "lon": -1.5477,
+        "lat": 53.7964
+    },
+    "weather": [{
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
+    }],
+    "base": "stations",
+    "main": {
+        "temp": 12.99,
+        "feels_like": 12.28,
+        "temp_min": 11.88,
+        "temp_max": 14.97,
+        "pressure": 1029,
+        "humidity": 74
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 4.12,
+        "deg": 60
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1685561610,
+    "sys": {
+        "type": 2,
+        "id": 2041378,
+        "country": "GB",
+        "sunrise": 1685504618,
+        "sunset": 1685564661
+    },
+    "timezone": 3600,
+    "id": 3333164,
+    "name": "Leeds",
+    "cod": 200
+}

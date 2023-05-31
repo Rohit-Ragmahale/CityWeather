@@ -10,8 +10,6 @@ import Foundation
 protocol WeatherSearchInteractorInterface {
     func searchWeatherForCity(city: String)
     func showWeatherForecastForCityAt(index: Int)
-    func cityCodeforCity(index: Int) -> Int
-    func cityName(index: Int) -> String?
 }
 
 final class WeatherSearchInteractor {
@@ -22,14 +20,6 @@ final class WeatherSearchInteractor {
 }
 
 extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
-    func cityCodeforCity(index: Int) -> Int {
-        cityList[index].id
-    }
-
-    func cityName(index: Int) -> String? {
-        cityList[index].name
-    }
-
     func showWeatherForecastForCityAt(index: Int) {
         let city = cityList[index]
         presenter?.showWeatherForecastForCity(city: city.name ?? "", cityId: "\(city.id)")

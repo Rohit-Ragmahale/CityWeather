@@ -20,7 +20,6 @@ class WeatherForecastViewController: UIViewController {
     }()
 
     var interactor: WeatherForecastInteractorInterface?
-    var router: WeatherForecastRouting?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +30,6 @@ class WeatherForecastViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = Theme.ForecastPage.viewBGColor
         tableView.backgroundColor = Theme.ForecastPage.listBGColor
-
-        // navigationItem.backBarButtonItem?.tintColor = Theme.ForecastPage.buttonTintColor
         title = interactor?.getCityName()
         WeatherForecastCell.registerWithTable(tableView: tableView)
     }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 enum WeatherSection: Hashable, CaseIterable {
     case main
 }

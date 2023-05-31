@@ -19,7 +19,8 @@ struct WeatherService: WeatherServiceProvider {
         self.httpsClient = httpsClient
     }
     func fetchWeatherFor(city: String, completion: @escaping WeatherResponse) {
-        httpsClient.load(networkRequest: NetworkRequest<CityWeatherData>.currentWeather(city: city)) { result in
+        let request = NetworkRequest<CityWeatherData>.currentWeather(city: city)
+        httpsClient.load(networkRequest: request) { result in
             switch result {
             case .success(let result):
                 completion(result, nil)

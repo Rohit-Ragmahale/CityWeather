@@ -20,19 +20,18 @@ struct WeatherForecastConfigurator: Configurator {
 
     func configureViewController() -> UIViewController {
         let viewController: WeatherForecastViewController = UIStoryboard.instantiate(identifier: .weatherForecast)
+        // Router -> ViewController
+        let router = WeatherForecastRouter(viewController: viewController)
 
         // Presenter -> ViewController
-        let presenter = WeatherForecastPresenter(view: viewController)
+        // Presenter -> Router
+        let presenter = WeatherForecastPresenter(view: viewController, router: router)
 
         // Interactor -> Presenter
         let interactor = WeatherForecastInteractor(presenter: presenter, cityId: cityId, city: city, service: service)
 
-        // Router -> ViewController
-        let router = WeatherForecastRouter(viewController: viewController)
-
         // ViewController -> Interactor
         viewController.interactor = interactor
-        viewController.router = router
 
         return viewController
     }
