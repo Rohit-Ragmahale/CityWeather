@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  CityWeather
+
+  Created by Rohit Ragmahale on 31/05/2023.
+  
+*/
+
+// Search Weather
+"searchWeather_title" = "City Weather";
+"searchWeather_searchTitle" = "Search";
+"searchWeather_enter_city" = "Enter name of the city";
+"error" = "Error";
+"ok" = "Ok";
+
+"temperature_details" = "Temperature: %@";
+"humidity_details" = "Humidity: %@";
+
+// Error Messages
+"temp_data_not_avaialble" = "temperature data not avaiable";
+"humidity_data_not_avaialble" = "humidity data not avaiable";

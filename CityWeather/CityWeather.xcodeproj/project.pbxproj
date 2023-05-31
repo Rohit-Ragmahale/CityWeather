@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		43792FCA2A2788F700450EC4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43792FC92A2788F700450EC4 /* Theme.swift */; };
+		43792FD02A278D7700450EC4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43792FCF2A278D7700450EC4 /* Localizable.strings */; };
+		43792FD22A27922200450EC4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43792FD12A27922200450EC4 /* StringExtension.swift */; };
+		43792FD52A27929A00450EC4 /* LocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43792FD42A27929A00450EC4 /* LocalizationKeys.swift */; };
 		438E31872A2626F5006867EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E31862A2626F5006867EC /* AppDelegate.swift */; };
 		438E31892A2626F5006867EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E31882A2626F5006867EC /* SceneDelegate.swift */; };
 		438E318E2A2626F5006867EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438E318C2A2626F5006867EC /* Main.storyboard */; };
@@ -68,12 +71,15 @@
 
 /* Begin PBXFileReference section */
 		43792FC92A2788F700450EC4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		43792FCD2A278CF000450EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		43792FCE2A278CF000450EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		43792FCF2A278D7700450EC4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		43792FD12A27922200450EC4 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		43792FD42A27929A00450EC4 /* LocalizationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKeys.swift; sourceTree = "<group>"; };
 		438E31832A2626F5006867EC /* CityWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438E31862A2626F5006867EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		438E31882A2626F5006867EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		438E318D2A2626F5006867EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		438E318F2A2626F6006867EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		438E31922A2626F6006867EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		438E31942A2626F6006867EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438E31992A2626F6006867EC /* CityWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		438E319D2A2626F6006867EC /* CityWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherTests.swift; sourceTree = "<group>"; };
@@ -241,6 +247,7 @@
 				438E31D22A2664EA006867EC /* MarginUnits.swift */,
 				438E31D42A266B27006867EC /* StoryboardIdentifier.swift */,
 				43792FC92A2788F700450EC4 /* Theme.swift */,
+				43792FD42A27929A00450EC4 /* LocalizationKeys.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -294,6 +301,7 @@
 				438E31FF2A271744006867EC /* UITableViewCellExtension.swift */,
 				438E31D62A266CF9006867EC /* UIStoryboardExtension.swift */,
 				438E32082A272EAA006867EC /* DateExtension.swift */,
+				43792FD12A27922200450EC4 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,6 +309,7 @@
 		438E32012A271DEC006867EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43792FCF2A278D7700450EC4 /* Localizable.strings */,
 				438E318C2A2626F5006867EC /* Main.storyboard */,
 				438E31912A2626F6006867EC /* LaunchScreen.storyboard */,
 				438E318F2A2626F6006867EC /* Assets.xcassets */,
@@ -413,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				438E31932A2626F6006867EC /* LaunchScreen.storyboard in Resources */,
+				43792FD02A278D7700450EC4 /* Localizable.strings in Resources */,
 				438E31FD2A270D86006867EC /* CityWeatherCell.xib in Resources */,
 				438E31902A2626F6006867EC /* Assets.xcassets in Resources */,
 				438E32072A272CEC006867EC /* WeatherForecastCell.xib in Resources */,
@@ -461,6 +471,7 @@
 				438E31F92A26AF0C006867EC /* WeatherForecastViewController.swift in Sources */,
 				438E32052A272CDD006867EC /* WeatherForecastCell.swift in Sources */,
 				438E31D72A266CF9006867EC /* UIStoryboardExtension.swift in Sources */,
+				43792FD22A27922200450EC4 /* StringExtension.swift in Sources */,
 				438E31F22A26AED7006867EC /* WeatherForecastRouter.swift in Sources */,
 				438E31D02A265E1D006867EC /* WeatherListDataSource.swift in Sources */,
 				438E31C62A265889006867EC /* WeatherSearchConfigurator.swift in Sources */,
@@ -472,6 +483,7 @@
 				438E31EB2A269499006867EC /* ForecastService.swift in Sources */,
 				438E31892A2626F5006867EC /* SceneDelegate.swift in Sources */,
 				438E31F62A26AEF3006867EC /* WeatherForecastInteractor.swift in Sources */,
+				43792FD52A27929A00450EC4 /* LocalizationKeys.swift in Sources */,
 				438E31B82A262800006867EC /* WeatherSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,7 +524,7 @@
 		438E318C2A2626F5006867EC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				438E318D2A2626F5006867EC /* Base */,
+				43792FCD2A278CF000450EC4 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -520,7 +532,7 @@
 		438E31912A2626F6006867EC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				438E31922A2626F6006867EC /* Base */,
+				43792FCE2A278CF000450EC4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

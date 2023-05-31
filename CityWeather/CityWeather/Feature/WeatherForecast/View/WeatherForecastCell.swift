@@ -22,14 +22,14 @@ class WeatherForecastCell: UITableViewCell {
         date.text = forecast.date?.getDateText() ?? ""
         weatherDescription.text = forecast.weatherDescription
         if let temperature = forecast.temperature {
-            temperatureDetails.text = "\(temperature)"
+            temperatureDetails.text = String(format: WeatherApp.temperature_details.localized, "\(temperature)")
         } else {
-            temperatureDetails.text = "temperature data not avaiable"
+            temperatureDetails.text = WeatherApp.temp_data_not_avaialble.localized
         }
         if let humidity = forecast.humidity {
-            humidityDetails.text = "\(humidity)"
+            humidityDetails.text = String(format: WeatherApp.temperature_details.localized, "\(humidity)")
         } else {
-            humidityDetails.text = "humidity data not avaiable"
+            humidityDetails.text = WeatherApp.humidity_data_not_avaialble.localized
         }
     }
 }

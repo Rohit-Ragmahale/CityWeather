@@ -8,6 +8,8 @@
 import UIKit
 
 struct Theme {
+    static let navigationTintColor = UIColor(red: 02/255, green: 02/255, blue: 02/255, alpha: 1.0)
+    
     struct HomePage {
         static let viewBGColor = UIColor(red: 51/255, green: 204/255, blue: 255/255, alpha: 1.0)
         static let listBGColor = UIColor(red: 177/255, green: 203/255, blue: 228/255, alpha: 1.0)

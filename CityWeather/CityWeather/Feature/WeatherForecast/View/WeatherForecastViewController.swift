@@ -30,7 +30,8 @@ class WeatherForecastViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = Theme.ForecastPage.viewBGColor
         tableView.backgroundColor = Theme.ForecastPage.listBGColor
-        navigationItem.backBarButtonItem?.tintColor = Theme.ForecastPage.buttonTintColor
+        
+        // navigationItem.backBarButtonItem?.tintColor = Theme.ForecastPage.buttonTintColor
         title = interactor?.getCityName()
         WeatherForecastCell.registerWithTable(tableView: tableView)
     }
@@ -49,8 +50,8 @@ extension WeatherForecastViewController: WeatherForecastViewInterfaces {
     }
     
     func showErrorAlert(errorMessage: String) {
-        let dialogMessage = UIAlertController(title: "Oops!", message: errorMessage, preferredStyle: .alert)
-        dialogMessage.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        let dialogMessage = UIAlertController(title: WeatherApp.error.localized, message: errorMessage, preferredStyle: .alert)
+        dialogMessage.addAction(UIAlertAction(title: WeatherApp.ok.localized, style: .cancel))
         present(dialogMessage, animated: true, completion: nil)
     }
 }

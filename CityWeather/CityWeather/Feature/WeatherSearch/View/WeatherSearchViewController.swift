@@ -29,8 +29,9 @@ class WeatherSearchViewController: UIViewController {
     }
     
     private func setupView() {
-        title = "City Weather"
-        searchTextField.placeholder = "Enter City"
+        title = WeatherApp.searchWeather_title.localized
+        searchTextField.placeholder = WeatherApp.searchWeather_enter_city.localized
+        searchButton.setTitle(WeatherApp.searchWeather_searchTitle.localized, for: .normal)
         view.backgroundColor = Theme.HomePage.viewBGColor
         tableView.backgroundColor = Theme.HomePage.listBGColor
         searchButton.tintColor = Theme.HomePage.buttonTintColor
@@ -85,8 +86,8 @@ extension WeatherSearchViewController: WeatherSearchViewInterfaces {
     }
 
     func showErrorAlert(errorMessage: String) {
-        let dialogMessage = UIAlertController(title: "Oops!", message: errorMessage, preferredStyle: .alert)
-        dialogMessage.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+        let dialogMessage = UIAlertController(title: WeatherApp.error.localized, message: errorMessage, preferredStyle: .alert)
+        dialogMessage.addAction(UIAlertAction(title: WeatherApp.ok.localized, style: .cancel, handler: { action in
             self.toggleSearchView(shouldShowSearchView: true)
             self.searchTextField.becomeFirstResponder()
         }))
