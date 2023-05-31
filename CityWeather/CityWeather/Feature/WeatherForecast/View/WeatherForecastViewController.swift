@@ -46,6 +46,8 @@ extension WeatherForecastViewController: WeatherForecastViewInterfaces {
     }
     
     func showErrorAlert(errorMessage: String) {
-        
+        let dialogMessage = UIAlertController(title: "Oops!", message: errorMessage, preferredStyle: .alert)
+        dialogMessage.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        present(dialogMessage, animated: true, completion: nil)
     }
 }

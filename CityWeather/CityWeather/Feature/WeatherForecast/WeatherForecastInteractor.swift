@@ -15,13 +15,13 @@ protocol WeatherForecastInteractorInterface {
 final class WeatherForecastInteractor {
     private var presenter: WeatherForecastPresenterInterface?
     private var service: WeatherForecastServiceProvider?
-    private var cityCode: String?
+    private var cityId: String?
     private var city: String?
     
-    init(presenter: WeatherForecastPresenterInterface? = nil, cityCode: String? = nil, city: String? = nil, service: WeatherForecastServiceProvider? = nil) {
+    init(presenter: WeatherForecastPresenterInterface? = nil, cityId: String? = nil, city: String? = nil, service: WeatherForecastServiceProvider? = nil) {
         self.presenter = presenter
         self.service = service
-        self.cityCode = cityCode
+        self.cityId = cityId
         self.city = city
     }
 }
@@ -32,15 +32,13 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
     }
     
     func searchWeatherForecastForCity() {
-        service?.fetchWeatherForecastFor(cityCode: cityCode ?? "", completion: { [weak self] futureForecasts, responseError in
-            if let responseError = responseError {
-                DispatchQueue.main.async {
-                    self?.presenter?.weatherForecastRequestFailed(description: responseError.errorDescription)
-                }
-            }
-            print("forecastList \(futureForecasts ?? [])")
+        service?.fetchWeatherForecastFor(cityId: cityId ?? "", completion: { [weak self] futureForecasts, responseError in
             DispatchQueue.main.async {
-                self?.presenter?.weatherForecatsListUpdated(list: futureForecasts ?? [])
+                if let responseError = responseError {
+                    self?.presenter?.weatherForecastRequestFailed(description: responseError.errorDescription)
+                } else {
+                    self?.presenter?.weatherForecatsListUpdated(list: futureForecasts ?? [])
+                }
             }
         })
     }

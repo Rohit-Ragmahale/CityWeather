@@ -37,9 +37,6 @@ struct WeatherSearchConfigurator: Configurator {
         presenter.router = router
         // Presenter -> ViewController
         presenter.view = viewController
-        
-        // Router -> ViewController
-        viewController.router = router
     
         return viewController
     }

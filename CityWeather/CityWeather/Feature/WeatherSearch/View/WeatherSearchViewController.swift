@@ -22,7 +22,6 @@ class WeatherSearchViewController: UIViewController {
     }()
 
     var interactor: WeatherSearchInteractorInterface?
-    var router: WeatherSearchRouting?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +61,7 @@ class WeatherSearchViewController: UIViewController {
 
 extension WeatherSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cityCode = "\(interactor?.cityCodeforCity(index: indexPath.row) ?? 0)"
-        let city = interactor?.cityName(index: indexPath.row) ?? ""
-        router?.showWeatherForcast(city: city, cityCode: cityCode)
+        interactor?.showWeatherForecastForCityAt(index: indexPath.row)
     }
 }
 

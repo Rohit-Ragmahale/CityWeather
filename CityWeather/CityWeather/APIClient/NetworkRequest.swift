@@ -47,11 +47,11 @@ extension NetworkRequest {
         return NetworkRequest<CityWeatherData>(url: url, parameters: parameters)
     }
     
-    static func forecastWeather(cityCode: String) -> NetworkRequest<FutureForecasts> {
+    static func forecastWeather(cityId: String) -> NetworkRequest<FutureForecasts> {
         let url = WeatherAPIConstants.baseURL + WeatherAPIConstants.forcastService
         let parameters: [String : CustomStringConvertible] = [
             WeatherAPIConstants.QueryParameters.appid: WeatherAPIConstants.apiId,
-            WeatherAPIConstants.QueryParameters.cityId: cityCode,
+            WeatherAPIConstants.QueryParameters.cityId: cityId,
             WeatherAPIConstants.QueryParameters.units: WeatherAPIConstants.metric
         ]
         return NetworkRequest<FutureForecasts>(url: url, parameters: parameters)

@@ -10,7 +10,7 @@ import Foundation
 typealias WeatherForecatsResponse = ([DayForecast]?, ResponseError?) -> Void
 
 protocol WeatherForecastServiceProvider {
-    func fetchWeatherForecastFor(cityCode: String, completion: @escaping WeatherForecatsResponse)
+    func fetchWeatherForecastFor(cityId: String, completion: @escaping WeatherForecatsResponse)
 }
 
 struct WeatherForecastService: WeatherForecastServiceProvider {
@@ -20,8 +20,8 @@ struct WeatherForecastService: WeatherForecastServiceProvider {
         self.httpsClient = httpsClient
     }
 
-    func fetchWeatherForecastFor(cityCode: String, completion: @escaping WeatherForecatsResponse) {
-        httpsClient.load(networkRequest: NetworkRequest<FutureForecasts>.forecastWeather(cityCode: cityCode)) { result in
+    func fetchWeatherForecastFor(cityId: String, completion: @escaping WeatherForecatsResponse) {
+        httpsClient.load(networkRequest: NetworkRequest<FutureForecasts>.forecastWeather(cityId: cityId)) { result in
             switch result {
             case .success(let result):
                 completion(result.list, nil)

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WeatherSearchRouting {
-    func showWeatherForcast(city: String, cityCode: String)
+    func showWeatherForcast(city: String, cityId: String)
 }
 
 struct WeatherSearchRouter {
@@ -20,10 +20,10 @@ struct WeatherSearchRouter {
 }
 
 extension WeatherSearchRouter: WeatherSearchRouting {
-    func showWeatherForcast(city: String, cityCode: String) {
+    func showWeatherForcast(city: String, cityId: String) {
         let configurator = WeatherForecastConfigurator(service: WeatherForecastService(httpsClient: HTTPClient.makeHTTPClient()),
                                                        city: city,
-                                                       cityCode: cityCode)
+                                                       cityId: cityId)
         let forecastVC = configurator.configureViewController()
         DispatchQueue.main.async {
             self.viewController?.navigationController?.pushViewController(forecastVC, animated: true)
