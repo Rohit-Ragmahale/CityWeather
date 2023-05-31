@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HTTPClientInterface {
-    func load<T>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void) where T : Decodable
+    func load<T: Decodable>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void)
 }
 
 struct HTTPClient: HTTPClientInterface {
@@ -16,7 +16,7 @@ struct HTTPClient: HTTPClientInterface {
         HTTPClient()
     }
 
-    func load<T>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void) where T : Decodable {
+    func load<T: Decodable>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void) {
         
         guard let request = networkRequest.request else {
             completion(.failure(.unknown))
