@@ -41,7 +41,6 @@
 		438E318E2A2626F5006867EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438E318C2A2626F5006867EC /* Main.storyboard */; };
 		438E31902A2626F6006867EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438E318F2A2626F6006867EC /* Assets.xcassets */; };
 		438E31932A2626F6006867EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438E31912A2626F6006867EC /* LaunchScreen.storyboard */; };
-		438E319E2A2626F6006867EC /* CityWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E319D2A2626F6006867EC /* CityWeatherTests.swift */; };
 		438E31A82A2626F6006867EC /* CityWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E31A72A2626F6006867EC /* CityWeatherUITests.swift */; };
 		438E31B82A262800006867EC /* WeatherSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E31B72A262800006867EC /* WeatherSearchViewController.swift */; };
 		438E31BA2A263013006867EC /* WeatherSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E31B92A263013006867EC /* WeatherSearchInteractor.swift */; };
@@ -79,6 +78,8 @@
 		43BBBF212A28EA4700395570 /* WeatherSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBBF202A28EA4700395570 /* WeatherSearchView.swift */; };
 		43BBBF232A28EAE000395570 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBBF222A28EAE000395570 /* Timer.swift */; };
 		43BBBF282A29019700395570 /* TestUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBBF272A29019700395570 /* TestUtilsTests.swift */; };
+		43BBBF2A2A29186B00395570 /* CityWeatherCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBBF292A29186B00395570 /* CityWeatherCellTests.swift */; };
+		43BBBF2C2A291DD500395570 /* WeatherForecastCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBBF2B2A291DD500395570 /* WeatherForecastCellTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +147,6 @@
 		438E318F2A2626F6006867EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		438E31942A2626F6006867EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438E31992A2626F6006867EC /* CityWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		438E319D2A2626F6006867EC /* CityWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherTests.swift; sourceTree = "<group>"; };
 		438E31A32A2626F6006867EC /* CityWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		438E31A72A2626F6006867EC /* CityWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherUITests.swift; sourceTree = "<group>"; };
 		438E31B72A262800006867EC /* WeatherSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +185,8 @@
 		43BBBF202A28EA4700395570 /* WeatherSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchView.swift; sourceTree = "<group>"; };
 		43BBBF222A28EAE000395570 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		43BBBF272A29019700395570 /* TestUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtilsTests.swift; sourceTree = "<group>"; };
+		43BBBF292A29186B00395570 /* CityWeatherCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherCellTests.swift; sourceTree = "<group>"; };
+		43BBBF2B2A291DD500395570 /* WeatherForecastCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastCellTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				43414E552A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift */,
+				43BBBF292A29186B00395570 /* CityWeatherCellTests.swift */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				43414E582A28984D002E1EFB /* WeatherForecastViewControllerTests.swift */,
+				43BBBF2B2A291DD500395570 /* WeatherForecastCellTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -360,7 +364,6 @@
 				4379300A2A27ED7C00450EC4 /* Feature */,
 				43792FEB2A27CEF500450EC4 /* Extensions */,
 				43792FE82A27CC9E00450EC4 /* Utility */,
-				438E319D2A2626F6006867EC /* CityWeatherTests.swift */,
 			);
 			path = CityWeatherTests;
 			sourceTree = "<group>";
@@ -751,8 +754,8 @@
 				437930142A27F9E700450EC4 /* WeatherSearchConfiguratorTests.swift in Sources */,
 				437930162A27FB3800450EC4 /* WeatherSearchRouterTests.swift in Sources */,
 				437930042A27E21600450EC4 /* WeatherServiceTests.swift in Sources */,
-				438E319E2A2626F6006867EC /* CityWeatherTests.swift in Sources */,
 				43BBBF282A29019700395570 /* TestUtilsTests.swift in Sources */,
+				43BBBF2C2A291DD500395570 /* WeatherForecastCellTests.swift in Sources */,
 				437930182A27FFA200450EC4 /* WeatherSearchPresenterTests.swift in Sources */,
 				43792FF82A27D84800450EC4 /* CityWeatherDataTests.swift in Sources */,
 				43414E592A28984D002E1EFB /* WeatherForecastViewControllerTests.swift in Sources */,
@@ -762,6 +765,7 @@
 				43792FF02A27D10900450EC4 /* TestFutureForecasts.swift in Sources */,
 				437930022A27DDBC00450EC4 /* ForecastServiceTests.swift in Sources */,
 				43792FED2A27CF2A00450EC4 /* DateExtensionTests.swift in Sources */,
+				43BBBF2A2A29186B00395570 /* CityWeatherCellTests.swift in Sources */,
 				4379300D2A27EDD600450EC4 /* WeatherForecastConfiguratorTests.swift in Sources */,
 				43792FEA2A27CE0000450EC4 /* StoryboardIdentifierTests.swift in Sources */,
 			);
