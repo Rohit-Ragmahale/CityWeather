@@ -11,7 +11,7 @@
 "searchWeatherSearchTitle" = "Search";
 "searchWeatherEnterCity" = "Enter name of the city";
 "error" = "Error";
-"ok" = "Ok";
+"okTitle" = "Ok";
 
 "temperatureDetails" = "Temperature: %@";
 "humidityDetails" = "Humidity: %@";
