@@ -18,13 +18,13 @@ enum ResponseError: Error {
     var errorDescription: String {
         switch self {
         case .decode:
-            return "Response parsing failed"
+            return WeatherApp.errorRemoteDataParsingFailed.localized
         case .invalidURL:
-            return "Endpoint is not valid"
+            return WeatherApp.errorInvalidEndPoint.localized
         case .noResponse:
-            return "City weather data not found"
+            return WeatherApp.errorWeatherDataNotFound.localized
         case .unexpectedStatusCode, .unknown, .unauthorized:
-            return "Unknown error\nPlease try again"
+            return WeatherApp.errorUnknown.localized
         }
     }
 }
