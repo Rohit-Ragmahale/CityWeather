@@ -18,7 +18,8 @@ final class WeatherSearchViewControllerTests: FBSnapshotTestCase {
 
     #if ENABLE_SNAPSHOT_TEST
     func testWeatherSearchConfigurator() throws {
-        let configurator = WeatherSearchConfigurator(service: WeatherService(httpsClient: MockHTTPClient()))
+        let service = WeatherService(httpsClient: MockHTTPClient())
+        let configurator = WeatherSearchConfigurator(service: service, dataStore: DataStore())
         let viewController = configurator.configureViewController()
 
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

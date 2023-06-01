@@ -13,7 +13,7 @@ protocol WeatherForecastRouting {
 struct WeatherForecastRouter {
     private weak var viewController: UIViewController?
 
-    init(viewController: UIViewController? = nil) {
+    init(viewController: UIViewController) {
         self.viewController = viewController
     }
 }

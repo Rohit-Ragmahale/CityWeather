@@ -12,7 +12,7 @@ final class WeatherForecastCellTests: XCTestCase {
     func testWeatherForecast() {
         let nib = UINib(nibName: "WeatherForecastCell", bundle: Bundle(for: WeatherForecastCell.self))
         if let cell = nib.instantiate(withOwner: self, options: nil).first as? WeatherForecastCell {
-            if let dayForecast = getFutureForecastsData() {
+            if let dayForecast = MockProvider.getFutureForecastsData()?.first {
                 cell.inflateWith(forecast: dayForecast)
                 XCTAssertEqual(cell.accessoryType, .none)
                 XCTAssertEqual(cell.backgroundColor?.cgColor, Theme.HomePage.cityWeatherBGColor.cgColor)
@@ -21,18 +21,6 @@ final class WeatherForecastCellTests: XCTestCase {
             }
         } else {
             XCTFail("Unable to instantiate WeatherForecastCell")
-        }
-    }
-
-    private func getFutureForecastsData() -> DayForecast? {
-        if let data = try? TestUtils.data(forResource: "ForecastResponse") {
-            if let cityWeatherData = try? JSONDecoder().decode(FutureForecasts.self, from: data) {
-                return cityWeatherData.list.first
-            } else {
-                return nil
-            }
-        } else {
-            return nil
         }
     }
 }

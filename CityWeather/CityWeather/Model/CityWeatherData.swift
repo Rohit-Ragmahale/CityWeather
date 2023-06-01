@@ -11,7 +11,7 @@ final class CityWeatherData: Decodable, Hashable {
     var name: String?
     var id: Int = 0
     var forecast: DayForecast = DayForecast()
-   // var futureForecast: [DayForecast] = []
+    var futureForecast: [DayForecast]?
 
     private enum MainKeys: String, CodingKey {
         case temperature = "temp"

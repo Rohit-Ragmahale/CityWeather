@@ -11,8 +11,9 @@ import XCTest
 final class WeatherForecastConfiguratorTests: XCTestCase {
     func testWeatherForecastConfigurator() {
         // given
+        let dataStore = DataStore()
         let service = WeatherForecastService(httpsClient: MockHTTPClient())
-        let config = WeatherForecastConfigurator(service: service, city: "city", cityId: "100")
+        let config = WeatherForecastConfigurator(service: service, city: "city", cityId: "100", dataStore: dataStore)
 
         // when
         let viewController = config.configureViewController()

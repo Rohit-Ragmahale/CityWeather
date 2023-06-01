@@ -13,19 +13,22 @@ protocol WeatherForecastInteractorInterface {
 }
 
 final class WeatherForecastInteractor {
-    private var presenter: WeatherForecastPresenterInterface?
-    private var service: WeatherForecastServiceProvider?
-    private var cityId: String?
-    private var city: String?
+    private let presenter: WeatherForecastPresenterInterface
+    private let service: WeatherForecastServiceProvider
+    private let cityId: String
+    private let city: String
+    private let dataStore: DataProvider
 
-    init(presenter: WeatherForecastPresenterInterface? = nil,
-         cityId: String? = nil,
-         city: String? = nil,
-         service: WeatherForecastServiceProvider? = nil) {
+    init(presenter: WeatherForecastPresenterInterface,
+         cityId: String,
+         city: String,
+         service: WeatherForecastServiceProvider,
+         dataStore: DataProvider) {
         self.presenter = presenter
         self.service = service
         self.cityId = cityId
         self.city = city
+        self.dataStore = dataStore
     }
 }
 
@@ -35,13 +38,20 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
     }
 
     func searchWeatherForecastForCity() {
-        service?.fetchWeatherForecastFor(cityId: cityId ?? "",
-                                         completion: { [weak self] futureForecasts, responseError in
-            DispatchQueue.main.async {
+        if let forecast = dataStore.forecastForCity(cityId: cityId) {
+            presenter.weatherForecatsListUpdated(list: forecast )
+            return
+        }
+        service.fetchWeatherForecastFor(cityId: cityId,
+                                         completion: { futureForecasts, responseError in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 if let responseError = responseError {
-                    self?.presenter?.weatherForecastRequestFailed(description: responseError.errorDescription)
+                    self.presenter.weatherForecastRequestFailed(description: responseError.errorDescription)
                 } else {
-                    self?.presenter?.weatherForecatsListUpdated(list: futureForecasts ?? [])
+                    guard let futureForecasts = futureForecasts else { return }
+                    self.dataStore.addForecatsForCity(cityId: cityId, forecast: futureForecasts)
+                    self.presenter.weatherForecatsListUpdated(list: futureForecasts)
                 }
             }
         })

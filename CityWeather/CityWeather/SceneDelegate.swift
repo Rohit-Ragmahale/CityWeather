@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: windowScene)
-        let configurator = WeatherSearchConfigurator(service: WeatherService(httpsClient: HTTPClient.makeHTTPClient()))
+        let store = DataStore()
+        let service = WeatherService(httpsClient: HTTPClient.makeHTTPClient())
+        let configurator = WeatherSearchConfigurator(service: service, dataStore: store)
         let viewController = configurator.configureViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.tintColor = Theme.navigationTintColor

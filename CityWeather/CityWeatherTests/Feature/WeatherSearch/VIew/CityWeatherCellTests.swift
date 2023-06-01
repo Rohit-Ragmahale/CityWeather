@@ -12,9 +12,10 @@ final class CityWeatherCellTests: XCTestCase {
     func testCityWeatherCell() {
         let nib = UINib(nibName: "CityWeatherCell", bundle: Bundle(for: CityWeatherCell.self))
         if let cell = nib.instantiate(withOwner: self, options: nil).first as? CityWeatherCell {
-            if let weateherData = getCityWeatherData() {
+            if let weateherData = MockProvider.getCityWeatherData() {
                 cell.inflateWith(weather: weateherData)
-                let expextedValue = "Leeds.\nbroken clouds.\nTemperature: 12.99.\nHumidity: 74.0.\nTap to view forecast"
+                 let action = "Tap to view forecast"
+                let expextedValue = "Leeds.\nbroken clouds.\nTemperature: 12.99 Celsius.\nHumidity: 74.0.\n" + action
                 XCTAssertEqual(cell.accessibilityLabel, expextedValue)
                 #if WEATHER_FORECAST_DETAILS
                 XCTAssertEqual(cell.accessoryType, .disclosureIndicator)
@@ -27,18 +28,6 @@ final class CityWeatherCellTests: XCTestCase {
             }
         } else {
             XCTFail("Unable to instantiate CityWeatherCell")
-        }
-    }
-
-    private func getCityWeatherData() -> CityWeatherData? {
-        if let data = try? TestUtils.data(forResource: "CityWeatherDataResponse") {
-            if let cityWeatherData = try? JSONDecoder().decode(CityWeatherData.self, from: data) {
-                return cityWeatherData
-            } else {
-                return nil
-            }
-        } else {
-            return nil
         }
     }
 }

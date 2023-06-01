@@ -12,7 +12,7 @@ final class WeatherSearchConfiguratorTests: XCTestCase {
     func testWeatherSearchConfigurato() {
         // given
         let service = WeatherService(httpsClient: MockHTTPClient())
-        let configurator = WeatherSearchConfigurator(service: service)
+        let configurator = WeatherSearchConfigurator(service: service, dataStore: DataStore())
 
         // when
         let viewController = configurator.configureViewController()

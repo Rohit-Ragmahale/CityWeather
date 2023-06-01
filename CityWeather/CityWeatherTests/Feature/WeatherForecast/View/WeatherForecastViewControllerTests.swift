@@ -20,7 +20,10 @@ final class WeatherForecastViewControllerTests: FBSnapshotTestCase {
     func testWeatherForecastViewController() throws {
         // given
         let service = WeatherForecastService(httpsClient: MockHTTPClient())
-        let configurator = WeatherForecastConfigurator(service: service, city: "Leeds", cityId: "100")
+        let configurator = WeatherForecastConfigurator(service: service,
+                                                       city: "Leeds",
+                                                       cityId: "100",
+                                                       dataStore: DataStore())
         let viewController = configurator.configureViewController()
 
         // when

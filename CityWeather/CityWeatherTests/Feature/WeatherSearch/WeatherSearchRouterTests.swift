@@ -12,6 +12,7 @@ final class WeatherSearchRouterTests: XCTestCase {
     func testWeatherSearchRouter() {
         let viewController: WeatherSearchViewController = UIStoryboard.instantiate(identifier: .weatherSearch)
 
+        let store = DataStore()
         // Router -> ViewController
         let router = WeatherSearchRouter(viewController: viewController)
 
@@ -21,14 +22,14 @@ final class WeatherSearchRouterTests: XCTestCase {
 
         let service = WeatherService(httpsClient: MockHTTPClient())
         // Interactor -> Presenter
-        let interactor = WeatherSearchInteractor(service: service, presenter: presenter)
+        let interactor = WeatherSearchInteractor(dataProvider: store, service: service, presenter: presenter)
 
         // ViewController -> Interactor
         viewController.interactor = interactor
 
         let navigationController = UINavigationController(rootViewController: viewController)
 
-        router.showWeatherForcast(city: "Leeds", cityId: "100")
+        router.showWeatherForcast(city: "Leeds", cityId: "100", dataStore: store)
 
         let expectation =  expectation(description: "\(#function)-ForcastVC Pushed Expectation")
         // Wait for mock response and check result

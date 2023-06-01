@@ -26,7 +26,11 @@ final class WeatherForecastInteractorTests: XCTestCase {
         // given
         let service = WeatherForecastService(httpsClient: MockHTTPClient())
         let presenter = MockWeatherForecastPresenter()
-        let interactor = WeatherForecastInteractor(presenter: presenter, cityId: "100", city: "City", service: service)
+        let interactor = WeatherForecastInteractor(presenter: presenter,
+                                                   cityId: "100",
+                                                   city: "City",
+                                                   service: service,
+                                                   dataStore: DataStore())
         // when
         let city = interactor.getCityName()
 

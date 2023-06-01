@@ -11,11 +11,13 @@ struct WeatherForecastConfigurator: Configurator {
     private let service: WeatherForecastServiceProvider
     private let cityId: String
     private let city: String
+    private let dataStore: DataProvider
 
-    init(service: WeatherForecastServiceProvider, city: String, cityId: String) {
+    init(service: WeatherForecastServiceProvider, city: String, cityId: String, dataStore: DataProvider) {
         self.service = service
         self.cityId = cityId
         self.city = city
+        self.dataStore = dataStore
     }
 
     func configureViewController() -> UIViewController {
@@ -28,7 +30,11 @@ struct WeatherForecastConfigurator: Configurator {
         let presenter = WeatherForecastPresenter(view: viewController, router: router)
 
         // Interactor -> Presenter
-        let interactor = WeatherForecastInteractor(presenter: presenter, cityId: cityId, city: city, service: service)
+        let interactor = WeatherForecastInteractor(presenter: presenter,
+                                                   cityId: cityId,
+                                                   city: city,
+                                                   service: service,
+                                                   dataStore: dataStore)
 
         // ViewController -> Interactor
         viewController.interactor = interactor

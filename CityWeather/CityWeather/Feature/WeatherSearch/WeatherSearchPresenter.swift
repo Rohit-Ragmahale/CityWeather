@@ -10,7 +10,7 @@ import Foundation
 protocol WeatherSearchPresenterInterface: AnyObject {
     func weatherListUpdated(list: [CityWeatherData])
     func weatherRequestFailed(description: String)
-    func showWeatherForecastForCity(city: String, cityId: String)
+    func showWeatherForecastForCity(city: String, cityId: String, dataStore: DataProvider)
 }
 
 final class WeatherSearchPresenter {
@@ -24,8 +24,8 @@ final class WeatherSearchPresenter {
 }
 
 extension WeatherSearchPresenter: WeatherSearchPresenterInterface {
-    func showWeatherForecastForCity(city: String, cityId: String) {
-        router.showWeatherForcast(city: city, cityId: cityId)
+    func showWeatherForecastForCity(city: String, cityId: String, dataStore: DataProvider) {
+        router.showWeatherForcast(city: city, cityId: cityId, dataStore: dataStore)
     }
     func weatherListUpdated(list: [CityWeatherData]) {
         view?.showWeatherList(list: list)

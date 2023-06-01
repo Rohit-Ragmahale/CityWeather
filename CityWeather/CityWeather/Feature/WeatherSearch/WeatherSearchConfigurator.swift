@@ -13,9 +13,11 @@ protocol Configurator {
 
 struct WeatherSearchConfigurator: Configurator {
     private let service: WeatherServiceProvider
+    private let dataStore: DataProvider
 
-    init(service: WeatherServiceProvider) {
+    init(service: WeatherServiceProvider, dataStore: DataProvider) {
         self.service = service
+        self.dataStore = dataStore
     }
 
     func configureViewController() -> UIViewController {
@@ -28,7 +30,7 @@ struct WeatherSearchConfigurator: Configurator {
         let presenter = WeatherSearchPresenter(view: viewController, router: router)
 
         // Interactor -> Presenter
-        let interactor = WeatherSearchInteractor(service: service, presenter: presenter)
+        let interactor = WeatherSearchInteractor(dataProvider: dataStore, service: service, presenter: presenter)
 
         // ViewController -> Interactor
         viewController.interactor = interactor

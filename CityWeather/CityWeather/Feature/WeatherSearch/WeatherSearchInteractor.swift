@@ -13,34 +13,43 @@ protocol WeatherSearchInteractorInterface {
 }
 
 final class WeatherSearchInteractor {
-    private var cityList: [CityWeatherData] = []
-    private var service: WeatherServiceProvider?
-    private var presenter: WeatherSearchPresenterInterface?
+    private let service: WeatherServiceProvider
+    private let presenter: WeatherSearchPresenterInterface
+    private let dataProvider: DataProvider
 
-    init(service: WeatherServiceProvider? = nil, presenter: WeatherSearchPresenterInterface? = nil) {
+    init(dataProvider: DataProvider,
+         service: WeatherServiceProvider,
+         presenter: WeatherSearchPresenterInterface) {
         self.service = service
         self.presenter = presenter
+        self.dataProvider = dataProvider
     }
 }
 
 extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
     func showWeatherForecastForCityAt(index: Int) {
-        let city = cityList[index]
-        presenter?.showWeatherForecastForCity(city: city.name ?? "", cityId: "\(city.id)")
+        if let ciryWeather = dataProvider.weatherDataAt(index: index) {
+            presenter.showWeatherForecastForCity(city: ciryWeather.name ?? "",
+                                                  cityId: "\(ciryWeather.id)",
+                                                  dataStore: dataProvider)
+        }
     }
 
     func searchWeatherForCity(city: String) {
-        service?.fetchWeatherFor(city: city) { [weak self] cityWeatherData, responseError in
-            if let responseError = responseError {
-                DispatchQueue.main.async {
-                    self?.presenter?.weatherRequestFailed(description: responseError.errorDescription)
-                }
-            } else {
-                if let cityWeatherData = cityWeatherData {
-                    self?.cityList.insert(cityWeatherData, at: 0)
-                }
-                DispatchQueue.main.async {
-                    self?.presenter?.weatherListUpdated(list: self?.cityList ?? [])
+        guard !dataProvider.weatherPresentForCity(city: city) else {
+            DispatchQueue.main.async {
+                self.presenter.weatherListUpdated(list: self.dataProvider.weatherDataList)
+            }
+            return
+        }
+        service.fetchWeatherFor(city: city) { [weak self] cityWeatherData, responseError in
+            guard let weakSelf = self else { return }
+            DispatchQueue.main.async {
+                if let responseError = responseError {
+                    weakSelf.presenter.weatherRequestFailed(description: responseError.errorDescription)
+                } else if let cityWeatherData = cityWeatherData {
+                    weakSelf.dataProvider.addWeatherData(weather: cityWeatherData)
+                    weakSelf.presenter.weatherListUpdated(list: weakSelf.dataProvider.weatherDataList)
                 }
             }
         }

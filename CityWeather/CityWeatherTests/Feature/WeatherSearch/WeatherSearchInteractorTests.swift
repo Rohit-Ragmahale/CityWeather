@@ -20,15 +20,15 @@ private class MockWeatherSearchPresenter: WeatherSearchPresenterInterface {
         weatherRequestFailedExecuted = true
     }
 
-    func showWeatherForecastForCity(city: String, cityId: String) {
+    func showWeatherForecastForCity(city: String, cityId: String, dataStore: CityWeather.DataProvider) {
         showWeatherForecastForCityExecuted = true
     }
 }
 
 final class WeatherSearchInteractorTests: XCTestCase {
-    var service: WeatherService?
-    fileprivate var presenter: MockWeatherSearchPresenter?
-    var interactor: WeatherSearchInteractor?
+    var service: WeatherService!
+    fileprivate var presenter: MockWeatherSearchPresenter!
+    var interactor: WeatherSearchInteractor!
 
     override func setUp() {
         super.setUp()
@@ -36,7 +36,7 @@ final class WeatherSearchInteractorTests: XCTestCase {
         service = WeatherService(httpsClient: MockHTTPClient())
         presenter = MockWeatherSearchPresenter()
 
-        interactor = WeatherSearchInteractor(service: service, presenter: presenter)
+        interactor = WeatherSearchInteractor(dataProvider: DataStore(), service: service, presenter: presenter)
     }
 
     override func tearDown() {
@@ -46,7 +46,7 @@ final class WeatherSearchInteractorTests: XCTestCase {
 
     func testWeatherSearchInteractor_SearchSuccess() {
         // when
-        interactor?.searchWeatherForCity(city: "Leeds")
+        interactor.searchWeatherForCity(city: "Leeds")
         // then
         let expectation =  expectation(description: "\(#function)-WeatherSearchInteractor Success")
         // Wait for mock response and check result
@@ -56,7 +56,7 @@ final class WeatherSearchInteractorTests: XCTestCase {
             XCTAssertTrue(self.presenter?.weatherListUpdatedExecuted ?? false)
 
             // when
-            self.interactor?.showWeatherForecastForCityAt(index: 0)
+            self.interactor.showWeatherForecastForCityAt(index: 0)
             // then
             XCTAssertTrue(self.presenter?.showWeatherForecastForCityExecuted ?? false)
         }

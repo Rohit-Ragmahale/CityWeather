@@ -10,7 +10,7 @@ import XCTest
 
 private class MockWeatherSearchRouter: WeatherSearchRouting {
     var showWeatherForcastExecuted = false
-    func showWeatherForcast(city: String, cityId: String) {
+    func showWeatherForcast(city: String, cityId: String, dataStore: DataProvider) {
         showWeatherForcastExecuted = true
     }
 }
@@ -49,7 +49,7 @@ final class WeatherSearchPresenterTests: XCTestCase {
 
     func testWeatherSearchPresenter_ShowForecastViewController() {
         // when
-        presenter?.showWeatherForecastForCity(city: "leeds", cityId: "100")
+        presenter?.showWeatherForecastForCity(city: "leeds", cityId: "100", dataStore: DataStore())
         // then
         XCTAssertTrue(router?.showWeatherForcastExecuted ?? false)
     }
