@@ -36,9 +36,7 @@ final class WeatherSearchInteractorTests: XCTestCase {
         service = WeatherService(httpsClient: MockHTTPClient())
         presenter = MockWeatherSearchPresenter()
 
-        interactor = WeatherSearchInteractor()
-        interactor?.presenter = presenter
-        interactor?.service = service
+        interactor = WeatherSearchInteractor(service: service, presenter: presenter)
     }
 
     override func tearDown() {

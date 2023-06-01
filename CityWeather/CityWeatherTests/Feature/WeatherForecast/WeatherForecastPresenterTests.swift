@@ -25,8 +25,7 @@ final class WeatherForecastPresenterTests: XCTestCase {
         // given
         let view = MockWeatherForecastViewController()
         let router = WeatherForecastRouter(viewController: UIViewController())
-        let presenter = WeatherForecastPresenter(view: view)
-        presenter.router = router
+        let presenter = WeatherForecastPresenter(view: view, router: router)
 
         // when
         presenter.weatherForecatsListUpdated(list: [])
