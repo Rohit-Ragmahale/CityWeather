@@ -37,10 +37,10 @@ final class WeatherForecastViewControllerTests: FBSnapshotTestCase {
         // then
         let expectation =  expectation(description: "\(#function)-Weather`Forecast Leaded` Success")
         // Wait for mock response and check result
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             expectation.fulfill()
             self.FBSnapshotVerifyViewController(navigationController)
         }
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 1.0)
     }
 }

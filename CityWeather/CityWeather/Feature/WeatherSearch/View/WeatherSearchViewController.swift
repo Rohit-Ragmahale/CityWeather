@@ -20,6 +20,11 @@ class WeatherSearchViewController: UIViewController {
     private lazy var dataSource: WeatherListDataSource = {
         return WeatherListDataSource(cellIdentifier: String(describing: CityWeatherCell.self), tableView: tableView)
     }()
+    private var shouldShowAddButton: Bool = false {
+        didSet {
+            navigationItem.rightBarButtonItem?.isHidden = !shouldShowAddButton
+        }
+    }
 
     var interactor: WeatherSearchInteractorInterface?
 
@@ -44,7 +49,7 @@ class WeatherSearchViewController: UIViewController {
         let button = UIBarButtonItem(systemItem: .add, primaryAction: action)
         button.tintColor = Theme.HomePage.buttonTintColor
         navigationItem.rightBarButtonItem = button
-
+        shouldShowAddButton = false
     }
 
     private func toggleSearchView(shouldShowSearchView: Bool = false) {
@@ -53,8 +58,10 @@ class WeatherSearchViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: .spacing1) :
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0)
         tableViewTopViewConstraint.isActive = true
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+        self.shouldShowAddButton = !shouldShowSearchView
+
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.view.layoutIfNeeded()
         }
     }
 
