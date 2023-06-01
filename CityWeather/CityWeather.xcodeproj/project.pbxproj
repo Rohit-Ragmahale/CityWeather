@@ -72,6 +72,8 @@
 		438E32052A272CDD006867EC /* WeatherForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E32042A272CDD006867EC /* WeatherForecastCell.swift */; };
 		438E32072A272CEC006867EC /* WeatherForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438E32062A272CEC006867EC /* WeatherForecastCell.xib */; };
 		438E32092A272EAA006867EC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E32082A272EAA006867EC /* DateExtension.swift */; };
+		43A5F3AB2A286CED001B6C12 /* Release-FeatureFlags.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */; };
+		43A5F3AD2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +160,8 @@
 		438E32042A272CDD006867EC /* WeatherForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastCell.swift; sourceTree = "<group>"; };
 		438E32062A272CEC006867EC /* WeatherForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForecastCell.xib; sourceTree = "<group>"; };
 		438E32082A272EAA006867EC /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release-FeatureFlags.xcconfig"; sourceTree = "<group>"; };
+		43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-FeatureFlags.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,8 +302,7 @@
 		438E31852A2626F5006867EC /* CityWeather */ = {
 			isa = PBXGroup;
 			children = (
-				438E31862A2626F5006867EC /* AppDelegate.swift */,
-				438E31882A2626F5006867EC /* SceneDelegate.swift */,
+				43A5F3A92A286CA6001B6C12 /* FeatureFlags */,
 				438E31E52A2683D2006867EC /* APIClient */,
 				438E31D82A267B89006867EC /* Service */,
 				438E31BD2A26317E006867EC /* Model */,
@@ -307,6 +310,8 @@
 				438E31FE2A271724006867EC /* Extensions */,
 				438E31D12A266484006867EC /* Utility */,
 				438E32012A271DEC006867EC /* Resources */,
+				438E31862A2626F5006867EC /* AppDelegate.swift */,
+				438E31882A2626F5006867EC /* SceneDelegate.swift */,
 				438E31942A2626F6006867EC /* Info.plist */,
 			);
 			path = CityWeather;
@@ -457,6 +462,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		43A5F3A92A286CA6001B6C12 /* FeatureFlags */ = {
+			isa = PBXGroup;
+			children = (
+				43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */,
+				43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */,
+			);
+			path = FeatureFlags;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -565,10 +579,12 @@
 				438E31932A2626F6006867EC /* LaunchScreen.storyboard in Resources */,
 				43792FD02A278D7700450EC4 /* Localizable.strings in Resources */,
 				438E31FD2A270D86006867EC /* CityWeatherCell.xib in Resources */,
+				43A5F3AD2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig in Resources */,
 				438E31902A2626F6006867EC /* Assets.xcassets in Resources */,
 				438E32072A272CEC006867EC /* WeatherForecastCell.xib in Resources */,
 				43792FFE2A27DC2D00450EC4 /* ForecastResponse.json in Resources */,
 				43792FFF2A27DC3000450EC4 /* CityWeatherDataResponse.json in Resources */,
+				43A5F3AB2A286CED001B6C12 /* Release-FeatureFlags.xcconfig in Resources */,
 				438E318E2A2626F5006867EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +742,7 @@
 /* Begin XCBuildConfiguration section */
 		438E31AB2A2626F6006867EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -786,6 +803,7 @@
 		};
 		438E31AC2A2626F6006867EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -840,6 +858,7 @@
 		};
 		438E31AE2A2626F6006867EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -869,6 +888,7 @@
 		};
 		438E31AF2A2626F6006867EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -898,6 +918,7 @@
 		};
 		438E31B12A2626F6006867EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -918,6 +939,7 @@
 		};
 		438E31B22A2626F6006867EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -938,6 +960,7 @@
 		};
 		438E31B42A2626F6006867EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -956,6 +979,7 @@
 		};
 		438E31B52A2626F6006867EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

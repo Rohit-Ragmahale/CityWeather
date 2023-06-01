@@ -16,6 +16,11 @@ class CityWeatherCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = Theme.HomePage.cityWeatherBGColor
+        #if WEATHER_FORECAST_DETAILS
+        accessoryType = .disclosureIndicator
+        #else
+        accessoryType = .none
+        #endif
     }
 
     func inflateWith(weather: CityWeatherData) {

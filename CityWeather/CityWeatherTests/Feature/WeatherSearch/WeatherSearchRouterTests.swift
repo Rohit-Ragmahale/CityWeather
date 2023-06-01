@@ -11,23 +11,20 @@ import XCTest
 final class WeatherSearchRouterTests: XCTestCase {
     func testWeatherSearchRouter() {
         let viewController: WeatherSearchViewController = UIStoryboard.instantiate(identifier: .weatherSearch)
-        let interactor = WeatherSearchInteractor()
-        let presenter = WeatherSearchPresenter()
 
         // Router -> ViewController
         let router = WeatherSearchRouter(viewController: viewController)
 
+        // Presenter -> ViewController
+        // Presenter -> Router
+        let presenter = WeatherSearchPresenter(view: viewController, router: router)
+
+        let service = WeatherService(httpsClient: MockHTTPClient())
+        // Interactor -> Presenter
+        let interactor = WeatherSearchInteractor(service: service, presenter: presenter)
+
         // ViewController -> Interactor
         viewController.interactor = interactor
-
-        // Interactor -> Presenter
-        interactor.presenter = presenter
-        interactor.service = WeatherService(httpsClient: MockHTTPClient())
-
-        // Presenter -> Router
-        presenter.router = router
-        // Presenter -> ViewController
-        presenter.view = viewController
 
         let navigationController = UINavigationController(rootViewController: viewController)
 

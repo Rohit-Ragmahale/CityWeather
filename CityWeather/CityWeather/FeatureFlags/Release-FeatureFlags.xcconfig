@@ -1,0 +1,13 @@
+//
+//  ReleaseConfig.xcconfig
+//  CityWeather
+//
+//  Created by Rohit Ragmahale on 01/06/2023.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+RELEASE_SWIFT_ACTIVE_COMPILATION_CONDITIONS = 
+
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE $(RELEASE_SWIFT_ACTIVE_COMPILATION_CONDITIONS)

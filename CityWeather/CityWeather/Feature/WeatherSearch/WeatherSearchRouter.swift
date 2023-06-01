@@ -21,11 +21,13 @@ struct WeatherSearchRouter {
 
 extension WeatherSearchRouter: WeatherSearchRouting {
     func showWeatherForcast(city: String, cityId: String) {
+        #if WEATHER_FORECAST_DETAILS
         let service = WeatherForecastService(httpsClient: HTTPClient.makeHTTPClient())
         let configurator = WeatherForecastConfigurator(service: service, city: city, cityId: cityId)
         let forecastVC = configurator.configureViewController()
         DispatchQueue.main.async {
             self.viewController?.navigationController?.pushViewController(forecastVC, animated: true)
         }
+        #endif
     }
 }
