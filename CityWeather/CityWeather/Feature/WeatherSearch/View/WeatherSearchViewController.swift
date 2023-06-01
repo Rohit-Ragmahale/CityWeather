@@ -38,19 +38,22 @@ class WeatherSearchViewController: UIViewController {
         title = WeatherApp.searchWeatherTitle.localized
         searchTextField.placeholder = WeatherApp.searchWeatherEnterCity.localized
         searchButton.setTitle(WeatherApp.searchWeatherSearchTitle.localized, for: .normal)
-        view.backgroundColor = Theme.HomePage.viewBGColor
-        tableView.backgroundColor = Theme.HomePage.listBGColor
-        searchButton.tintColor = Theme.HomePage.buttonTintColor
-        searchTextField.textColor = Theme.HomePage.searchTextColor
         CityWeatherCell.registerWithTable(tableView: tableView)
         let action = UIAction(handler: { [weak self] _ in
             self?.toggleSearchView(shouldShowSearchView: true)
             self?.searchTextField.becomeFirstResponder()
         })
-        let button = UIBarButtonItem(systemItem: .add, primaryAction: action)
-        button.tintColor = Theme.HomePage.buttonTintColor
-        navigationItem.rightBarButtonItem = button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: action)
         shouldShowAddButton = false
+        aaplyTheme()
+    }
+
+    private func aaplyTheme() {
+        view.backgroundColor = Theme.HomePage.viewBGColor
+        tableView.backgroundColor = Theme.HomePage.listBGColor
+        searchButton.tintColor = Theme.HomePage.buttonTintColor
+        searchTextField.textColor = Theme.HomePage.searchTextColor
+        navigationItem.rightBarButtonItem?.tintColor = Theme.HomePage.buttonTintColor
     }
 
     private func toggleSearchView(shouldShowSearchView: Bool = false) {
