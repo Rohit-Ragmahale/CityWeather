@@ -13,7 +13,11 @@ protocol HTTPClientInterface {
 
 struct HTTPClient: HTTPClientInterface {
     static func makeHTTPClient() -> HTTPClientInterface {
+        #if MOCK_ENVIRONMENT
+        MockHTTPClient()
+        #else
         HTTPClient()
+        #endif
     }
 
     func load<T: Decodable>(networkRequest: NetworkRequest<T>,

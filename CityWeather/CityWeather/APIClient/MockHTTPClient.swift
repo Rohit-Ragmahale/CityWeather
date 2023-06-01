@@ -7,14 +7,19 @@
 
 import Foundation
 
+private enum MockFile: String {
+    case weatherResponse = "CityWeatherDataResponse"
+    case forecastResponse = "ForecastResponse"
+}
+
 struct MockHTTPClient: HTTPClientInterface {
     func load<T: Decodable>(networkRequest: NetworkRequest<T>,
                             completion: @escaping (Result<T, ResponseError>) -> Void) {
         var data: Data?
         if networkRequest.url.contains(WeatherAPIConstants.weatherService) {
-            data = try? TestUtils.data(forResource: "CityWeatherDataResponse")
+            data = try? TestUtils.data(forResource: MockFile.weatherResponse.rawValue)
         } else if networkRequest.url.contains(WeatherAPIConstants.forcastService) {
-            data = try? TestUtils.data(forResource: "ForecastResponse")
+            data = try? TestUtils.data(forResource: MockFile.forecastResponse.rawValue)
         }
         if let data = data {
             if let cityWeatherData = try? JSONDecoder().decode(T.self, from: data) {
