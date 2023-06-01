@@ -36,5 +36,12 @@ class CityWeatherCell: UITableViewCell {
         } else {
             humidityDetails.text = WeatherApp.humidityDataNotAvaialble.localized
         }
+        isAccessibilityElement = true
+        accessibilityLabel = [city.text, weatherDescription.text,
+                              temperatureDetails.text,
+                              humidityDetails.text,
+                              WeatherApp.tapToViewForecast.localized]
+            .compactMap { $0 }
+            .joined(separator: ".\n")
     }
 }

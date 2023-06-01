@@ -24,3 +24,7 @@
 "errorInvalidEndPoint" = "Endpoint is not valid.";
 "errorWeatherDataNotFound" = "Weather data not found.";
 "errorUnknown" = "Unknown error occured.\nPlease try again.";
+
+
+// Accessibility
+"tapToViewForecast" = "Tap to view forecast";

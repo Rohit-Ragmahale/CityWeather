@@ -30,6 +30,8 @@ enum WeatherApp: String, Localized {
     case errorWeatherDataNotFound
     case errorUnknown
 
+    case tapToViewForecast
+
     var localized: String {
         self.rawValue.localized
     }

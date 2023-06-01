@@ -15,32 +15,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="584.66666666666663" height="308"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NV9-cd-0c5">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NV9-cd-0c5">
                         <rect key="frame" x="16" y="8" width="552.66666666666663" height="292"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLY-5B-Ia7">
-                                <rect key="frame" x="0.0" y="0.0" width="552.66666666666663" height="73"/>
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="73"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfR-Zz-FhC">
-                                <rect key="frame" x="0.0" y="73" width="552.66666666666663" height="73"/>
+                                <rect key="frame" x="0.0" y="73" width="41.333333333333336" height="73"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTH-9F-9pg">
-                                <rect key="frame" x="0.0" y="146" width="552.66666666666663" height="73"/>
+                                <rect key="frame" x="0.0" y="146" width="41.333333333333336" height="73"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z52-X4-UBI">
-                                <rect key="frame" x="0.0" y="219" width="552.66666666666663" height="73"/>
+                                <rect key="frame" x="0.0" y="219" width="41.333333333333336" height="73"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
@@ -58,6 +58,9 @@
                     <constraint firstAttribute="bottom" secondItem="NV9-cd-0c5" secondAttribute="bottom" constant="8" id="GPX-UG-NQO"/>
                 </constraints>
             </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration" label="Tap to see forecast">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <connections>
                 <outlet property="city" destination="XLY-5B-Ia7" id="j6c-DJ-ADQ"/>
                 <outlet property="humidityDetails" destination="z52-X4-UBI" id="k1F-oI-GbW"/>

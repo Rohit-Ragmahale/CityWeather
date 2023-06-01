@@ -32,7 +32,7 @@ struct HTTPClient: HTTPClientInterface {
         let session = URLSession(configuration: .default)
         session.dataTask(with: request) { data, response, _ in
             guard let response = response as? HTTPURLResponse else {
-                completion( .failure(.noResponse))
+                completion(.failure(.noResponse))
                 return
             }
             switch response.statusCode {
@@ -41,9 +41,9 @@ struct HTTPClient: HTTPClientInterface {
                     completion(.failure(.decode))
                     return
                 }
-                completion( .success(decodedResponse))
+                completion(.success(decodedResponse))
             default:
-                completion( .failure(.unexpectedStatusCode))
+                completion(.failure(.unexpectedStatusCode))
             }
         }.resume()
     }

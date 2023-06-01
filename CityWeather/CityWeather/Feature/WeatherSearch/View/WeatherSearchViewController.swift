@@ -24,6 +24,8 @@ class WeatherSearchViewController: UIViewController {
     private var shouldShowAddButton: Bool = false {
         didSet {
             navigationItem.rightBarButtonItem?.isHidden = !shouldShowAddButton
+            searchButton.isHidden = shouldShowAddButton
+            searchTextField.isHidden = shouldShowAddButton
         }
     }
 
@@ -62,7 +64,7 @@ class WeatherSearchViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: .spacing1) :
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0)
         tableViewTopViewConstraint.isActive = true
-        self.shouldShowAddButton = !shouldShowSearchView
+        shouldShowAddButton = !shouldShowSearchView
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.layoutIfNeeded()
