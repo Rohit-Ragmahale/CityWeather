@@ -19,3 +19,8 @@
 // Error Messages
 "tempDataNotAvaialble" = "temperature data not avaiable";
 "humidityDataNotAvaialble" = "humidity data not avaiable";
+
+"errorRemoteDataParsingFailed" = "Response parsing failed.";
+"errorInvalidEndPoint" = "Endpoint is not valid.";
+"errorWeatherDataNotFound" = "Weather data not found.";
+"errorUnknown" = "Unknown error occured.\nPlease try again.";
