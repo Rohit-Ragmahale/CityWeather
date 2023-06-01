@@ -31,7 +31,7 @@ private class MockWeatherSearchViewController: WeatherSearchViewInterfaces {
 final class WeatherSearchPresenterTests: XCTestCase {
     var presenter: WeatherSearchPresenter?
     fileprivate var viewController: MockWeatherSearchViewController?
-    fileprivate var router: MockWeatherSearchRouter?
+    fileprivate var router: MockWeatherSearchRouter!
 
     override func setUp() {
         super.setUp()
@@ -39,9 +39,7 @@ final class WeatherSearchPresenterTests: XCTestCase {
         viewController = MockWeatherSearchViewController()
         router = MockWeatherSearchRouter()
 
-        presenter = WeatherSearchPresenter()
-        presenter?.router = router
-        presenter?.view = viewController
+        presenter = WeatherSearchPresenter(view: viewController, router: router)
     }
 
     override func tearDown() {
