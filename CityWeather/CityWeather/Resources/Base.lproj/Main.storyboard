@@ -39,6 +39,9 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ktX-TB-251"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jAT-J9-gMk">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,18 +49,21 @@
                             <constraint firstItem="Pjh-x4-htx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="0TK-lI-iaO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F9a-yP-EHt" secondAttribute="bottom" id="2xH-Xs-wkW"/>
                             <constraint firstItem="Eb7-eW-4bM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="38c-FJ-ATu"/>
+                            <constraint firstItem="jAT-J9-gMk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DPg-zB-jVh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Eb7-eW-4bM" secondAttribute="trailing" constant="16" id="NZb-K7-nOE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pjh-x4-htx" secondAttribute="trailing" constant="16" id="ROb-Up-fBu"/>
                             <constraint firstItem="Eb7-eW-4bM" firstAttribute="top" secondItem="Pjh-x4-htx" secondAttribute="bottom" constant="24" id="bz4-w0-540"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F9a-yP-EHt" secondAttribute="trailing" id="jco-nZ-keP"/>
                             <constraint firstItem="Pjh-x4-htx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ktr-xj-Vlw"/>
                             <constraint firstItem="F9a-yP-EHt" firstAttribute="top" secondItem="Eb7-eW-4bM" secondAttribute="bottom" constant="8" id="lCC-Gz-IHL"/>
+                            <constraint firstItem="jAT-J9-gMk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q0T-Wy-lO9"/>
                             <constraint firstItem="F9a-yP-EHt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tuJ-PO-159"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchButton" destination="Eb7-eW-4bM" id="1u1-dE-06J"/>
                         <outlet property="searchTextField" destination="Pjh-x4-htx" id="O8l-tv-e8O"/>
+                        <outlet property="spinner" destination="jAT-J9-gMk" id="gTF-jn-83T"/>
                         <outlet property="tableView" destination="F9a-yP-EHt" id="DnA-aK-fnl"/>
                         <outlet property="tableViewTopViewConstraint" destination="lCC-Gz-IHL" id="fU8-z7-GDd"/>
                     </connections>
@@ -78,6 +84,9 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-km-mu5">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wgH-Ij-jWR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -86,9 +95,12 @@
                             <constraint firstItem="BU2-dN-BEC" firstAttribute="top" secondItem="wgH-Ij-jWR" secondAttribute="top" id="jbZ-t7-ChR"/>
                             <constraint firstItem="wgH-Ij-jWR" firstAttribute="trailing" secondItem="BU2-dN-BEC" secondAttribute="trailing" id="pTC-Wp-I7d"/>
                             <constraint firstItem="BU2-dN-BEC" firstAttribute="leading" secondItem="wgH-Ij-jWR" secondAttribute="leading" id="rGh-el-hrq"/>
+                            <constraint firstItem="gv9-km-mu5" firstAttribute="centerX" secondItem="oaa-YJ-eCn" secondAttribute="centerX" id="yBA-KB-Ijb"/>
+                            <constraint firstItem="gv9-km-mu5" firstAttribute="centerY" secondItem="oaa-YJ-eCn" secondAttribute="centerY" id="yPv-pi-40G"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="spinner" destination="gv9-km-mu5" id="e6o-tG-rOZ"/>
                         <outlet property="tableView" destination="BU2-dN-BEC" id="l7B-28-Z9X"/>
                     </connections>
                 </viewController>

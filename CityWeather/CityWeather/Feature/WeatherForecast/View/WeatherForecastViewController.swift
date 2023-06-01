@@ -13,6 +13,7 @@ protocol WeatherForecastViewInterfaces: AnyObject {
 }
 
 class WeatherForecastViewController: UIViewController {
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var tableView: UITableView!
     private lazy var dataSource: WeatherForecastDataSource = {
         return WeatherForecastDataSource(cellIdentifier: String(describing: WeatherForecastCell.self),
@@ -32,6 +33,7 @@ class WeatherForecastViewController: UIViewController {
         tableView.backgroundColor = Theme.ForecastPage.listBGColor
         title = interactor?.getCityName()
         WeatherForecastCell.registerWithTable(tableView: tableView)
+        spinner.startAnimating()
     }
 }
 
@@ -42,12 +44,12 @@ extension WeatherForecastViewController: WeatherForecastViewInterfaces {
         list.forEach { details in
             snapShot.appendItems([details], toSection: WeatherForecastSection.main)
         }
-        DispatchQueue.main.async {
-            self.dataSource.apply(snapShot, animatingDifferences: true)
-        }
+        spinner.stopAnimating()
+        dataSource.apply(snapShot, animatingDifferences: true)
     }
 
     func showErrorAlert(errorMessage: String) {
+        spinner.stopAnimating()
         let dialogMessage = UIAlertController(title: WeatherApp.error.localized,
                                               message: errorMessage,
                                               preferredStyle: .alert)

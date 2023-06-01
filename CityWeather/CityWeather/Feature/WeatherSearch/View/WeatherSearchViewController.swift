@@ -13,7 +13,8 @@ protocol WeatherSearchViewInterfaces: AnyObject {
 }
 
 class WeatherSearchViewController: UIViewController {
-    @IBOutlet weak var tableViewTopViewConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
+    @IBOutlet private weak var tableViewTopViewConstraint: NSLayoutConstraint!
     @IBOutlet private weak var searchTextField: UITextField!
     @IBOutlet private weak var searchButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
@@ -42,9 +43,9 @@ class WeatherSearchViewController: UIViewController {
         searchButton.tintColor = Theme.HomePage.buttonTintColor
         searchTextField.textColor = Theme.HomePage.searchTextColor
         CityWeatherCell.registerWithTable(tableView: tableView)
-        let action = UIAction(handler: { _ in
-            self.toggleSearchView(shouldShowSearchView: true)
-            self.searchTextField.becomeFirstResponder()
+        let action = UIAction(handler: { [weak self] _ in
+            self?.toggleSearchView(shouldShowSearchView: true)
+            self?.searchTextField.becomeFirstResponder()
         })
         let button = UIBarButtonItem(systemItem: .add, primaryAction: action)
         button.tintColor = Theme.HomePage.buttonTintColor
@@ -67,10 +68,12 @@ class WeatherSearchViewController: UIViewController {
 
     @IBAction func searchCityButtonTapped(_ sender: Any) {
         view.endEditing(true)
-        if let text = searchTextField.text {
-            interactor?.searchWeatherForCity(city: text)
-            toggleSearchView()
+        guard let text = searchTextField.text else {
+            return
         }
+        interactor?.searchWeatherForCity(city: text)
+        toggleSearchView()
+        spinner.startAnimating()
     }
 }
 
@@ -87,18 +90,18 @@ extension WeatherSearchViewController: WeatherSearchViewInterfaces {
         list.forEach { details in
             snapShot.appendItems([details], toSection: WeatherSection.main)
         }
-        DispatchQueue.main.async {
-            self.searchTextField.text = nil
-            self.dataSource.apply(snapShot, animatingDifferences: true)
-        }
+        dataSource.apply(snapShot, animatingDifferences: true)
+        spinner.stopAnimating()
+        searchTextField.text = nil
     }
 
     func showErrorAlert(errorMessage: String) {
+        spinner.stopAnimating()
         let dialogMessage = UIAlertController(title: WeatherApp.error.localized,
                                               message: errorMessage, preferredStyle: .alert)
-        let action: ((UIAlertAction) -> Void)? = { _ in
-            self.toggleSearchView(shouldShowSearchView: true)
-            self.searchTextField.becomeFirstResponder()
+        let action: ((UIAlertAction) -> Void)? = { [weak self] _ in
+            self?.toggleSearchView(shouldShowSearchView: true)
+            self?.searchTextField.becomeFirstResponder()
         }
         dialogMessage.addAction(UIAlertAction(title: WeatherApp.okTitle.localized, style: .cancel, handler: action))
         present(dialogMessage, animated: true, completion: nil)
