@@ -13,7 +13,7 @@
 "error" = "Error";
 "okTitle" = "Ok";
 
-"temperatureDetails" = "Temperature: %@";
+"temperatureDetails" = "Temperature: %@ Celsius";
 "humidityDetails" = "Humidity: %@";
 
 // Error Messages
