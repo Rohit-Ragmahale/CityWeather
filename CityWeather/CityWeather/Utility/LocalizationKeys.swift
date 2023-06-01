@@ -24,8 +24,7 @@ enum WeatherApp: String, Localized {
 
     case tempDataNotAvaialble
     case humidityDataNotAvaialble
-    
-    
+
     case errorRemoteDataParsingFailed
     case errorInvalidEndPoint
     case errorWeatherDataNotFound

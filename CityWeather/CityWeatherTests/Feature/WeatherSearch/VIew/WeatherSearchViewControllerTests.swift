@@ -15,7 +15,7 @@ final class WeatherSearchViewControllerTests: FBSnapshotTestCase {
         super.setUp()
 //        recordMode = true
     }
-    
+
     #if ENABLE_SNAPSHOT_TEST
     func testWeatherSearchConfigurator() throws {
         let configurator = WeatherSearchConfigurator(service: WeatherService(httpsClient: MockHTTPClient()))
