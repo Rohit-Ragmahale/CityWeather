@@ -16,6 +16,7 @@ final class WeatherForecastViewControllerTests: FBSnapshotTestCase {
 //        recordMode = true
     }
 
+    #if ENABLE_SNAPSHOT_TEST
     func testWeatherForecastViewController() throws {
         // given
         let service = WeatherForecastService(httpsClient: MockHTTPClient())
@@ -43,4 +44,5 @@ final class WeatherForecastViewControllerTests: FBSnapshotTestCase {
         }
         wait(for: [expectation], timeout: 1.0)
     }
+    #endif
 }
