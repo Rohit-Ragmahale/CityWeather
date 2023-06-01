@@ -20,10 +20,10 @@ struct WeatherForecastConfigurator: Configurator {
 
     func configureViewController() -> UIViewController {
         let viewController: WeatherForecastViewController = UIStoryboard.instantiate(identifier: .weatherForecast)
-        // Router -> ViewController
+        // Router -> ViewController (weak)
         let router = WeatherForecastRouter(viewController: viewController)
 
-        // Presenter -> ViewController
+        // Presenter -> ViewController (weak)
         // Presenter -> Router
         let presenter = WeatherForecastPresenter(view: viewController, router: router)
 

@@ -54,7 +54,7 @@ final class CityWeatherData: Decodable, Hashable {
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
+        hasher.combine(id)
     }
 
     static func == (lhs: CityWeatherData, rhs: CityWeatherData) -> Bool {
