@@ -16,7 +16,10 @@ struct HTTPClient: HTTPClientInterface {
         #if MOCK_ENVIRONMENT
         MockHTTPClient()
         #else
-        HTTPClient()
+        guard !TestUtils.isUITest() else {
+            return MockHTTPClient()
+        }
+        return HTTPClient()
         #endif
     }
 

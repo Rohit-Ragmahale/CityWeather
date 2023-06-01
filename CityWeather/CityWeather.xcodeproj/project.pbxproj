@@ -78,6 +78,8 @@
 		438E32092A272EAA006867EC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E32082A272EAA006867EC /* DateExtension.swift */; };
 		43A5F3AB2A286CED001B6C12 /* Release-FeatureFlags.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */; };
 		43A5F3AD2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */; };
+		43BBBF212A28EA4700395570 /* WeatherSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBBF202A28EA4700395570 /* WeatherSearchView.swift */; };
+		43BBBF232A28EAE000395570 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBBF222A28EAE000395570 /* Timer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,8 @@
 		438E32082A272EAA006867EC /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		43A5F3AA2A286CED001B6C12 /* Release-FeatureFlags.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release-FeatureFlags.xcconfig"; sourceTree = "<group>"; };
 		43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-FeatureFlags.xcconfig"; sourceTree = "<group>"; };
+		43BBBF202A28EA4700395570 /* WeatherSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchView.swift; sourceTree = "<group>"; };
+		43BBBF222A28EAE000395570 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +387,8 @@
 		438E31A62A2626F6006867EC /* CityWeatherUITests */ = {
 			isa = PBXGroup;
 			children = (
+				43BBBF242A28EB7100395570 /* Utils */,
+				43BBBF252A28EB9000395570 /* View */,
 				438E31A72A2626F6006867EC /* CityWeatherUITests.swift */,
 				438E31A92A2626F6006867EC /* CityWeatherUITestsLaunchTests.swift */,
 			);
@@ -516,6 +522,22 @@
 				43A5F3AC2A286D39001B6C12 /* Debug-FeatureFlags.xcconfig */,
 			);
 			path = FeatureFlags;
+			sourceTree = "<group>";
+		};
+		43BBBF242A28EB7100395570 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				43BBBF222A28EAE000395570 /* Timer.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		43BBBF252A28EB9000395570 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43BBBF202A28EA4700395570 /* WeatherSearchView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -760,6 +782,8 @@
 			files = (
 				438E31AA2A2626F6006867EC /* CityWeatherUITestsLaunchTests.swift in Sources */,
 				438E31A82A2626F6006867EC /* CityWeatherUITests.swift in Sources */,
+				43BBBF212A28EA4700395570 /* WeatherSearchView.swift in Sources */,
+				43BBBF232A28EAE000395570 /* Timer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,4 +17,8 @@ final class TestUtils {
         }
         return try Data(contentsOf: url)
     }
+
+    static func isUITest() -> Bool {
+        return ProcessInfo.processInfo.environment.keys.contains("isUITest")
+    }
 }
