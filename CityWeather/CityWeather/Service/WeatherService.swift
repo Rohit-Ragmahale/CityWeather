@@ -14,7 +14,8 @@ protocol WeatherServiceProvider {
 }
 
 struct WeatherService: WeatherServiceProvider {
-    let httpsClient: HTTPClientInterface
+    private let httpsClient: HTTPClientInterface
+
     init(httpsClient: HTTPClientInterface) {
         self.httpsClient = httpsClient
     }
