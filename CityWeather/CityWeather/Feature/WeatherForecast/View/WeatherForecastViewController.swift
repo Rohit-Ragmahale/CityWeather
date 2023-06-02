@@ -50,10 +50,8 @@ extension WeatherForecastViewController: WeatherForecastViewInterfaces {
 
     func showErrorAlert(errorMessage: String) {
         spinner.stopAnimating()
-        let dialogMessage = UIAlertController(title: WeatherApp.error.localized,
-                                              message: errorMessage,
-                                              preferredStyle: .alert)
-        dialogMessage.addAction(UIAlertAction(title: WeatherApp.okTitle.localized, style: .cancel))
-        present(dialogMessage, animated: true, completion: nil)
+        let dialog = UIAlertController(title: WeatherApp.error.localized, message: errorMessage, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: WeatherApp.okTitle.localized, style: .cancel))
+        present(dialog, animated: true, completion: nil)
     }
 }

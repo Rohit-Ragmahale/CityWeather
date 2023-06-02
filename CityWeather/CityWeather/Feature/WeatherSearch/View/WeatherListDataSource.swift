@@ -14,9 +14,7 @@ class WeatherListDataSource: UITableViewDiffableDataSource<WeatherSection, CityW
     init(cellIdentifier: String, tableView: UITableView) {
         super.init(tableView: tableView) { tableView, _, weatherData in
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-            guard let cell: CityWeatherCell = cell as? CityWeatherCell else {
-                return UITableViewCell()
-            }
+            guard let cell: CityWeatherCell = cell as? CityWeatherCell else { return UITableViewCell() }
             cell.inflateWith(weather: weatherData)
             return cell
         }

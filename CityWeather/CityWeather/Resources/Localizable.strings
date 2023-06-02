@@ -17,8 +17,8 @@
 "humidityDetails" = "Humidity: %@";
 
 // Error Messages
-"tempDataNotAvaialble" = "temperature data not avaiable";
-"humidityDataNotAvaialble" = "humidity data not avaiable";
+"tempDataNotAvaialble" = "Temperature: data not avaiable";
+"humidityDataNotAvaialble" = "Humidity: data not avaiable";
 
 "errorRemoteDataParsingFailed" = "Response parsing failed.";
 "errorInvalidEndPoint" = "Endpoint is not valid.";

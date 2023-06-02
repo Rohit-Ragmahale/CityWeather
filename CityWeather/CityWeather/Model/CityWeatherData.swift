@@ -45,9 +45,9 @@ final class CityWeatherData: Decodable, Hashable {
             }
 
             if let mainContainer = try? container.nestedContainer(keyedBy: MainKeys.self, forKey: .main) {
-                forecast.temperature = try mainContainer.decode(Double.self, forKey: .temperature)
-                forecast.humidity = try mainContainer.decode(Double.self, forKey: .humidity)
-                forecast.pressure = try mainContainer.decode(Double.self, forKey: .pressure)
+                forecast.temperature = try mainContainer.decodeIfPresent(Double.self, forKey: .temperature)
+                forecast.humidity = try mainContainer.decodeIfPresent(Double.self, forKey: .humidity)
+                forecast.pressure = try mainContainer.decodeIfPresent(Double.self, forKey: .pressure)
             }
 
         }

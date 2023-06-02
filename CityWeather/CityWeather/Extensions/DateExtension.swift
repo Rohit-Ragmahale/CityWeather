@@ -7,10 +7,12 @@
 
 import Foundation
 
+private let dataFormat = "dd/MM/YYYY, HH:MM"
+
 extension Date {
     func getDateText() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/YYYY, HH:MM"
+        dateFormatter.dateFormat = dataFormat
         return dateFormatter.string(from: self)
     }
 }

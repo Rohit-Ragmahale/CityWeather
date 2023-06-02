@@ -29,14 +29,15 @@ final class WeatherSearchInteractorTests: XCTestCase {
     var service: WeatherService!
     fileprivate var presenter: MockWeatherSearchPresenter!
     var interactor: WeatherSearchInteractor!
+    var dataSource: DataStore!
 
     override func setUp() {
         super.setUp()
         // given
         service = WeatherService(httpsClient: MockHTTPClient())
         presenter = MockWeatherSearchPresenter()
-
-        interactor = WeatherSearchInteractor(dataProvider: DataStore(), service: service, presenter: presenter)
+        dataSource = DataStore()
+        interactor = WeatherSearchInteractor(dataProvider: dataSource, service: service, presenter: presenter)
     }
 
     override func tearDown() {
@@ -54,6 +55,32 @@ final class WeatherSearchInteractorTests: XCTestCase {
             expectation.fulfill()
             // then
             XCTAssertTrue(self.presenter?.weatherListUpdatedExecuted ?? false)
+
+            // when
+            self.interactor.showWeatherForecastForCityAt(index: 0)
+            // then
+            XCTAssertTrue(self.presenter?.showWeatherForecastForCityExecuted ?? false)
+        }
+
+        wait(for: [expectation], timeout: 0.5)
+    }
+
+    func testWeatherSearchInteractor_RepeatSearchSuccess() {
+        // when
+        interactor.searchWeatherForCity(city: "Leeds")
+
+        // then
+        let expectation =  expectation(description: "\(#function)-WeatherSearchInteractor Success")
+        // Wait for mock response and check result
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            expectation.fulfill()
+            // then
+            XCTAssertTrue(self.presenter?.weatherListUpdatedExecuted ?? false)
+            XCTAssertTrue(self.dataSource.weatherDataList.count == 1)
+
+            // when
+            self.interactor.searchWeatherForCity(city: "Leeds")
+            XCTAssertTrue(self.dataSource.weatherDataList.count == 1)
 
             // when
             self.interactor.showWeatherForecastForCityAt(index: 0)

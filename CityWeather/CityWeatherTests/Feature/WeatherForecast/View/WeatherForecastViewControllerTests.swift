@@ -10,10 +10,35 @@ import iOSSnapshotTestCase
 import iOSSnapshotTestCaseCore
 @testable import CityWeather
 
+private final class MockWeatherForecastInteractor: WeatherForecastInteractorInterface {
+    var searchWeatherForecastForCityExecutected: Bool = false
+    func searchWeatherForecastForCity() {
+        searchWeatherForecastForCityExecutected = true
+    }
+
+    var currentCity: String? {
+        "CurrentCity"
+    }
+}
+
 final class WeatherForecastViewControllerTests: FBSnapshotTestCase {
     override func setUp() {
         super.setUp()
 //        recordMode = true
+    }
+
+    func testWeatherForecastViewControllerDataLoading() {
+        // given
+        let viewController: WeatherForecastViewController = UIStoryboard.instantiate(identifier: .weatherForecast)
+        let interactor = MockWeatherForecastInteractor()
+        viewController.interactor = interactor
+
+        // when
+        viewController.viewDidLoad()
+
+        // then
+        XCTAssertTrue(interactor.searchWeatherForecastForCityExecutected)
+
     }
 
     #if ENABLE_SNAPSHOT_TEST

@@ -30,8 +30,8 @@ extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
     func showWeatherForecastForCityAt(index: Int) {
         if let ciryWeather = dataProvider.weatherDataAt(index: index) {
             presenter.showWeatherForecastForCity(city: ciryWeather.name ?? "",
-                                                  cityId: "\(ciryWeather.id)",
-                                                  dataStore: dataProvider)
+                                                 cityId: "\(ciryWeather.id)",
+                                                 dataStore: dataProvider)
         }
     }
 

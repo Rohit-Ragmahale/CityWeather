@@ -38,14 +38,12 @@
     }, {
         "dt": 1685577600,
         "main": {
-            "temp": 10.04,
             "feels_like": 9.32,
             "temp_min": 8.25,
             "temp_max": 10.04,
             "pressure": 1030,
             "sea_level": 1030,
             "grnd_level": 1024,
-            "humidity": 85,
             "temp_kf": 1.79
         },
         "weather": [{
