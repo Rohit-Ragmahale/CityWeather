@@ -9,7 +9,7 @@ import Foundation
 
 protocol WeatherForecastInteractorInterface {
     func searchWeatherForecastForCity()
-    func getCityName() -> String?
+    var currentCity: String? { get }
 }
 
 final class WeatherForecastInteractor {
@@ -33,7 +33,7 @@ final class WeatherForecastInteractor {
 }
 
 extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
-    func getCityName() -> String? {
+    var currentCity: String? {
         city
     }
 

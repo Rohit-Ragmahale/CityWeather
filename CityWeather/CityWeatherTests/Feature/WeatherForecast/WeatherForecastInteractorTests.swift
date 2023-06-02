@@ -32,7 +32,7 @@ final class WeatherForecastInteractorTests: XCTestCase {
                                                    service: service,
                                                    dataStore: DataStore())
         // when
-        let city = interactor.getCityName()
+        let city = interactor.currentCity
 
         // then
         XCTAssertEqual(city, "City")

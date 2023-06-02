@@ -31,7 +31,7 @@ class WeatherForecastViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = Theme.ForecastPage.viewBGColor
         tableView.backgroundColor = Theme.ForecastPage.listBGColor
-        title = interactor?.getCityName()
+        title = interactor?.currentCity
         WeatherForecastCell.registerWithTable(tableView: tableView)
         spinner.startAnimating()
     }
