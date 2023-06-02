@@ -26,13 +26,16 @@ extension DataStore: DataProvider {
     }
 
     func addWeatherData(weather: CityWeatherData) {
-        if data.first(where: { $0.id == weather.id }) == nil {
-            data.insert(weather, at: 0)
+        guard data.first(where: { $0.id == weather.id }) == nil else {
+            return
         }
+        data.insert(weather, at: 0)
     }
 
     func addForecatsForCity(cityId: String, forecast: [DayForecast]) {
-        guard let weather = data.first(where: { "\($0.id)" == cityId }) else { return }
+        guard let weather = data.first(where: { "\($0.id)" == cityId }) else {
+            return
+        }
         weather.futureForecast = forecast
     }
 
