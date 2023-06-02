@@ -15,7 +15,7 @@ final class CityWeatherCellTests: XCTestCase {
             if let weateherData = MockProvider.getCityWeatherData() {
                 cell.inflateWith(weather: weateherData)
                  let action = "Tap to view forecast"
-                let expextedValue = "Leeds.\nbroken clouds.\nTemperature: 12.99 Celsius.\nHumidity: 74.0.\n" + action
+                let expextedValue = "Leeds\nbroken clouds\nTemperature: 12.99 Celsius\nHumidity: 74.0\n" + action
                 XCTAssertEqual(cell.accessibilityLabel, expextedValue)
                 #if WEATHER_FORECAST_DETAILS
                 XCTAssertEqual(cell.accessoryType, .disclosureIndicator)

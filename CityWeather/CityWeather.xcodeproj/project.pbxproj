@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4312BF452A29D30100B3096E /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4312BF442A29D30100B3096E /* ImageExtension.swift */; };
 		43414E502A288BE9002E1EFB /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = 43414E4F2A288BE9002E1EFB /* iOSSnapshotTestCase */; };
 		43414E522A288BE9002E1EFB /* iOSSnapshotTestCase in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 43414E4F2A288BE9002E1EFB /* iOSSnapshotTestCase */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		43414E562A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43414E552A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift */; };
@@ -117,6 +118,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4312BF442A29D30100B3096E /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		43414E552A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewControllerTests.swift; sourceTree = "<group>"; };
 		43414E582A28984D002E1EFB /* WeatherForecastViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastViewControllerTests.swift; sourceTree = "<group>"; };
 		43792FC92A2788F700450EC4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				438E31D62A266CF9006867EC /* UIStoryboardExtension.swift */,
 				438E32082A272EAA006867EC /* DateExtension.swift */,
 				43792FD12A27922200450EC4 /* StringExtension.swift */,
+				4312BF442A29D30100B3096E /* ImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				438E31DA2A267DB1006867EC /* WeatherService.swift in Sources */,
+				4312BF452A29D30100B3096E /* ImageExtension.swift in Sources */,
 				438E31DC2A267F82006867EC /* NetworkRequest.swift in Sources */,
 				438E31BC2A263032006867EC /* WeatherSearchPresenter.swift in Sources */,
 				438E31C12A264EEE006867EC /* WeatherSearchRouter.swift in Sources */,

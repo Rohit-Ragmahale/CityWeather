@@ -8,6 +8,7 @@
 import UIKit
 
 class WeatherForecastCell: UITableViewCell {
+    @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var date: UILabel!
     @IBOutlet private weak var weatherDescription: UILabel!
     @IBOutlet private weak var temperatureDetails: UILabel!
@@ -19,6 +20,7 @@ class WeatherForecastCell: UITableViewCell {
     }
 
     func inflateWith(forecast: DayForecast) {
+        weatherImageView?.image = UIImage.getWeatherIcon(condition: forecast.imageID ?? 0)
         date.text = forecast.date?.getDateText() ?? ""
         weatherDescription.text = forecast.weatherDescription
         if let temperature = forecast.temperature {

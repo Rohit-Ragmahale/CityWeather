@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NV9-cd-0c5">
-                        <rect key="frame" x="16" y="8" width="552.66666666666663" height="292"/>
+                        <rect key="frame" x="84.000000000000028" y="8" width="484.66666666666674" height="292"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLY-5B-Ia7">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="73"/>
@@ -49,13 +50,23 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clouds" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cra-Vc-HlR">
+                        <rect key="frame" x="28" y="134" width="40" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="SQV-BQ-Tvy"/>
+                            <constraint firstAttribute="height" constant="40" id="gch-dP-jFd"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="NV9-cd-0c5" firstAttribute="leading" secondItem="xPq-Vv-Nhb" secondAttribute="leading" constant="16" id="8rj-wI-WGc"/>
+                    <constraint firstItem="NV9-cd-0c5" firstAttribute="leading" secondItem="Cra-Vc-HlR" secondAttribute="trailing" constant="16" id="Dhm-vW-MV2"/>
                     <constraint firstAttribute="trailing" secondItem="NV9-cd-0c5" secondAttribute="trailing" constant="16" id="Ed2-BZ-ons"/>
                     <constraint firstItem="NV9-cd-0c5" firstAttribute="top" secondItem="xPq-Vv-Nhb" secondAttribute="top" constant="8" id="Fuc-GZ-7US"/>
                     <constraint firstAttribute="bottom" secondItem="NV9-cd-0c5" secondAttribute="bottom" constant="8" id="GPX-UG-NQO"/>
+                    <constraint firstItem="Cra-Vc-HlR" firstAttribute="leading" secondItem="xPq-Vv-Nhb" secondAttribute="leadingMargin" constant="8" id="Gqo-km-Lc2"/>
+                    <constraint firstItem="Cra-Vc-HlR" firstAttribute="centerY" secondItem="xPq-Vv-Nhb" secondAttribute="centerY" id="ciI-Aq-eGd"/>
                 </constraints>
             </tableViewCellContentView>
             <accessibility key="accessibilityConfiguration" label="Tap to see forecast">
@@ -66,8 +77,12 @@
                 <outlet property="humidityDetails" destination="z52-X4-UBI" id="k1F-oI-GbW"/>
                 <outlet property="temperatureDetails" destination="dTH-9F-9pg" id="HOd-r4-L9X"/>
                 <outlet property="weatherDescription" destination="gfR-Zz-FhC" id="q0a-eg-KqB"/>
+                <outlet property="weatherImageView" destination="Cra-Vc-HlR" id="EsX-Tl-CEi"/>
             </connections>
-            <point key="canvasLocation" x="-22" y="-61"/>
+            <point key="canvasLocation" x="-22.137404580152669" y="-61.267605633802823"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="clouds" width="72" height="72"/>
+    </resources>
 </document>

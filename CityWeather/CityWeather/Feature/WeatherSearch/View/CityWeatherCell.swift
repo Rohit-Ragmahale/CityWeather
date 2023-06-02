@@ -8,6 +8,7 @@
 import UIKit
 
 class CityWeatherCell: UITableViewCell {
+    @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var city: UILabel!
     @IBOutlet private weak var weatherDescription: UILabel!
     @IBOutlet private weak var temperatureDetails: UILabel!
@@ -27,6 +28,7 @@ class CityWeatherCell: UITableViewCell {
     }
 
     func inflateWith(weather: CityWeatherData) {
+        weatherImageView?.image = UIImage.getWeatherIcon(condition: weather.forecast.imageID ?? 0)
         city.text = weather.name
         weatherDescription.text = weather.forecast.weatherDescription
         if let temperature = weather.forecast.temperature {
