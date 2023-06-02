@@ -13,8 +13,11 @@ class CityWeatherCell: UITableViewCell {
     @IBOutlet private weak var temperatureDetails: UILabel!
     @IBOutlet private weak var humidityDetails: UILabel!
 
+    private let lineBreak = "\n"
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        isAccessibilityElement = true
         backgroundColor = Theme.HomePage.cityWeatherBGColor
         #if WEATHER_FORECAST_DETAILS
         accessoryType = .disclosureIndicator
@@ -36,12 +39,11 @@ class CityWeatherCell: UITableViewCell {
         } else {
             humidityDetails.text = WeatherApp.humidityDataNotAvaialble.localized
         }
-        isAccessibilityElement = true
         accessibilityLabel = [city.text, weatherDescription.text,
                               temperatureDetails.text,
                               humidityDetails.text,
                               WeatherApp.tapToViewForecast.localized]
             .compactMap { $0 }
-            .joined(separator: ".\n")
+            .joined(separator: lineBreak)
     }
 }
