@@ -1,6 +1,9 @@
 # CityWeather
-Search weather of your city
-
+Wants to stay updated with weather of your or any city?<br>
+The try this App!!<br>
+Just enter name of place and you will get weather and forecast for that location…<br>
+CityWeather provides up to date weather information for any area of the world.<br>
+We are using open source API provided by https://openweathermap.org/api
 
 ## Demo
 
@@ -24,7 +27,7 @@ https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/80de20a4-e147-4cd
 <img width="835" alt="CleanViper" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/8347ce8c-cb76-41a9-88a4-e2e5e447d039">
 
 ## API Integration
-https://api.openweathermap.org/data/2.5<br>
+Host: https://api.openweathermap.org/data/2.5<br>
 searvices:<br>
 1: /weather<br>
 2: /forecast<br>
