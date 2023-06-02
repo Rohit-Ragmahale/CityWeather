@@ -1,6 +1,12 @@
 # CityWeather
 Search weather of your city
 
+
+## Demo
+
+https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/80de20a4-e147-4cd5-931b-bda028a3aea8
+
+
 ## Features
 * Clean Architecture
 * API Integration
