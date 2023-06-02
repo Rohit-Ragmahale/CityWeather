@@ -4,6 +4,7 @@ Search weather of your city
 ## Features
 * Clean Architecture
 * API Integration
+* Data Store - temporary store data to reduce network request
 * Feature Flags - Preprocessor Macros for controlling app flow and features
 * Accessibility
 * Unit test and UI Test - code coverage for all components
@@ -13,7 +14,7 @@ Search weather of your city
 ## Architecture 
 * Application uses **VIPER + Clean Architecture**
 
-<img width="587" alt="Screenshot 2023-05-31 at 14 23 45" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/c89e25a5-f8d3-4085-8427-853ba9c95373">
+<img width="835" alt="CleanViper" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/8347ce8c-cb76-41a9-88a4-e2e5e447d039">
 
 ## API Integration
 https://api.openweathermap.org/data/2.5<br>
