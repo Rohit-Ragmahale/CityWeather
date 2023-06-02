@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol WeatherForecastRouting {
-}
+// Intentionally kept empty, useful in future implementation.
+protocol WeatherForecastRouting {}
 
 struct WeatherForecastRouter {
     private weak var viewController: UIViewController?
@@ -18,5 +18,4 @@ struct WeatherForecastRouter {
     }
 }
 
-extension WeatherForecastRouter: WeatherForecastRouting {
-}
+extension WeatherForecastRouter: WeatherForecastRouting {}
