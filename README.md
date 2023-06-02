@@ -35,7 +35,7 @@ MOCK_ENVIRONMENT : App will use API responses from Mock files after adding this 
 
 ENABLE_SNAPSHOT_TEST : Application uses **iOSSnapshotTestCase** Device for snapshot testing is 'IPhone 14', to enable snapshot UI Unit test add this flag to DEBUG_SWIFT_ACTIVE_COMPILATION_CONDITIONS<br>
 
-WEATHER_FORECAST_DETAILS : This is feature won't be available in Release<br>
+WEATHER_FORECAST_DETAILS : This is feature flag control 'Detail Forecast' feature. This flag enabled in Debug, but won't be available in Release as this FF not added in Release-FeatureFlags.xcconfig.<br>
 
 ## Accessibility
 Application support Accessibility<br>
