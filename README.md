@@ -4,6 +4,7 @@ Search weather of your city
 ## Features
 * Clean Architecture
 * API Integration
+* API Mock - Test app flow with mock json response
 * Data Store - temporary store data to reduce network request
 * Feature Flags - Preprocessor Macros for controlling app flow and features
 * Accessibility
@@ -34,7 +35,7 @@ MOCK_ENVIRONMENT : App will use API responses from Mock files after adding this 
 
 ENABLE_SNAPSHOT_TEST : Application uses **iOSSnapshotTestCase** Device for snapshot testing is 'IPhone 14', to enable snapshot UI Unit test add this flag to DEBUG_SWIFT_ACTIVE_COMPILATION_CONDITIONS<br>
 
-WEATHER_FORECAST_DETAILS : This is feature under development and won't be available in Release<br>
+WEATHER_FORECAST_DETAILS : This is feature won't be available in Release<br>
 
 ## Accessibility
 Application support Accessibility<br>
