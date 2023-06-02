@@ -49,3 +49,9 @@ Application support Accessibility<br>
 1: Application support dynamic fonts<br>
 2: Application support voice over
 
+## Unit testing and code coverage 
+Application has 80% of code coverage. UI screens are covered using 'iOSSnapshotTestCase' framework.
+
+<img width="1341" alt="Screenshot 2023-06-02 at 17 49 28" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/1ec365e7-feb3-4a4a-8fb3-fe6b1065fb8e">
+
+
