@@ -21,14 +21,14 @@ struct MockHTTPClient: HTTPClientInterface {
         } else if networkRequest.url.contains(WeatherAPIConstants.forcastService) {
             data = try? TestUtils.data(forResource: MockFile.forecastResponse.rawValue)
         }
-        if let data = data {
-            if let cityWeatherData = try? JSONDecoder().decode(T.self, from: data) {
-                completion( .success(cityWeatherData))
-            } else {
-                completion( .failure(.unexpectedStatusCode))
-            }
-        } else {
+        guard let data = data else {
             completion( .failure(.unexpectedStatusCode))
+            return
         }
+        guard let cityWeatherData = try? JSONDecoder().decode(T.self, from: data) else {
+            completion( .failure(.unexpectedStatusCode))
+            return
+        }
+        completion( .success(cityWeatherData))
     }
 }
