@@ -44,7 +44,7 @@ extension DataStore: DataProvider {
     }
 
     func weatherPresentForCity(city: String) -> Bool {
-        data.first(where: { $0.name == city }) != nil
+        data.first(where: { $0.name?.lowercased() == city.lowercased() }) != nil
     }
 
     func forecastForCity(cityId: String) -> [DayForecast]? {
