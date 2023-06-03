@@ -43,7 +43,9 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
 
     func searchWeatherForecastForCity() {
         if let forecast = dataStore.forecastForCity(cityId: cityId) {
-            presenter.weatherForecatsListUpdated(list: forecast )
+            DispatchQueue.main.async {
+                presenter.weatherForecatsListUpdated(list: forecast )
+            }
             return
         }
         service.fetchWeatherForecastFor(cityId: cityId,
