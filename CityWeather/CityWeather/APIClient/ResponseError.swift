@@ -11,10 +11,7 @@ import Foundation
 enum ResponseError: Error {
     case decode
     case invalidURL
-    case noResponse
-    case unauthorized
     case unexpectedStatusCode
-    case unknown
 
     // MARK: - Localized Error Description
     var errorDescription: String {
@@ -23,9 +20,7 @@ enum ResponseError: Error {
             return WeatherApp.errorRemoteDataParsingFailed.localized
         case .invalidURL:
             return WeatherApp.errorInvalidEndPoint.localized
-        case .noResponse:
-            return WeatherApp.errorWeatherDataNotFound.localized
-        case .unexpectedStatusCode, .unknown, .unauthorized:
+        case .unexpectedStatusCode:
             return WeatherApp.errorUnknown.localized
         }
     }

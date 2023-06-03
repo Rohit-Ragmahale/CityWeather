@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - MockFiles
 private enum MockFile: String {
@@ -15,22 +16,22 @@ private enum MockFile: String {
 
 // MARK: - Mock HTTPClient Implementation
 struct MockHTTPClient: HTTPClientInterface {
-    func load<T: Decodable>(networkRequest: NetworkRequest<T>,
-                            completion: @escaping (Result<T, ResponseError>) -> Void) {
+    func load<T: Decodable>(networkRequest: NetworkRequest<T>) -> AnyPublisher<T, ResponseError> {
         var data: Data?
         if networkRequest.url.contains(WeatherAPIConstants.weatherService) {
             data = try? TestUtils.data(forResource: MockFile.weatherResponse.rawValue)
         } else if networkRequest.url.contains(WeatherAPIConstants.forcastService) {
             data = try? TestUtils.data(forResource: MockFile.forecastResponse.rawValue)
         }
+
         guard let data = data else {
-            completion( .failure(.unexpectedStatusCode))
-            return
+            return Fail(error: ResponseError.unexpectedStatusCode).eraseToAnyPublisher()
         }
-        guard let cityWeatherData = try? JSONDecoder().decode(T.self, from: data) else {
-            completion( .failure(.unexpectedStatusCode))
-            return
+        guard let cityWeatherData: T = try? JSONDecoder().decode(T.self, from: data) else {
+            return Fail(error: ResponseError.decode).eraseToAnyPublisher()
         }
-        completion( .success(cityWeatherData))
+        return Just(cityWeatherData)
+            .setFailureType(to: ResponseError.self)
+            .eraseToAnyPublisher()
     }
 }

@@ -28,7 +28,6 @@ enum WeatherApp: String, Localized {
 
     case errorRemoteDataParsingFailed
     case errorInvalidEndPoint
-    case errorWeatherDataNotFound
     case errorUnknown
 
     case tapToViewForecast
