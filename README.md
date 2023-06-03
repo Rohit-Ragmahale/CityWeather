@@ -1,8 +1,8 @@
 # CityWeather
 Wants to stay updated with weather of your or any city?<br>
-The try this App!!<br>
-Just enter name of place and you will get weather and forecast for that location…<br>
-CityWeather provides up to date weather information for any area of the world.<br>
+Then try this App!!<br>
+Just enter name of place and you will get weather and forecast for that location...<br>
+CityWeather provides up to date weather information for any area in the world.<br>
 We are using open source API provided by https://openweathermap.org/api
 
 ## Demo
