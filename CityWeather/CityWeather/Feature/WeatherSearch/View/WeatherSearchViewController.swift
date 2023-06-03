@@ -43,17 +43,39 @@ class WeatherSearchViewController: UIViewController {
     // MARK: - View Setup method
     private func setupView() {
         title = WeatherApp.searchWeatherTitle.localized
+
+        // View set up
+        CityWeatherCell.registerWithTable(tableView: tableView)
+        setupSearchTextField()
+        configureAddButton()
+
+        // apply Theme
+        setViewTheme()
+
+        // Show search
+        shouldShowAddButton = false
+    }
+
+    private func setupSearchTextField() {
+        // Set up 'searchTextField'
         searchTextField.placeholder = WeatherApp.searchWeatherEnterCity.localized
         searchButton.setTitle(WeatherApp.searchWeatherSearchTitle.localized, for: .normal)
-        CityWeatherCell.registerWithTable(tableView: tableView)
-        let action = UIAction(handler: { [weak self] _ in
+    }
+
+    private func configureAddButton() {
+        // Add 'rightBarButtonItem' to show serch text field
+        let addButton = UIBarButtonItem(systemItem: .add,
+                                        primaryAction: UIAction(handler: { [weak self] _ in
             self?.toggleSearchView(shouldShowSearchView: true)
             self?.searchTextField.becomeFirstResponder()
-        })
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: action)
-        shouldShowAddButton = false
+        }))
 
-        // Set Theme
+        navigationItem.rightBarButtonItem = addButton
+    }
+
+    // Set Theme
+    private func setViewTheme() {
+        // Apply Application color theme
         view.backgroundColor = Theme.HomePage.viewBGColor
         tableView.backgroundColor = Theme.HomePage.listBGColor
         searchButton.tintColor = Theme.HomePage.buttonTintColor
@@ -74,11 +96,20 @@ class WeatherSearchViewController: UIViewController {
     }
 
     @IBAction private func searchCityButtonTapped(_ sender: Any) {
-        view.endEditing(true)
         guard let text = searchTextField.text else { return }
         interactor?.searchWeatherForCity(city: text)
         toggleSearchView()
-        spinner.startAnimating()
+        updateViewState(isSearching: true)
+    }
+
+    private func updateViewState(isSearching: Bool) {
+        view.endEditing(true)
+        navigationItem.rightBarButtonItem?.isEnabled = !isSearching
+        if isSearching {
+            spinner.startAnimating()
+        } else {
+            spinner.stopAnimating()
+        }
     }
 }
 
@@ -96,12 +127,12 @@ extension WeatherSearchViewController: WeatherSearchViewInterfaces {
         snapShot.appendSections(WeatherSection.allCases)
         list.forEach { snapShot.appendItems([$0], toSection: WeatherSection.main) }
         dataSource.apply(snapShot, animatingDifferences: true)
-        spinner.stopAnimating()
         searchTextField.text = nil
+        updateViewState(isSearching: false)
     }
 
     func showErrorAlert(errorMessage: String) {
-        spinner.stopAnimating()
+        updateViewState(isSearching: false)
         let dialog = UIAlertController(title: WeatherApp.error.localized, message: errorMessage, preferredStyle: .alert)
         let action: ((UIAlertAction) -> Void)? = { [weak self] _ in
             self?.toggleSearchView(shouldShowSearchView: true)

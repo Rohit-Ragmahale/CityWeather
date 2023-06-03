@@ -20,7 +20,8 @@ class WeatherForecastViewController: UIViewController {
     // MARK: - Properties
     // Variables
     private lazy var dataSource: WeatherForecastDataSource = {
-        return WeatherForecastDataSource(cellIdentifier: String(describing: WeatherForecastCell.self),
+        let cellIdentifier = String(describing: WeatherForecastCell.self)
+        return WeatherForecastDataSource(cellIdentifier: cellIdentifier,
                                          tableView: tableView)
     }()
 
@@ -29,17 +30,21 @@ class WeatherForecastViewController: UIViewController {
     // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set up UI
         setupView()
+        // Request for forecast data
         interactor?.searchWeatherForecastForCity()
+        spinner.startAnimating()
     }
 
     // MARK: - View Setup method
     private func setupView() {
+        title = interactor?.currentCity
+        // Apply App Color Theme
         view.backgroundColor = Theme.ForecastPage.viewBGColor
         tableView.backgroundColor = Theme.ForecastPage.listBGColor
-        title = interactor?.currentCity
+
         WeatherForecastCell.registerWithTable(tableView: tableView)
-        spinner.startAnimating()
     }
 }
 
