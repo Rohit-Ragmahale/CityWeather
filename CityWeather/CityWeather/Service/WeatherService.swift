@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 typealias WeatherResponse = (CityWeatherData?, ResponseError?) -> Void
 
@@ -14,9 +15,10 @@ protocol WeatherServiceProvider {
     func fetchWeatherFor(city: String, completion: @escaping WeatherResponse)
 }
 
-struct WeatherService {
+final class WeatherService {
     // MARK: - Properties
     private let httpsClient: HTTPClientInterface
+    private var cancellables: [AnyCancellable] = []
 
     // MARK: - Custom Initializer
     init(httpsClient: HTTPClientInterface) {
@@ -28,14 +30,13 @@ struct WeatherService {
 extension WeatherService: WeatherServiceProvider {
     func fetchWeatherFor(city: String, completion: @escaping WeatherResponse) {
         let request = NetworkRequest<CityWeatherData>.currentWeather(city: city)
-        httpsClient.load(networkRequest: request) { result in
-            switch result {
-            case .success(let result):
-                completion(result, nil)
-
-            case .failure(let responseError):
-                completion(nil, responseError)
+        httpsClient.load(networkRequest: request).sink { reqCompletion in
+            if case let .failure(error) = reqCompletion {
+                completion(nil, error)
             }
+        } receiveValue: { data in
+            completion(data, nil)
         }
+        .store(in: &cancellables)
     }
 }

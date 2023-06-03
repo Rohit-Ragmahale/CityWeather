@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - HTTPClient Interface
 protocol HTTPClientInterface {
-    func load<T: Decodable>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void)
+    @discardableResult
+    func load<T: Decodable>(networkRequest: NetworkRequest<T>) -> AnyPublisher<T, ResponseError>
 }
 
 struct HTTPClient {
@@ -26,30 +28,23 @@ struct HTTPClient {
     }
 }
 
-// MARK: - HTTPClient Interface Implementation
 extension HTTPClient: HTTPClientInterface {
-    func load<T: Decodable>(networkRequest: NetworkRequest<T>,
-                            completion: @escaping (Result<T, ResponseError>) -> Void) {
+    func load<T: Decodable>(networkRequest: NetworkRequest<T>) -> AnyPublisher<T, ResponseError> {
         guard let request = networkRequest.request else {
-            completion(.failure(.unknown))
-            return
+            return Fail(error: ResponseError.invalidURL).eraseToAnyPublisher()
         }
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: request) { data, response, _ in
-            guard let response = response as? HTTPURLResponse else {
-                completion(.failure(.noResponse))
-                return
-            }
-            switch response.statusCode {
-            case 200...299:
-                guard let data = data, let decodedResponse = try? JSONDecoder().decode(T.self, from: data) else {
-                    completion(.failure(.decode))
-                    return
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .map {$0.data}
+            .decode( type: T.self, decoder: JSONDecoder())
+            .mapError { error in
+                switch error {
+                case is URLError:
+                    return ResponseError.invalidURL
+                case is DecodingError:
+                    return ResponseError.decode
+                default:
+                    return ResponseError.unexpectedStatusCode
                 }
-                completion(.success(decodedResponse))
-            default:
-                completion(.failure(.unexpectedStatusCode))
-            }
-        }.resume()
+            }.eraseToAnyPublisher()
     }
 }
