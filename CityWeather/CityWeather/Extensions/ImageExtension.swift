@@ -24,18 +24,25 @@ extension UIImage {
         switch condition {
         case  200...232:
             return UIImage(named: Condition.storm.rawValue)
+
         case 501...511:
             return UIImage(named: Condition.rain.rawValue)
+
         case 500:
             return UIImage(named: Condition.lightRain.rawValue)
+
         case 520...531:
             return UIImage(named: Condition.lightRain.rawValue)
+
         case 600...622:
             return UIImage(named: Condition.snow.rawValue)
+
         case 801...804:
             return UIImage(named: Condition.clouds.rawValue)
+
         case 741...761:
             return UIImage(named: Condition.fog.rawValue)
+
         default:
             return UIImage(named: Condition.clear.rawValue)
         }

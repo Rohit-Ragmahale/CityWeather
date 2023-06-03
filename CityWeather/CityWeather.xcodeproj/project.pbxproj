@@ -12,6 +12,7 @@
 		43414E522A288BE9002E1EFB /* iOSSnapshotTestCase in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 43414E4F2A288BE9002E1EFB /* iOSSnapshotTestCase */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		43414E562A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43414E552A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift */; };
 		43414E592A28984D002E1EFB /* WeatherForecastViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43414E582A28984D002E1EFB /* WeatherForecastViewControllerTests.swift */; };
+		4373D94B2A2B7D9B007B2016 /* ImageExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373D94A2A2B7D9B007B2016 /* ImageExtensionTests.swift */; };
 		43792FCA2A2788F700450EC4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43792FC92A2788F700450EC4 /* Theme.swift */; };
 		43792FD02A278D7700450EC4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43792FCF2A278D7700450EC4 /* Localizable.strings */; };
 		43792FD22A27922200450EC4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43792FD12A27922200450EC4 /* StringExtension.swift */; };
@@ -121,6 +122,7 @@
 		4312BF442A29D30100B3096E /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		43414E552A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewControllerTests.swift; sourceTree = "<group>"; };
 		43414E582A28984D002E1EFB /* WeatherForecastViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastViewControllerTests.swift; sourceTree = "<group>"; };
+		4373D94A2A2B7D9B007B2016 /* ImageExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensionTests.swift; sourceTree = "<group>"; };
 		43792FC92A2788F700450EC4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		43792FCD2A278CF000450EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43792FCE2A278CF000450EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				43792FEC2A27CF2A00450EC4 /* DateExtensionTests.swift */,
+				4373D94A2A2B7D9B007B2016 /* ImageExtensionTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				4379301A2A28048300450EC4 /* WeatherSearchInteractorTests.swift in Sources */,
 				437930092A27E58D00450EC4 /* NetworkRequestTests.swift in Sources */,
 				43414E562A288D0C002E1EFB /* WeatherSearchViewControllerTests.swift in Sources */,
+				4373D94B2A2B7D9B007B2016 /* ImageExtensionTests.swift in Sources */,
 				43792FF02A27D10900450EC4 /* TestFutureForecasts.swift in Sources */,
 				437930022A27DDBC00450EC4 /* ForecastServiceTests.swift in Sources */,
 				43792FED2A27CF2A00450EC4 /* DateExtensionTests.swift in Sources */,
