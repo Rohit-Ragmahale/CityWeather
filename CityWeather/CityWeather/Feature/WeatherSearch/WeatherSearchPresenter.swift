@@ -7,13 +7,13 @@
 
 import Foundation
 // MARK: - WeatherSearchPresenter Interface
-protocol WeatherSearchPresenterInterface: AnyObject {
+protocol WeatherSearchPresenterInterface {
     func weatherListUpdated(list: [CityWeatherData])
     func weatherRequestFailed(description: String)
     func showWeatherForecastForCity(city: String, cityId: String, dataStore: DataProvider)
 }
 
-final class WeatherSearchPresenter {
+struct WeatherSearchPresenter {
     // MARK: - Properties
     private weak var view: WeatherSearchViewInterfaces?
     private var router: WeatherSearchRouting

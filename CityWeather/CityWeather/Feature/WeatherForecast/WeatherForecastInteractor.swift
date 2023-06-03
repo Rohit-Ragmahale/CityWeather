@@ -13,7 +13,7 @@ protocol WeatherForecastInteractorInterface {
     var currentCity: String? { get }
 }
 
-final class WeatherForecastInteractor {
+struct WeatherForecastInteractor {
     // MARK: - Properties
     private let presenter: WeatherForecastPresenterInterface
     private let service: WeatherForecastServiceProvider
@@ -48,8 +48,7 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
         }
         service.fetchWeatherForecastFor(cityId: cityId,
                                          completion: { futureForecasts, responseError in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
+            DispatchQueue.main.async {
                 if let responseError = responseError {
                     self.presenter.weatherForecastRequestFailed(description: responseError.errorDescription)
                 } else {

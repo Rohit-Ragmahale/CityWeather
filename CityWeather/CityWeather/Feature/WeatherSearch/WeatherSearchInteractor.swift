@@ -13,7 +13,7 @@ protocol WeatherSearchInteractorInterface {
     func showWeatherForecastForCityAt(index: Int)
 }
 
-final class WeatherSearchInteractor {
+struct WeatherSearchInteractor {
     // MARK: - Properties
     private let service: WeatherServiceProvider
     private let presenter: WeatherSearchPresenterInterface
@@ -46,14 +46,13 @@ extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
             }
             return
         }
-        service.fetchWeatherFor(city: city) { [weak self] cityWeatherData, responseError in
-            guard let weakSelf = self else { return }
+        service.fetchWeatherFor(city: city) { cityWeatherData, responseError in
             DispatchQueue.main.async {
                 if let responseError = responseError {
-                    weakSelf.presenter.weatherRequestFailed(description: responseError.errorDescription)
+                    presenter.weatherRequestFailed(description: responseError.errorDescription)
                 } else if let cityWeatherData = cityWeatherData {
-                    weakSelf.dataProvider.addWeatherData(weather: cityWeatherData)
-                    weakSelf.presenter.weatherListUpdated(list: weakSelf.dataProvider.weatherDataList)
+                    dataProvider.addWeatherData(weather: cityWeatherData)
+                    presenter.weatherListUpdated(list: dataProvider.weatherDataList)
                 }
             }
         }

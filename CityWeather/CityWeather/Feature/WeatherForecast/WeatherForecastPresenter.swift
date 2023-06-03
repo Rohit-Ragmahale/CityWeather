@@ -8,12 +8,12 @@
 import Foundation
 
 // MARK: - WeatherForecastPresenter Interface
-protocol WeatherForecastPresenterInterface: AnyObject {
+protocol WeatherForecastPresenterInterface {
     func weatherForecatsListUpdated(list: [DayForecast])
     func weatherForecastRequestFailed(description: String)
 }
 
-final class WeatherForecastPresenter {
+struct WeatherForecastPresenter {
     // MARK: - Properties
     private weak var view: WeatherForecastViewInterfaces?
     private var router: WeatherForecastRouting
