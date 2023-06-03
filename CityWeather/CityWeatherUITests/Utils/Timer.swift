@@ -7,7 +7,7 @@
 
 import XCTest
 
-class WaitTimer: XCTestCase {
+final class WaitTimer: XCTestCase {
     func wait(for duration: TimeInterval) {
         let waitExpectation = expectation(description: "Waiting")
         let when = DispatchTime.now() + duration
