@@ -42,10 +42,11 @@ struct FutureForecasts: Decodable {
 
                         var forecast = DayForecast()
 
-                        let timeInterval = try item.decode(TimeInterval.self, forKey: .dt)
-                        forecast.date = Date(timeIntervalSince1970: timeInterval)
+                        if let timeInterval = try item.decodeIfPresent(TimeInterval.self, forKey: .dt) {
+                            forecast.date = Date(timeIntervalSince1970: timeInterval)
+                        }
 
-                        if let weatherList: [Weather] = try? item.decode([Weather].self, forKey: .weather),
+                        if let weatherList: [Weather] = try? item.decodeIfPresent([Weather].self, forKey: .weather),
                             let weather = weatherList.first {
                             forecast.weatherDescription = weather.description
                             forecast.imageID = weather.id

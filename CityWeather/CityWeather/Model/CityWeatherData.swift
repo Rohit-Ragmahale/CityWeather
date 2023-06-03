@@ -37,10 +37,11 @@ final class CityWeatherData: Decodable, Hashable {
 
             forecast = DayForecast()
 
-            let timeInterval = try container.decode(TimeInterval.self, forKey: .dt)
-            forecast.date = Date(timeIntervalSince1970: timeInterval)
+            if let timeInterval = try container.decodeIfPresent(TimeInterval.self, forKey: .dt) {
+                forecast.date = Date(timeIntervalSince1970: timeInterval)
+            }
 
-            if let weatherList: [Weather] = try? container.decode([Weather].self, forKey: .weather),
+            if let weatherList: [Weather] = try? container.decodeIfPresent([Weather].self, forKey: .weather),
                 let weather = weatherList.first {
                 forecast.weatherDescription = weather.description
                 forecast.imageID = weather.id
