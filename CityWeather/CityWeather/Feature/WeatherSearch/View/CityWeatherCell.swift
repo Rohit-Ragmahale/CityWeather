@@ -8,14 +8,16 @@
 import UIKit
 
 class CityWeatherCell: UITableViewCell {
+    // MARK: - Outlets
     @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var city: UILabel!
     @IBOutlet private weak var weatherDescription: UILabel!
     @IBOutlet private weak var temperatureDetails: UILabel!
     @IBOutlet private weak var humidityDetails: UILabel!
-
+    // MARK: - Properties
     private let lineBreak = "\n"
 
+    // MARK: - View Life Cycle Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         isAccessibilityElement = true
@@ -27,6 +29,7 @@ class CityWeatherCell: UITableViewCell {
         #endif
     }
 
+    // MARK: - View Setup method
     func inflateWith(weather: CityWeatherData) {
         weatherImageView?.image = UIImage.getWeatherIcon(condition: weather.forecast.imageID ?? 0)
         city.text = weather.name

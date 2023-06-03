@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Weather API Response
 final class CityWeatherData: Decodable, Hashable {
     var name: String?
     var id: Int = 0
@@ -27,6 +28,8 @@ final class CityWeatherData: Decodable, Hashable {
         case weather
     }
 
+    // Application do not to parsed whole json body
+    // Application only parsed attributes which are required to render on UI as per business requirements.
     required init(from decoder: Decoder) throws {
         if let container = try? decoder.container(keyedBy: WeatherResponseCodingKeys.self) {
             name = try container.decode(String.self, forKey: .name)

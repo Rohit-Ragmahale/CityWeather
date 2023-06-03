@@ -7,14 +7,18 @@
 
 import UIKit
 
+// MARK: - WeatherForecastView Interfaces
 protocol WeatherForecastViewInterfaces: AnyObject {
     func showWeatherForecast(list: [DayForecast])
     func showErrorAlert(errorMessage: String)
 }
 
 class WeatherForecastViewController: UIViewController {
+    // MARK: - Outlets
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var tableView: UITableView!
+    // MARK: - Properties
+    // Variables
     private lazy var dataSource: WeatherForecastDataSource = {
         return WeatherForecastDataSource(cellIdentifier: String(describing: WeatherForecastCell.self),
                                          tableView: tableView)
@@ -22,12 +26,14 @@ class WeatherForecastViewController: UIViewController {
 
     var interactor: WeatherForecastInteractorInterface?
 
+    // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         interactor?.searchWeatherForecastForCity()
     }
 
+    // MARK: - View Setup method
     private func setupView() {
         view.backgroundColor = Theme.ForecastPage.viewBGColor
         tableView.backgroundColor = Theme.ForecastPage.listBGColor
@@ -37,6 +43,7 @@ class WeatherForecastViewController: UIViewController {
     }
 }
 
+// MARK: - WeatherForecastView Interface Implementation
 extension WeatherForecastViewController: WeatherForecastViewInterfaces {
     func showWeatherForecast(list: [DayForecast]) {
         var snapShot = NSDiffableDataSourceSnapshot<WeatherForecastSection, DayForecast>()

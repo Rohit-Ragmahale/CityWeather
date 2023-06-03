@@ -7,11 +7,13 @@
 
 import Foundation
 
+// MARK: - HTTPClient Interface
 protocol HTTPClientInterface {
     func load<T: Decodable>(networkRequest: NetworkRequest<T>, completion: @escaping (Result<T, ResponseError>) -> Void)
 }
 
-struct HTTPClient: HTTPClientInterface {
+struct HTTPClient {
+    // MARK: - Helper Method
     static func makeHTTPClient() -> HTTPClientInterface {
         #if MOCK_ENVIRONMENT
         MockHTTPClient()
@@ -22,7 +24,10 @@ struct HTTPClient: HTTPClientInterface {
         return HTTPClient()
         #endif
     }
+}
 
+// MARK: - HTTPClient Interface Implementation
+extension HTTPClient: HTTPClientInterface {
     func load<T: Decodable>(networkRequest: NetworkRequest<T>,
                             completion: @escaping (Result<T, ResponseError>) -> Void) {
         guard let request = networkRequest.request else {

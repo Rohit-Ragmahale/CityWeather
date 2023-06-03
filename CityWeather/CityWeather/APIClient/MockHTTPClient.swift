@@ -7,11 +7,13 @@
 
 import Foundation
 
+// MARK: - MockFiles
 private enum MockFile: String {
     case weatherResponse = "CityWeatherDataResponse"
     case forecastResponse = "ForecastResponse"
 }
 
+// MARK: - Mock HTTPClient Implementation
 struct MockHTTPClient: HTTPClientInterface {
     func load<T: Decodable>(networkRequest: NetworkRequest<T>,
                             completion: @escaping (Result<T, ResponseError>) -> Void) {

@@ -7,18 +7,22 @@
 
 import UIKit
 
+// MARK: - WeatherSearchRouting Interface
 protocol WeatherSearchRouting {
     func showWeatherForcast(city: String, cityId: String, dataStore: DataProvider)
 }
 
 struct WeatherSearchRouter {
+    // MARK: - Properties
     private weak var viewController: UIViewController?
 
+    // MARK: - Custom Initializer
     init(viewController: UIViewController) {
         self.viewController = viewController
     }
 }
 
+// MARK: - WeatherSearchRouting Interface Implementation
 extension WeatherSearchRouter: WeatherSearchRouting {
     func showWeatherForcast(city: String, cityId: String, dataStore: DataProvider) {
         #if WEATHER_FORECAST_DETAILS

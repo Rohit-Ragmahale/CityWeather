@@ -8,17 +8,20 @@
 import UIKit
 
 class WeatherForecastCell: UITableViewCell {
+    // MARK: - Outlets
     @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var date: UILabel!
     @IBOutlet private weak var weatherDescription: UILabel!
     @IBOutlet private weak var temperatureDetails: UILabel!
     @IBOutlet private weak var humidityDetails: UILabel!
 
+    // MARK: - View Life Cycle Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = Theme.ForecastPage.cityWeatherForecastBGColor
     }
 
+    // MARK: - View Setup method
     func inflateWith(forecast: DayForecast) {
         weatherImageView?.image = UIImage.getWeatherIcon(condition: forecast.imageID ?? 0)
         date.text = forecast.date?.getDateText() ?? ""

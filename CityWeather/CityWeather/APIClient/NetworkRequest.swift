@@ -7,7 +7,9 @@
 
 import Foundation
 
+// MARK: - NetworkRequest
 struct NetworkRequest<T: Decodable> {
+    // MARK: - Properties
     let url: String
     let parameters: [String: CustomStringConvertible]
     var request: URLRequest? {
@@ -26,12 +28,14 @@ struct NetworkRequest<T: Decodable> {
         return URLRequest(url: url)
     }
 
+    // MARK: - Custom Initializer
     init(url: String, parameters: [String: CustomStringConvertible] = [:]) {
         self.url = url
         self.parameters = parameters
     }
 }
 
+// MARK: - NetworkRequest Helper
 extension NetworkRequest {
     static func currentWeather(city: String) -> NetworkRequest<CityWeatherData> {
         let url = WeatherAPIConstants.baseURL + WeatherAPIConstants.weatherService

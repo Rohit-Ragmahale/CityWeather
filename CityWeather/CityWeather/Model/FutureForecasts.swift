@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Weather Forecast API Response
 struct FutureForecasts: Decodable {
     var list: [DayForecast] = []
 
@@ -27,8 +28,11 @@ struct FutureForecasts: Decodable {
         case pressure
     }
 
+    // Application do not to parsed whole json body
+    // Application only parsed attributes which are required to render on UI as per business requirements.
     init(from decoder: Decoder) throws {
         if let container = try? decoder.container(keyedBy: ForecatsCodingKeys.self) {
+
             if var forecastArray = try? container.nestedUnkeyedContainer(forKey: ForecatsCodingKeys.list) {
                 var forecasts = [DayForecast]()
 

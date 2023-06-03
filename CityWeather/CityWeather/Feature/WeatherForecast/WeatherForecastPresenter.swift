@@ -7,21 +7,25 @@
 
 import Foundation
 
+// MARK: - WeatherForecastPresenter Interface
 protocol WeatherForecastPresenterInterface: AnyObject {
     func weatherForecatsListUpdated(list: [DayForecast])
     func weatherForecastRequestFailed(description: String)
 }
 
 final class WeatherForecastPresenter {
+    // MARK: - Properties
     private weak var view: WeatherForecastViewInterfaces?
     private var router: WeatherForecastRouting
 
+    // MARK: - Custom Initializer
     init(view: WeatherForecastViewInterfaces? = nil, router: WeatherForecastRouting) {
         self.view = view
         self.router = router
     }
 }
 
+// MARK: - WeatherForecastPresenter Interface Implementation
 extension WeatherForecastPresenter: WeatherForecastPresenterInterface {
     func weatherForecatsListUpdated(list: [DayForecast]) {
         view?.showWeatherForecast(list: list)

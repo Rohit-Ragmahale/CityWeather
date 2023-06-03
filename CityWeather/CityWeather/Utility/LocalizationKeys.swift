@@ -11,6 +11,7 @@ protocol Localized {
     var localized: String { get }
 }
 
+// MARK: - Application Localization Keys
 enum WeatherApp: String, Localized {
     case searchWeatherTitle
     case searchWeatherSearchTitle
@@ -32,7 +33,8 @@ enum WeatherApp: String, Localized {
 
     case tapToViewForecast
 
+    // localized string
     var localized: String {
-        self.rawValue.localized
+        rawValue.localized
     }
 }

@@ -13,11 +13,14 @@ protocol WeatherSearchViewInterfaces: AnyObject {
 }
 
 class WeatherSearchViewController: UIViewController {
+    // MARK: - Outlets
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var tableViewTopViewConstraint: NSLayoutConstraint!
     @IBOutlet private weak var searchTextField: UITextField!
     @IBOutlet private weak var searchButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
+    // MARK: - Properties
+    // Variables
     private lazy var dataSource: WeatherListDataSource = {
         return WeatherListDataSource(cellIdentifier: String(describing: CityWeatherCell.self), tableView: tableView)
     }()
@@ -31,11 +34,13 @@ class WeatherSearchViewController: UIViewController {
 
     var interactor: WeatherSearchInteractorInterface?
 
+    // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 
+    // MARK: - View Setup method
     private func setupView() {
         title = WeatherApp.searchWeatherTitle.localized
         searchTextField.placeholder = WeatherApp.searchWeatherEnterCity.localized
@@ -77,12 +82,14 @@ class WeatherSearchViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate methods
 extension WeatherSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         interactor?.showWeatherForecastForCityAt(index: indexPath.row)
     }
 }
 
+// MARK: - WeatherSearchViewInterfaces methods
 extension WeatherSearchViewController: WeatherSearchViewInterfaces {
     func showWeatherList(list: [CityWeatherData]) {
         var snapShot = NSDiffableDataSourceSnapshot<WeatherSection, CityWeatherData>()

@@ -7,18 +7,21 @@
 
 import Foundation
 
+// MARK: - WeatherForecastInteractor Interface
 protocol WeatherForecastInteractorInterface {
     func searchWeatherForecastForCity()
     var currentCity: String? { get }
 }
 
 final class WeatherForecastInteractor {
+    // MARK: - Properties
     private let presenter: WeatherForecastPresenterInterface
     private let service: WeatherForecastServiceProvider
     private let cityId: String
     private let city: String
     private let dataStore: DataProvider
 
+    // MARK: - Custom Initializer
     init(presenter: WeatherForecastPresenterInterface,
          cityId: String,
          city: String,
@@ -32,6 +35,7 @@ final class WeatherForecastInteractor {
     }
 }
 
+// MARK: - WeatherForecastInteractor Interface Implementation
 extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
     var currentCity: String? {
         city

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - API Response Errors
 enum ResponseError: Error {
     case decode
     case invalidURL
@@ -15,6 +16,7 @@ enum ResponseError: Error {
     case unexpectedStatusCode
     case unknown
 
+    // MARK: - Localized Error Description
     var errorDescription: String {
         switch self {
         case .decode:

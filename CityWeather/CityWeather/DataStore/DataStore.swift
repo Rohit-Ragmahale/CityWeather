@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Data Provider Interface
 protocol DataProvider {
     func addWeatherData(weather: CityWeatherData)
     func addForecatsForCity(cityId: String, forecast: [DayForecast])
@@ -16,10 +17,13 @@ protocol DataProvider {
     var weatherDataList: [CityWeatherData] { get }
 }
 
+// MARK: - DataStore
 class DataStore {
+    // MARK: - Properties
     private var data: [CityWeatherData] = []
 }
 
+// MARK: - Data Provider Interface Implementation
 extension DataStore: DataProvider {
     var weatherDataList: [CityWeatherData] {
         data

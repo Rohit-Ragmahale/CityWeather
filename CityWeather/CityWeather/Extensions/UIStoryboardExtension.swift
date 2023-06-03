@@ -11,7 +11,8 @@ private class BundleLocator {}
 
 extension UIStoryboard {
     static func instantiate<T: UIViewController>(identifier: StoryboardIdentifier) -> T! {
-        let storyboard = UIStoryboard(name: identifier.storyboardName, bundle: Bundle(for: BundleLocator.self))
+        let bundle = Bundle(for: BundleLocator.self)
+        let storyboard = UIStoryboard(name: identifier.storyboardName, bundle: bundle)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier.rawValue)
         guard let viewController = viewController as? T else {
             fatalError("ViewController: \(identifier.rawValue) is not of type: \(T.self)")

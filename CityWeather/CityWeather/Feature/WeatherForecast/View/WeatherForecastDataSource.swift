@@ -6,11 +6,12 @@
 //
 
 import UIKit
-
+// MARK: - UITableView Section
 enum WeatherForecastSection: Hashable, CaseIterable {
     case main
 }
 
+// MARK: - UITableViewDiffableDataSource Implementation
 class WeatherForecastDataSource: UITableViewDiffableDataSource<WeatherForecastSection, DayForecast> {
     init(cellIdentifier: String, tableView: UITableView) {
         super.init(tableView: tableView) { tableView, _, dayForecast in

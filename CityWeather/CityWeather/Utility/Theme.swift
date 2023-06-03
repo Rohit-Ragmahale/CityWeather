@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Application Color Scheme
 struct Theme {
     static let navigationTintColor = UIColor(red: 02/255, green: 02/255, blue: 02/255, alpha: 1.0)
 

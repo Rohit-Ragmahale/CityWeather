@@ -7,7 +7,9 @@
 
 import Foundation
 
+// MARK: - Test Utilities
 final class TestUtils {
+    // Mock data provider
     static func data(forResource resource: String, ext: String = "json") throws -> Data {
         let testBundle = Bundle(for: type(of: TestUtils().self))
 
@@ -18,6 +20,7 @@ final class TestUtils {
         return try Data(contentsOf: url)
     }
 
+    // Check if UI Test case is running
     static func isUITest() -> Bool {
         return ProcessInfo.processInfo.environment.keys.contains("isUITest")
     }

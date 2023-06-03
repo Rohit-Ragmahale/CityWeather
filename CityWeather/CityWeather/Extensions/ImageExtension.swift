@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Weather Condition
 private enum Condition: String {
     case clear
     case clouds
@@ -18,6 +19,7 @@ private enum Condition: String {
 }
 
 extension UIImage {
+    // MARK: - Weather Condition Icon
     static func getWeatherIcon(condition: Int) -> UIImage? {
         switch condition {
         case  200...232:

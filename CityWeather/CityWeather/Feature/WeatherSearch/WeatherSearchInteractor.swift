@@ -7,16 +7,19 @@
 
 import Foundation
 
+// MARK: - WeatherSearchInteractor Interface
 protocol WeatherSearchInteractorInterface {
     func searchWeatherForCity(city: String)
     func showWeatherForecastForCityAt(index: Int)
 }
 
 final class WeatherSearchInteractor {
+    // MARK: - Properties
     private let service: WeatherServiceProvider
     private let presenter: WeatherSearchPresenterInterface
     private let dataProvider: DataProvider
 
+    // MARK: - Custom Initializer
     init(dataProvider: DataProvider,
          service: WeatherServiceProvider,
          presenter: WeatherSearchPresenterInterface) {
@@ -26,6 +29,7 @@ final class WeatherSearchInteractor {
     }
 }
 
+// MARK: - WeatherSearchInteractor Interface Implementation
 extension WeatherSearchInteractor: WeatherSearchInteractorInterface {
     func showWeatherForecastForCityAt(index: Int) {
         if let ciryWeather = dataProvider.weatherDataAt(index: index) {
