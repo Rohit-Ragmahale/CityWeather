@@ -32,7 +32,7 @@ searvices:<br>
 1: /weather<br>
 2: /forecast<br>
 
-## Feature Flags/ Control Flags
+## Feature Flags(FF)/ Control Flags
 
 Application has 
 * **Release-FeatureFlags.xcconfig**  Contains FF for features those are ready for release 
@@ -42,9 +42,9 @@ Few of them are important and listed below:<br>
 
 MOCK_ENVIRONMENT : App will use API responses from Mock files after adding this flag to DEBUG_SWIFT_ACTIVE_COMPILATION_CONDITIONS<br>
 
-ENABLE_SNAPSHOT_TEST : Application uses **iOSSnapshotTestCase** Device for snapshot testing is 'IPhone 14', to enable snapshot UI Unit test add this flag to DEBUG_SWIFT_ACTIVE_COMPILATION_CONDITIONS<br>
-
 WEATHER_FORECAST_DETAILS : This is feature flag control 'Detail Forecast' feature. This flag enabled in Debug, but won't be available in Release as this FF not added in Release-FeatureFlags.xcconfig.<br>
+
+ENABLE_SNAPSHOT_TEST : Application uses **iOSSnapshotTestCase** Device for snapshot testing is 'iPhone 14', to enable snapshot UI Unit test add this FF to DEBUG_SWIFT_ACTIVE_COMPILATION_CONDITIONS<br>
 
 ## Accessibility
 Application support Accessibility<br>
@@ -53,9 +53,12 @@ Application support Accessibility<br>
 2: Application support voice over
 
 ## Unit testing and code coverage 
-Application has 81.4% of code coverage. UI screens are covered using 'iOSSnapshotTestCase' framework.
-CityWeatherUITests also written to test app flow using mock data
+Application has 87% of code coverage which includes UI screens are covered using 'iOSSnapshotTestCase' framework.
+CityWeatherUITests has flow coverage of 83% using mock data
 
-<img width="1336" alt="Screenshot 2023-06-03 at 15 18 17" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/bdde03e1-95a5-4e32-9bfb-0e4980920886">
+<img width="1440" alt="Screenshot 2023-06-04 at 14 33 40" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/21e284ff-aba4-455f-a9f6-5b511a0c2b69">
+<img width="1440" alt="Screenshot 2023-06-04 at 14 34 42" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/d3675169-b69b-4247-8bbb-f57d8ae7147a">
+
+
 
 
