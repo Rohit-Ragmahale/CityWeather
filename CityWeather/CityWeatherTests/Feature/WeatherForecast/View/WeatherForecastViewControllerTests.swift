@@ -22,9 +22,20 @@ private final class MockWeatherForecastInteractor: WeatherForecastInteractorInte
 }
 
 final class WeatherForecastViewControllerTests: FBSnapshotTestCase {
+    var viewController: WeatherForecastViewController!
+    var navigationController: UINavigationController!
+    var sceneDelegate: SceneDelegate!
     override func setUp() {
         super.setUp()
-//        recordMode = true
+        #if ENABLE_SNAPSHOT_TEST
+//         recordMode = true
+        #endif
+    }
+
+    override func tearDown() {
+        viewController = nil
+        navigationController = nil
+        sceneDelegate = nil
     }
 
     func testWeatherForecastViewControllerDataLoading() {
@@ -44,33 +55,42 @@ final class WeatherForecastViewControllerTests: FBSnapshotTestCase {
     #if ENABLE_SNAPSHOT_TEST
     func testWeatherForecastViewController() throws {
         // given
-        let service = WeatherForecastService(httpsClient: MockHTTPClient())
-        let configurator = WeatherForecastConfigurator(service: service,
-                                                       city: "Leeds",
-                                                       cityId: "100",
-                                                       dataStore: DataStore())
-        let viewController = configurator.configureViewController()
-
-        // when
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-            let sceneDelegate = windowScene.delegate as? SceneDelegate
-          else {
-            return
-          }
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.navigationBar.tintColor = Theme.navigationTintColor
-
-        // Attach to window to loadView
-        sceneDelegate.window?.rootViewController = navigationController
+        loadViewController()
 
         // then
         let expectation =  expectation(description: "\(#function)-Weather`Forecast Leaded` Success")
         // Wait for mock response and check result
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             expectation.fulfill()
-            self.FBSnapshotVerifyViewController(navigationController)
+            self.FBSnapshotVerifyViewController(self.navigationController)
         }
         wait(for: [expectation], timeout: 1.0)
+    }
+
+    private func loadViewController() {
+        let service = WeatherForecastService(httpsClient: MockHTTPClient())
+        let configurator = WeatherForecastConfigurator(service: service,
+                                                       city: "Leeds",
+                                                       cityId: "100",
+                                                       dataStore: DataStore())
+
+        guard let viewController = configurator.configureViewController() as? WeatherForecastViewController else {
+            XCTFail("failed to load WeatherSearchViewController")
+            return
+        }
+
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate
+          else {
+            return
+          }
+        self.viewController = viewController
+        self.sceneDelegate = sceneDelegate
+        navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.tintColor = Theme.navigationTintColor
+
+        // Attach to window to loadView
+        self.sceneDelegate.window?.rootViewController = navigationController
     }
     #endif
 }
