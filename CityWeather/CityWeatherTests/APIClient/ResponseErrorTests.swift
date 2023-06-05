@@ -11,7 +11,7 @@ import XCTest
 final class ResponseErrorTests: XCTestCase {
 
     func testResponseError() {
-        XCTAssertEqual(ResponseError.decode.errorDescription, "Response parsing failed.")
+        XCTAssertEqual(ResponseError.decode.errorDescription, "City weather data not found.")
         XCTAssertEqual(ResponseError.invalidURL.errorDescription, "Endpoint is not valid.")
         XCTAssertEqual(ResponseError.unexpectedStatusCode.errorDescription, "Unknown error occured.\nPlease try again.")
     }

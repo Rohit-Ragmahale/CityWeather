@@ -20,7 +20,7 @@
 "tempDataNotAvaialble" = "Temperature: data not avaiable";
 "humidityDataNotAvaialble" = "Humidity: data not avaiable";
 
-"errorRemoteDataParsingFailed" = "Response parsing failed.";
+"errorRemoteDataParsingFailed" = "City weather data not found.";
 "errorInvalidEndPoint" = "Endpoint is not valid.";
 "errorUnknown" = "Unknown error occured.\nPlease try again.";
 
