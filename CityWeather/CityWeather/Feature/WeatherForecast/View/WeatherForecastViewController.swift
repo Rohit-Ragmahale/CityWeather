@@ -13,7 +13,7 @@ protocol WeatherForecastViewInterfaces: AnyObject {
     func showErrorAlert(errorMessage: String)
 }
 
-class WeatherForecastViewController: UIViewController {
+final class WeatherForecastViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var tableView: UITableView!

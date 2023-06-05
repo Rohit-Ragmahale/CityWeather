@@ -12,7 +12,7 @@ protocol WeatherSearchViewInterfaces: AnyObject {
     func showErrorAlert(errorMessage: String)
 }
 
-class WeatherSearchViewController: UIViewController {
+final class WeatherSearchViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var tableViewTopViewConstraint: NSLayoutConstraint!
