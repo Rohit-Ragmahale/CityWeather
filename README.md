@@ -53,12 +53,10 @@ Application support Accessibility<br>
 2: Application support voice over
 
 ## Unit testing and code coverage 
-'CityWeatherTests' has 87% of code coverage which includes UI tsting. UI screens are covered using 'iOSSnapshotTestCase' framework.<br>
-'CityWeatherUITests' has flow coverage of 83% using mock data
+'CityWeatherTests' has 92% of code coverage which includes UI tsting. UI screens are covered using 'iOSSnapshotTestCase' framework.<br>
+'CityWeatherUITests' has flow coverage of around 83% using mock data
 
-<img width="1440" alt="Screenshot 2023-06-04 at 14 33 40" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/21e284ff-aba4-455f-a9f6-5b511a0c2b69">
-<img width="1440" alt="Screenshot 2023-06-04 at 14 34 42" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/d3675169-b69b-4247-8bbb-f57d8ae7147a">
-
-
+<img width="1440" alt="Screenshot 2023-06-05 at 22 28 04" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/3e5bdb64-31e8-401f-b987-6e36e013cb8d">
+<img width="1440" alt="Screenshot 2023-06-05 at 22 30 08" src="https://github.com/Rohit-Ragmahale/CityWeather/assets/26670429/a88ae04f-b6c1-4c01-ab78-fe2bc009814e">
 
 
