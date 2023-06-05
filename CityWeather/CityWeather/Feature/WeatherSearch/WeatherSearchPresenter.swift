@@ -28,13 +28,19 @@ struct WeatherSearchPresenter {
 // MARK: - WeatherSearchPresenter Interface Implementation
 extension WeatherSearchPresenter: WeatherSearchPresenterInterface {
     func showWeatherForecastForCity(city: String, cityId: String, dataStore: DataProvider) {
-        router.showWeatherForcast(city: city, cityId: cityId, dataStore: dataStore)
+        DispatchQueue.main.async {
+            router.showWeatherForcast(city: city, cityId: cityId, dataStore: dataStore)
+        }
     }
     func weatherListUpdated(list: [CityWeatherData]) {
-        view?.showWeatherList(list: list)
+        DispatchQueue.main.async {
+            view?.showWeatherList(list: list)
+        }
     }
 
     func weatherRequestFailed(description: String) {
-        view?.showErrorAlert(errorMessage: description)
+        DispatchQueue.main.async {
+            view?.showErrorAlert(errorMessage: description)
+        }
     }
 }

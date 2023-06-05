@@ -30,12 +30,32 @@ final class WeatherForecastPresenterTests: XCTestCase {
         // when
         presenter.weatherForecatsListUpdated(list: [])
         // then
-        XCTAssertTrue(view.showWeatherForecastExecuted)
+        let expectation =  expectation(description: "\(#function)-testWeatherForecastPresenterWithError")
+        // Wait for mock response and check result
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            expectation.fulfill()
+            XCTAssertTrue(view.showWeatherForecastExecuted)
+        }
+        wait(for: [expectation], timeout: 0.2)
+
+    }
+
+    func testWeatherForecastPresenterWithError() {
+        // given
+        let view = MockWeatherForecastViewController()
+        let router = WeatherForecastRouter(viewController: UIViewController())
+        let presenter = WeatherForecastPresenter(view: view, router: router)
 
         // when
         presenter.weatherForecastRequestFailed(description: "Error")
         // then
-        XCTAssertTrue(view.showErrorAlertExecuted)
+        let expectation =  expectation(description: "\(#function)-testWeatherForecastPresenterWithError")
+        // Wait for mock response and check result
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            expectation.fulfill()
+            XCTAssertTrue(view.showErrorAlertExecuted)
+        }
+        wait(for: [expectation], timeout: 0.2)
 
     }
 }

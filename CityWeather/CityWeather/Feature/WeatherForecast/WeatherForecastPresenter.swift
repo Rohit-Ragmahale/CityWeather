@@ -28,10 +28,14 @@ struct WeatherForecastPresenter {
 // MARK: - WeatherForecastPresenter Interface Implementation
 extension WeatherForecastPresenter: WeatherForecastPresenterInterface {
     func weatherForecatsListUpdated(list: [DayForecast]) {
-        view?.showWeatherForecast(list: list)
+        DispatchQueue.main.async {
+            view?.showWeatherForecast(list: list)
+        }
     }
 
     func weatherForecastRequestFailed(description: String) {
-        view?.showErrorAlert(errorMessage: description)
+        DispatchQueue.main.async {
+            view?.showErrorAlert(errorMessage: description)
+        }
     }
 }

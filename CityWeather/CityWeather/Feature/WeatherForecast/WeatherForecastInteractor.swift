@@ -43,21 +43,17 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
 
     func searchWeatherForecastForCity() {
         if let forecast = dataStore.forecastForCity(cityId: cityId) {
-            DispatchQueue.main.async {
-                presenter.weatherForecatsListUpdated(list: forecast )
-            }
+            presenter.weatherForecatsListUpdated(list: forecast )
             return
         }
         service.fetchWeatherForecastFor(cityId: cityId,
-                                         completion: { futureForecasts, responseError in
-            DispatchQueue.main.async {
-                if let responseError = responseError {
-                    self.presenter.weatherForecastRequestFailed(description: responseError.errorDescription)
-                } else {
-                    guard let futureForecasts = futureForecasts else { return }
-                    self.dataStore.addForecatsForCity(cityId: cityId, forecast: futureForecasts)
-                    self.presenter.weatherForecatsListUpdated(list: futureForecasts)
-                }
+                                        completion: { futureForecasts, responseError in
+            if let responseError = responseError {
+                presenter.weatherForecastRequestFailed(description: responseError.errorDescription)
+            } else {
+                guard let futureForecasts = futureForecasts else { return }
+                dataStore.addForecatsForCity(cityId: cityId, forecast: futureForecasts)
+                presenter.weatherForecatsListUpdated(list: futureForecasts)
             }
         })
     }

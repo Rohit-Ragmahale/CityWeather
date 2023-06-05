@@ -51,21 +51,39 @@ final class WeatherSearchPresenterTests: XCTestCase {
         // when
         presenter?.showWeatherForecastForCity(city: "leeds", cityId: "100", dataStore: DataStore())
         // then
-        XCTAssertTrue(router?.showWeatherForcastExecuted ?? false)
+        let expectation =  expectation(description: "\(#function)-test_ShowForecastViewController")
+        // Wait for mock response and check result
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            expectation.fulfill()
+            XCTAssertTrue(self.router?.showWeatherForcastExecuted ?? false)
+        }
+        wait(for: [expectation], timeout: 0.2)
     }
 
     func testWeatherSearchPresenter_ShowCityWeather() {
         // when
         presenter?.weatherListUpdated(list: [])
         // then
-        XCTAssertTrue(viewController?.showWeatherListExecuted ?? false)
+        let expectation =  expectation(description: "\(#function)-testWeatherSearchPresenter_ShowCityWeather")
+        // Wait for mock response and check result
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            expectation.fulfill()
+            XCTAssertTrue(self.viewController?.showWeatherListExecuted ?? false)
+        }
+        wait(for: [expectation], timeout: 0.2)
     }
 
     func testWeatherSearchPresenter_ShowErrorAlert() {
         // when
         presenter?.weatherRequestFailed(description: "Error")
         // then
-        XCTAssertTrue(viewController?.showErrorAlertExecuted ?? false)
+        let expectation =  expectation(description: "\(#function)-testWeatherSearchPresenter_ShowErrorAlert")
+        // Wait for mock response and check result
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            expectation.fulfill()
+            XCTAssertTrue(self.viewController?.showErrorAlertExecuted ?? false)
+        }
+        wait(for: [expectation], timeout: 0.2)
     }
 
 }
