@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherForecastCell: UITableViewCell {
+final class WeatherForecastCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var date: UILabel!

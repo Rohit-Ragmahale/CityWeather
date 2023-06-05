@@ -12,7 +12,7 @@ enum WeatherSection: Hashable, CaseIterable {
 }
 
 // MARK: - UITableViewDiffableDataSource Implementation
-class WeatherListDataSource: UITableViewDiffableDataSource<WeatherSection, CityWeatherData> {
+final class WeatherListDataSource: UITableViewDiffableDataSource<WeatherSection, CityWeatherData> {
     init(cellIdentifier: String, tableView: UITableView) {
         super.init(tableView: tableView) { tableView, _, weatherData in
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)

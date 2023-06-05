@@ -18,7 +18,7 @@ protocol DataProvider {
 }
 
 // MARK: - DataStore
-class DataStore {
+final class DataStore {
     // MARK: - Properties
     private var data: [CityWeatherData] = []
 }
