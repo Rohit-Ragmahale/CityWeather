@@ -53,9 +53,7 @@ extension WeatherForecastViewController: WeatherForecastViewInterfaces {
     func showWeatherForecast(list: [DayForecast]) {
         var snapShot = NSDiffableDataSourceSnapshot<WeatherForecastSection, DayForecast>()
         snapShot.appendSections(WeatherForecastSection.allCases)
-        list.forEach { details in
-            snapShot.appendItems([details], toSection: WeatherForecastSection.main)
-        }
+        snapShot.appendItems(list, toSection: WeatherForecastSection.main)
         spinner.stopAnimating()
         dataSource.apply(snapShot, animatingDifferences: true)
     }

@@ -125,7 +125,7 @@ extension WeatherSearchViewController: WeatherSearchViewInterfaces {
     func showWeatherList(list: [CityWeatherData]) {
         var snapShot = NSDiffableDataSourceSnapshot<WeatherSection, CityWeatherData>()
         snapShot.appendSections(WeatherSection.allCases)
-        list.forEach { snapShot.appendItems([$0], toSection: WeatherSection.main) }
+        snapShot.appendItems(list, toSection: WeatherSection.main)
         dataSource.apply(snapShot, animatingDifferences: true)
         searchTextField.text = nil
         updateViewState(isSearching: false)
