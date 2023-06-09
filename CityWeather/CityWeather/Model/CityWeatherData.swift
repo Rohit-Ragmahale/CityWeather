@@ -23,7 +23,7 @@ final class CityWeatherData: Decodable, Hashable {
     private enum WeatherResponseCodingKeys: String, CodingKey {
         case name
         case id
-        case dt
+        case date = "dt"
         case main
         case weather
     }
@@ -37,7 +37,7 @@ final class CityWeatherData: Decodable, Hashable {
 
             forecast = DayForecast()
 
-            if let timeInterval = try container.decodeIfPresent(TimeInterval.self, forKey: .dt) {
+            if let timeInterval = try container.decodeIfPresent(TimeInterval.self, forKey: .date) {
                 forecast.date = Date(timeIntervalSince1970: timeInterval)
             }
 

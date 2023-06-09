@@ -17,7 +17,7 @@ struct FutureForecasts: Decodable {
 
     private enum DataCodingKeys: String, CodingKey {
         case id
-        case dt
+        case date = "dt"
         case main
         case weather
     }
@@ -42,7 +42,7 @@ struct FutureForecasts: Decodable {
 
                         var forecast = DayForecast()
 
-                        if let timeInterval = try item.decodeIfPresent(TimeInterval.self, forKey: .dt) {
+                        if let timeInterval = try item.decodeIfPresent(TimeInterval.self, forKey: .date) {
                             forecast.date = Date(timeIntervalSince1970: timeInterval)
                         }
 
