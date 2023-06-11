@@ -22,7 +22,7 @@ final class WeatherSearchViewController: UIViewController {
     // MARK: - Properties
     // Variables
     private lazy var dataSource: WeatherListDataSource = {
-        return WeatherListDataSource(cellIdentifier: String(describing: CityWeatherCell.self), tableView: tableView)
+        return WeatherListDataSource(tableView: tableView)
     }()
     private var shouldShowAddButton: Bool = false {
         didSet {

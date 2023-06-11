@@ -20,9 +20,7 @@ final class WeatherForecastViewController: UIViewController {
     // MARK: - Properties
     // Variables
     private lazy var dataSource: WeatherForecastDataSource = {
-        let cellIdentifier = String(describing: WeatherForecastCell.self)
-        return WeatherForecastDataSource(cellIdentifier: cellIdentifier,
-                                         tableView: tableView)
+        return WeatherForecastDataSource(tableView: tableView)
     }()
 
     var interactor: WeatherForecastInteractorInterface?
