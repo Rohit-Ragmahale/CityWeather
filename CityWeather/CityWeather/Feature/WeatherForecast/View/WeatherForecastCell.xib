@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -62,9 +61,6 @@
                     <constraint firstItem="KuS-mz-b8r" firstAttribute="centerY" secondItem="Eio-q4-xCu" secondAttribute="centerY" id="VIa-nW-Rhn"/>
                 </constraints>
             </tableViewCellContentView>
-            <accessibility key="accessibilityConfiguration" label="Tap to see forecast">
-                <bool key="isElement" value="YES"/>
-            </accessibility>
             <connections>
                 <outlet property="date" destination="ipF-JC-XVf" id="fTk-xW-fcB"/>
                 <outlet property="humidityDetails" destination="BRl-XV-f0Y" id="BTw-d1-5Dz"/>
