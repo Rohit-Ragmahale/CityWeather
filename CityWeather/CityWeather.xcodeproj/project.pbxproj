@@ -85,6 +85,7 @@
 		43CE104A2A293D7000186EEF /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CE10492A293D7000186EEF /* DataStore.swift */; };
 		43CE10502A294E3B00186EEF /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CE104F2A294E3B00186EEF /* DataStoreTests.swift */; };
 		43CE10522A294ED800186EEF /* MockProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CE10512A294ED800186EEF /* MockProvider.swift */; };
+		43E801B42AB846F4007D0D66 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E801B32AB846F4007D0D66 /* DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 		43CE10492A293D7000186EEF /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		43CE104F2A294E3B00186EEF /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
 		43CE10512A294ED800186EEF /* MockProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProvider.swift; sourceTree = "<group>"; };
+		43E801B32AB846F4007D0D66 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -552,6 +554,7 @@
 		43CE10482A293D6100186EEF /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
+				43E801B32AB846F4007D0D66 /* DataProvider.swift */,
 				43CE10492A293D7000186EEF /* DataStore.swift */,
 			);
 			path = DataStore;
@@ -748,6 +751,7 @@
 				438E31D52A266B27006867EC /* StoryboardIdentifier.swift in Sources */,
 				438E31E92A268667006867EC /* HTTPClient.swift in Sources */,
 				438E31CE2A265BB0006867EC /* Weather.swift in Sources */,
+				43E801B42AB846F4007D0D66 /* DataProvider.swift in Sources */,
 				438E31E22A268250006867EC /* ResponseError.swift in Sources */,
 				438E31EE2A269C88006867EC /* CityWeatherCell.swift in Sources */,
 				438E32002A271744006867EC /* UITableViewCellExtension.swift in Sources */,
