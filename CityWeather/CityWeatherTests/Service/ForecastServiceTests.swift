@@ -25,14 +25,15 @@ final class TestWeatherForecastService: XCTestCase {
         // given
         let expectation = XCTestExpectation(description: "\(#function)-FetchForecastExpectation")
         // when
-        forecastService?.fetchWeatherForecastFor(cityId: "100", completion: { (futureForecasts, responseError) in
-            if responseError != nil {
-                XCTFail("Failed to fetch forecast")
-            } else {
+        Task {
+            do {
+                let futureForecasts = try await forecastService?.fetchWeatherForecastFor(cityId: "100")
                 expectation.fulfill()
                 XCTAssertEqual(futureForecasts?.count, 40)
+            } catch {
+                XCTFail("Failed to fetch forecast")
             }
-        })
+        }
         wait(for: [expectation], timeout: 0.3)
     }
 }

@@ -12,7 +12,8 @@ typealias WeatherForecatsResponse = ([DayForecast]?, ResponseError?) -> Void
 
 // MARK: - WeatherForecastService Interface
 protocol WeatherForecastServiceProvider {
-    func fetchWeatherForecastFor(cityId: String, completion: @escaping WeatherForecatsResponse)
+    //func fetchWeatherForecastFor(cityId: String, completion: @escaping WeatherForecatsResponse)
+    func fetchWeatherForecastFor(cityId: String) async throws -> [DayForecast]
 }
 
 final class WeatherForecastService {
@@ -27,6 +28,21 @@ final class WeatherForecastService {
 }
 
 extension WeatherForecastService: WeatherForecastServiceProvider {
+    func fetchWeatherForecastFor(cityId: String) async throws -> [DayForecast] {
+        return try await withCheckedThrowingContinuation({ continuation in
+            let request = NetworkRequest<FutureForecasts>.forecastWeather(cityId: cityId)
+            httpsClient.load(networkRequest: request).sink { reqCompletion in
+                if case let .failure(error) = reqCompletion {
+                    continuation.resume(throwing: error)
+                }
+            } receiveValue: { data in
+                continuation.resume(returning: data.list)
+            }
+            .store(in: &cancellables)
+        })
+    }
+    
+    /*
     func fetchWeatherForecastFor(cityId: String, completion: @escaping WeatherForecatsResponse) {
         let request = NetworkRequest<FutureForecasts>.forecastWeather(cityId: cityId)
         httpsClient.load(networkRequest: request).sink { reqCompletion in
@@ -38,4 +54,5 @@ extension WeatherForecastService: WeatherForecastServiceProvider {
         }
         .store(in: &cancellables)
     }
+     */
 }

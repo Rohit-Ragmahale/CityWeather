@@ -46,6 +46,22 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
             presenter.weatherForecatsListUpdated(list: forecast )
             return
         }
+        Task {
+            do {
+                let futureForecasts = try await service.fetchWeatherForecastFor(cityId: cityId)
+                dataStore.addForecatsForCity(cityId: cityId, forecast: futureForecasts)
+                presenter.weatherForecatsListUpdated(list: futureForecasts)
+            } catch let error as ResponseError {
+                presenter.weatherForecastRequestFailed(description: error.errorDescription)
+            }
+        }
+    }
+    /*
+    func searchWeatherForecastForCity() {
+        if let forecast = dataStore.forecastForCity(cityId: cityId) {
+            presenter.weatherForecatsListUpdated(list: forecast )
+            return
+        }
         service.fetchWeatherForecastFor(cityId: cityId,
                                         completion: { futureForecasts, responseError in
             if let responseError = responseError {
@@ -57,4 +73,5 @@ extension WeatherForecastInteractor: WeatherForecastInteractorInterface {
             }
         })
     }
+     */
 }
